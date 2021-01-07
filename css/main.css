@@ -1,0 +1,58 @@
+html {
+  font-size: 1.2rem; }
+
+section {
+  display: flex;
+  flex-direction: row; }
+
+header {
+  color: white;
+  background: #26a8f9; }
+  header nav {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem; }
+    header nav h1 {
+      width: calc(70% - 1em); }
+    header nav ul {
+      width: calc(30%);
+      text-align: right;
+      outline: 1px solid red;
+      list-style: none; }
+
+article h2 {
+  text-align: center; }
+
+article ul {
+  list-style: none; }
+  article ul li {
+    margin: 1em 5%;
+    outline: 1px solid pink; }
+  article ul p:nth-last-of-type(1) {
+    display: flex;
+    justify-content: flex-end; }
+    article ul p:nth-last-of-type(1) i:before {
+      padding-right: 0.2rem;
+      font-size: 1rem;
+      color: grey; }
+
+.micro > article > ul > li {
+  box-shadow: 0px 0px #fd8b9e, 1px 1px #fd8b9e, 2px 2px #fd8b9e, 3px 3px #fd8b9e, 4px 4px #fd8b9e, 5px 5px #fd8b9e, 6px 6px #fd8b9e, 7px 7px #fd8b9e, 8px 8px #fd8b9e, 9px 9px #fd8b9e, 10px 10px #fd8b9e;
+  outline: 1px solid black; }
+
+@media (min-width: 0px) and (max-width: 319px) {
+  html {
+    font-size: 0.3rem;
+    outline: 1px dashed red; } }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  html {
+    outline: 1px solid green; } }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  html {
+    outline: 1px solid blue; } }
+
+@media (min-width: 1024px) {
+  html {
+    outline: 1px solid purple; } }

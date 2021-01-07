@@ -1,0 +1,106 @@
+html {
+  font-size: 1.2rem;
+}
+// get section to rows
+section {
+  display: flex;
+  flex-direction: row;
+}
+
+//Navigation menu banner
+header {
+  color: white;
+  background: $lite-blue;
+  nav {
+    display: flex;
+    flex-direction: row;
+    // margin: auto 0;
+    padding: 1rem;
+    h1 {
+      width: calc(70% - 1em);
+    }
+    ul {
+      width: calc(30%);
+      text-align: right;
+      outline: 1px solid red;
+      list-style: none;
+    }
+  }
+}
+
+// cards on section
+article {
+  h2 {
+    text-align: center;
+  }
+  ul {
+    // outline: 1px solid #75c183;
+    list-style: none;
+    li {
+      margin: 1em 5%;
+      outline: 1px solid pink;
+    }
+    //get the date to the right
+    p:nth-last-of-type(1) {
+      display: flex;
+      justify-content: flex-end;
+
+      i:before {
+        padding-right: 0.2rem;
+        // font-family: "Font Awesome 5 Free";
+        // font-weight: 900;
+        font-size: 1rem;
+        color: grey;
+      }
+    }
+  }
+}
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 10 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+.micro > article > ul > li {
+  box-shadow: makelongshadow($pink);
+  outline: 1px solid black;
+}
+
+@mixin pod {
+  @media (min-width: #{$pod-width}) and (max-width: #{$mobile-width - 1px}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+html {
+  @include pod {
+    font-size: 0.3rem;
+    outline: 1px dashed red;
+  }
+  @include mobile {
+    outline: 1px solid green;
+  }
+  @include tablet {
+    outline: 1px solid blue;
+  }
+  @include desktop {
+    outline: 1px solid purple;
+  }
+}
