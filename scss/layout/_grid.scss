@@ -1,5 +1,19 @@
 // get section to rows
 section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  h2 {
+    // text-align: center;
+    // justify-content: center;
+    // flex-direction: column;
+    // align-items: flex-end;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  //get the date to the right
+  p:nth-last-of-type(1) {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
