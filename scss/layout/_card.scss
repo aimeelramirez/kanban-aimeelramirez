@@ -1,8 +1,14 @@
 @function makelongshadow($color) {
   $val: 0;
-
   @if ($color != null) {
     $val: $shadow-cards;
+  }
+  @return $val;
+}
+@function makeborder($color) {
+  $val: 0;
+  @if ($color != null) {
+    $val: $grey-cards;
   }
   @return $val;
 }
@@ -23,6 +29,9 @@ section {
       padding: 1rem;
       article {
         box-shadow: makelongshadow(black);
+        p {
+          border-bottom: 1px solid makeborder(grey-cards);
+        }
       }
     }
     //get the date to the right
