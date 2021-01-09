@@ -1,6 +1,5 @@
 //Navigation menu banner
 header {
-  width: 100%;
   color: white;
   background: $lite-blue;
   nav {
@@ -14,8 +13,48 @@ header {
     ul {
       width: calc(30%);
       text-align: right;
-      // outline: 1px solid red;
+      outline: 1px solid red;
       list-style: none;
     }
   }
+}
+
+// cards on section
+article {
+  h2 {
+    text-align: center;
+  }
+  ul {
+    // outline: 1px solid #75c183;
+    list-style: none;
+    li {
+      margin: 1em 5%;
+      outline: 1px solid pink;
+    }
+    //get the date to the right
+    p:nth-last-of-type(1) {
+      display: flex;
+      justify-content: flex-end;
+
+      i:before {
+        padding-right: 0.2rem;
+        // font-family: "Font Awesome 5 Free";
+        // font-weight: 900;
+        font-size: 1rem;
+        color: grey;
+      }
+    }
+  }
+}
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 10 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+.micro > article > ul > li {
+  box-shadow: makelongshadow($pink);
+  outline: 1px solid black;
 }
