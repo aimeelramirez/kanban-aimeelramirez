@@ -1,10 +1,14 @@
 // main.scss
 // base  = mixins and variables
-@import "base/variables";
+@import "utils/mixins";
+@import "utils/variables";
 //TODO
 // components = buttons and styles on hamburger etc.
+@import "components/buttons";
 //TODO
 // core = reset and typography
+@import "base/reset";
+@import "base/typography";
 //TODO
 // layout = grid, header, main body
 @import "layout/main";

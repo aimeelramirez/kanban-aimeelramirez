@@ -1,0 +1,27 @@
+@function makelongshadow($color) {
+  $val: 0;
+
+  @if ($color != null) {
+    $val: $shadow-cards;
+  }
+  @return $val;
+}
+section {
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    li {
+      border: 1px solid rgb(222, 222, 222);
+      justify-content: space-around;
+      margin: 0.2rem;
+
+      article {
+        padding: 1rem;
+        box-shadow: makelongshadow(black);
+        // box-shadow: 0 8px 6px -6px black;
+      }
+    }
+  }
+}
