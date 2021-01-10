@@ -1,7 +1,35 @@
-i:before {
-  padding-right: 0.2rem;
-  // font-family: "Font Awesome 5 Free";
-  // font-weight: 900;
-  font-size: 1rem;
-  color: grey;
+i.fa-calendar {
+  color: $ultimate-gray;
+  font-size: 2rem;
+  &:before {
+    padding-right: 0.2rem;
+    margin-bottom: -1rem;
+  }
+  &:hover {
+    color: $button-hovercolor;
+  }
+}
+//TODO to change this to js since color on web kit
+// indicator on image not icon
+// #date-created {
+//   display: flex;
+//   justify-content: flex-end;
+//   flex-direction: row-reverse;
+// }
+
+//TODO watch the video on placer for this
+// %button {
+//   color: red;
+// }
+
+button {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2.5rem;
+  padding: 0.9rem;
+
+  &:hover {
+    background-color: $button-hovercolor;
+    color: $white;
+  }
 }

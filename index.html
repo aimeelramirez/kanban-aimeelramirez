@@ -4,38 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kanban-AimeeLRamirez</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
       integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
       crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="main.js" defer></script>
   </head>
-
   <body>
     <header>
       <nav>
         <h1>Task Manager</h1>
+        <!-- To be shown instead of the icons below -->
+        <!-- <i class="fas fa-bars"></i> -->
         <ul>
-          <li><a href="#">home</a></li>
-          <li><a href="#">about</a></li>
-          <li><a href="#">contact</a></li>
+          <li>
+            <a href="#"><strong>home</strong></a>
+          </li>
+          <li>
+            <a href="#"><strong>contact</strong></a>
+          </li>
+          <li>
+            <a href="#"><strong>about us</strong></a>
+          </li>
+          <li>
+            <a href="#"><strong>mode</strong></a>
+          </li>
         </ul>
       </nav>
     </header>
     <main>
       <section id="backlog">
-        <h2>Backlog</h2>
+        <article class="task-title">
+          <h2>Backlog</h2>
+          <button>Add Task</button>
+        </article>
         <ul>
           <li>
+            <!-- just a example upon selection and editing card -->
+            <nav class="article-menu">
+              <ul>
+                <li>
+                  <i class="fas fa-trash"><strong>delete</strong></i>
+                </li>
+                <li>
+                  <i class="fas fa-save"><strong>save</strong></i>
+                </li>
+                <li>
+                  <i class="fas fa-link"><strong>link</strong></i>
+                </li>
+                <li>
+                  <i class="fas fa-copy"><strong>duplicate</strong></i>
+                </li>
+              </ul>
+            </nav>
             <article>
-              <h3>section Title 1</h3>
+              <h3>Article Title 1</h3>
+              <p>
+                This is an example of selected card to change with editing icons
+                and calendar to show.|
+              </p>
+              <p>
+                <i class="far fa-calendar"></i>
+                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
+              </p>
+              <!-- possible calendar idea if not js -->
+              <!-- <p>
+                <input
+                  type="date"
+                  id="date-created"
+                  name="date-created"
+                  value="2021-01-10"
+                />
+              </p> -->
+            </article>
+            <!-- just a example upon selection and editing card -->
+          </li>
+          <li>
+            <article>
+              <h3>Article Title 2</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque efficitur elit eu est mattis sagittis.
@@ -48,7 +102,7 @@
           </li>
           <li>
             <article>
-              <h3>section Title 2</h3>
+              <h3>Article Title 2</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque efficitur elit eu est mattis sagittis.
@@ -62,11 +116,14 @@
         </ul>
       </section>
       <section id="implementation">
-        <h2>Implementation</h2>
+        <article class="task-title">
+          <h2>Implementation</h2>
+          <button>Add Task</button>
+        </article>
         <ul>
           <li>
             <article>
-              <h3>section Title 1</h3>
+              <h3>Article Title 1</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque efficitur elit eu est mattis sagittis.
@@ -79,7 +136,7 @@
           </li>
           <li>
             <article>
-              <h3>section Title 2</h3>
+              <h3>Article Title 2</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque efficitur elit eu est mattis sagittis.
@@ -93,24 +150,14 @@
         </ul>
       </section>
       <section id="complete">
-        <h2>Complete</h2>
+        <article class="task-title">
+          <h2>Complete</h2>
+          <button>Add Task</button>
+        </article>
         <ul>
           <li>
             <article>
-              <h3>section Title 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h3>section Title 2</h3>
+              <h3>Article Title 1</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque efficitur elit eu est mattis sagittis.
@@ -124,5 +171,7 @@
         </ul>
       </section>
     </main>
+    <!-- <footer>
+    </footer> -->
   </body>
 </html>

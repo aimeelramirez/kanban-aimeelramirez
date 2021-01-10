@@ -1,28 +1,35 @@
-@function makelongshadow($color) {
-  $val: 0;
-
-  @if ($color != null) {
-    $val: $shadow-cards;
-  }
-  @return $val;
-}
 //list on articles
 section {
-  h2 {
+  // Title to button
+  .task-title {
     display: flex;
-    font-size: 3rem;
-    // text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 1rem;
-    // align-items: flex-end;
+    font-size: 3rem;
   }
   ul {
     // outline: 1px solid #75c183;
     list-style: none;
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: $lite-grey;
+    border-radius: 1rem;
+    // opacity: 0.5;
     li {
       padding: 1rem;
       article {
-        box-shadow: makelongshadow(black);
+        // cursor: grabbing;
+        cursor: pointer;
+        border-radius: 1rem;
+        background-color: $white;
+        max-width: 40rem;
+        box-shadow: makelongshadow($grey-cards);
+        h3 {
+          padding: 1rem;
+        }
+        p {
+          border-bottom: 1px solid makeborder($grey-cards);
+        }
       }
     }
     //get the date to the right
