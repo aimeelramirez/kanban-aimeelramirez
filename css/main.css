@@ -172,9 +172,25 @@ h1 {
   font-family: "Kaushan Script", cursive;
   color: white; }
 
-h2 {
+footer h2,
+.task-title h2 {
   font-family: "EB Garamond", serif;
-  font-size: 3.3rem; }
+  width: 100%;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: black; }
+
+footer p:nth-of-type(1),
+.task-title p:nth-of-type(1) {
+  color: #282828;
+  text-align: center; }
+
+footer p:nth-of-type(2),
+.task-title p:nth-of-type(2) {
+  display: flex;
+  justify-content: flex-end;
+  font-size: smaller; }
 
 article,
 p,
@@ -213,11 +229,21 @@ i.fa-calendar {
 button {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 0.9rem; }
   button:hover {
     background-color: #4caf50;
     color: white; }
+  button:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f067";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  button:hover:before {
+    color: white; }
+  button strong {
+    display: none; }
 
 header ul > li strong {
   display: none; }
@@ -374,3 +400,8 @@ section ul {
   section ul p:nth-last-of-type(1) {
     display: flex;
     justify-content: flex-end; }
+
+footer {
+  margin-top: 1rem;
+  box-shadow: 0px -8px 6px -8px black;
+  background-color: gainsboro; }
