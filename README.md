@@ -1,23 +1,63 @@
 # DWS2 Kanban Board
 
-Welcome to the starter repo for your Kanban board application 🚀!
+## dws2/kanban-aimeelramirez
 
-You'll want to customize this readme file a bit to contain information about the project, but for now here is what you need to know to get set up:
+### Fork/Clone
 
-## Installation
+> https://github.com/dws2/kanban-aimeelramirez.git
 
-Make sure you have the following:
+## Introduction
 
-- Node (v12)
-- NPM
+Welcome to the kanban board project application. Here to be creating an application with inspirations from Notion.so, Todoist.com, etc.
 
-From the root of this project run: `npm install`. This will pull in the dependencies needed for development.
+I'm inspired by the different things I saw such as the way they have their navigation menu for editing the card/task to be deleted, shared, saved, and duplicated.
 
-## Usage
+Here I'll be also focusing on using git with Github to merge changes with handling conflicts if to apply. These are the steps that I did to create the workflow to follow if to record the upcoming differences commits.
+
+## Workflows
+
+Pull from origin branch:
+
+> milestone-1
+
+### Branches
+
+- Locally contains:
+
+> 1. "html-setup"
+> 2. "dev"
+
+- Github contains for PR:
+
+> 1. "master"
+> 2. "milestone-1"
+
+### Steps
+
+1. The "html-setup" branch is merged it's changes to "dev".
+2. Pushing the branch "dev" to Github to merge branch "milestone-1".
+   - (I delete the branch origin on github from merge or merge to milestone-1 locally and push to github.)
+3. Pulling locally "milestone-1" branch for changes.
+4. Switching back to "dev" to "git status" to see no local changes.
+5. Back to "html-setup" for merging development to "dev" branch.
+
+- Upon submission: I created a Pull Request (PR) to merge milestone-1 into master.
+
+### Installation
+
+- From the root of this project run: `npm install`
+
+### Usage
 
 - `npm start`: This command will start up a local web server, open your default browser, and begin watching scss files for changes.
 - `npm run build`: This command will only compile your scss files.
 
-## Things to know
+## Resources
 
-You can customize the structure of this project however you like. A base set of functionality has been provided to get you started. Make sure to familiarize yourself with what's going on in the `gulpfile.js`.
+Here are some of the inspirations to this project of task manager excluding Github and Trello.
+
+- Notion – The all-in-one workspace for your notes, tasks, wikis, and databases.
+  Notion – The all-in-one workspace for your notes, tasks, wikis, and databases. (2021). Retrieved 11 January 2021, from https://www.notion.so/
+
+- Todoist: The to do list to organize work & life
+  Todoist: The to do list to organize work & life. (2021). Retrieved 11 January 2021, from https://todoist.com/
