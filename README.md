@@ -1,4 +1,4 @@
-# DWS2 Kanban Board
+# DWS2 Kanban Board - Aimee Ramirez
 
 ## dws2/kanban-aimeelramirez
 
