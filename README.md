@@ -2,6 +2,10 @@
 
 ## dws2/kanban-aimeelramirez
 
+## Repository link location
+
+> https://github.com/dws2/kanban-aimeelramirez
+
 ### Fork/Clone
 
 > https://github.com/dws2/kanban-aimeelramirez.git
