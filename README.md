@@ -2,7 +2,7 @@
 
 ## dws2/kanban-aimeelramirez
 
-## Repository link location
+### Repository link location
 
 > https://github.com/dws2/kanban-aimeelramirez
 
