@@ -1,0 +1,40 @@
+main {
+  margin: 0rem 1rem 0rem 1rem;
+  justify-content: center;
+}
+main {
+  display: flex;
+  @include atMediaWidth(none) {
+    font-size: 0.3rem;
+    // justify-content: space-around;
+    flex-direction: column;
+    // outline: 1px dashed blue;
+  }
+  @include atMediaWidth(small) {
+    font-size: 0.3rem;
+    flex-direction: column;
+    // outline: 1px dashed red;
+    h2 {
+      font-family: "EB Garamond", serif;
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+  @include atMediaWidth(medium) {
+    // outline: 1px solid green;
+    flex-direction: row;
+    h2 {
+      font-family: "EB Garamond", serif;
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+  }
+  @include atMediaWidth(large) {
+    // outline: 1px solid purple;
+    flex-direction: row;
+  }
+}

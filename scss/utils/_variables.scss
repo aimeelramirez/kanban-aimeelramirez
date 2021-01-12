@@ -1,0 +1,25 @@
+//size on screen
+$tiny-width: 0px;
+$small-width: 300px;
+$medium-width: 600px;
+$large-width: 800px;
+// button variable
+$button-fontsize: 2.5rem;
+$button-hovercolor: #4caf50;
+//colors
+$illuminating: rgb(245, 223, 77);
+$ultimate-gray: rgb(147, 149, 151);
+$black: rgb(0, 0, 0);
+$pink: rgb(253, 139, 158);
+$white: rgb(255, 255, 255);
+$lite-blue: rgb(38, 168, 249);
+//cards
+$grey-cards: rgb(193, 193, 193);
+$dark-grey: rgb(40, 40, 40);
+$lite-grey: rgb(220, 220, 220);
+$grey: rgb(134, 134, 134);
+
+//cards and shadows on header
+$shadow: rgb(0, 0, 0);
+$shadow-cards: 0 8px 6px -6px $shadow;
+$shadow-top: 0px -8px 6px -8px $shadow;

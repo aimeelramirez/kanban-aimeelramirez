@@ -1,0 +1,44 @@
+$size: (
+  "none": tiny-width,
+  "small": small-width,
+  "medium": medium-width,
+  "large": large-width,
+);
+
+@mixin atMediaWidth($size) {
+  @if $size == none {
+    @media (min-width: 0px) and (max-width: #{$small-width - 1px}) {
+      @content;
+    }
+  }
+  @if $size == small {
+    @media (min-width: #{$small-width}) and (max-width: #{$medium-width - 1px}) {
+      @content;
+    }
+  }
+  @if $size == medium {
+    @media (min-width: #{$medium-width}) and (max-width: #{$large-width - 1px}) {
+      @content;
+    }
+  }
+  @if $size == large {
+    @media (min-width: #{$large-width} ) {
+      @content;
+    }
+  }
+}
+@function makelongshadow($color) {
+  $val: 0;
+  @if ($color != null) {
+    $val: $shadow-cards;
+  }
+  @return $val;
+}
+
+@function makeborder($color) {
+  $val: 0;
+  @if ($color != null) {
+    $val: $grey-cards;
+  }
+  @return $val;
+}

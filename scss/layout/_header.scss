@@ -1,0 +1,65 @@
+//Navigation menu banner
+header {
+  width: 100%;
+  background: $lite-blue;
+  box-shadow: makelongshadow($shadow);
+  padding: 1rem;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    // margin: auto 0;
+    padding: 1rem;
+    h1 {
+      width: calc(70% - 1em);
+    }
+    ul {
+      padding: 0rem;
+      width: calc(30%);
+      text-align: right;
+      // outline: 1px solid red;
+      list-style: none;
+    }
+  }
+}
+//Navigation on Articles
+nav.article-menu {
+  display: flex;
+  justify-content: flex-end;
+  ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    // padding-right: 10rem;
+    justify-content: flex-end;
+    // text-align: right;
+    li {
+      margin: 0 auto;
+      margin-right: 0.4rem;
+      border-radius: 1rem 1rem 0rem 0rem;
+      background-color: $white;
+      max-width: 40rem;
+      border-top: 1px solid makeborder($grey-cards);
+
+      &:hover strong {
+        cursor: pointer;
+        // display: block;
+        color: $black;
+        font-size: 1rem;
+        text-transform: capitalize;
+      }
+    }
+
+    li strong {
+      display: none;
+    }
+    i {
+      color: $grey;
+      font-size: 1.2rem;
+      &:hover {
+        color: $pink;
+        transition-duration: 0.4s;
+      }
+    }
+  }
+}

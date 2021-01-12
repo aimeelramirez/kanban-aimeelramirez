@@ -1,0 +1,15 @@
+// get section to rows
+section {
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
+  ul {
+    list-style: none;
+    //get the date to the right
+    p:nth-last-of-type(1) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

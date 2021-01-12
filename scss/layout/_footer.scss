@@ -1,0 +1,15 @@
+footer {
+  margin-top: 1rem;
+  box-shadow: $shadow-top;
+  background-color: $lite-grey;
+  @extend %article-title;
+}
+// footer {
+//   background-image: url("../../images/boy-studying-with-book_113065-238.jpg"),
+//     url("../../images/happy-family-with-house-concept-illustration-mortgage-buying-house-real-estate_113065-211.jpg");
+//   background-repeat: no-repeat, no-repeat;
+//   background-size: contain, contain;
+//   background-position: right, left;
+//   height: 50rem;
+//   width: 100%;
+// }

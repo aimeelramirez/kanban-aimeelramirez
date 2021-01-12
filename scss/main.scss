@@ -1,1 +1,21 @@
 // main.scss
+//cdn for icons
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/all.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap");
+// utils  = mixins and variables
+@import "utils/mixins";
+@import "utils/variables";
+@import "utils/placerholder";
+// base = reset and typography
+@import "base/reset";
+@import "base/typography";
+// components = buttons and styles on hamburger etc.
+@import "components/buttons";
+@import "components/hamburger";
+// layout = grid, header, main body
+@import "layout/main";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/card";
+@import "layout/footer";
