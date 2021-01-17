@@ -77,6 +77,16 @@ const onSuccess = async (dataRead) => {
 //POST DATA to Api
 const postDataAPI = async (data, e) => {
   console.log("post")
+  //create a modal or pop-up on nav
+  let getMain = document.querySelector("nav")
+  let createModal = document.createElement("article")
+  createModal.id = "message"
+  getMain.insertAdjacentElement("beforebegin", createModal)
+  let getModal = document.getElementById("message")
+  getModal.innerHTML =
+    `<p> "Sent, please wait until being added! "</p></p>` +
+    JSON.stringify(data) +
+    `</p>`
   let options = {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -86,14 +96,14 @@ const postDataAPI = async (data, e) => {
     body: JSON.stringify(data),
   }
   await fetch(postUrl, options)
-    .then((data) => {
-      console.log(data)
-      alert("Sent!" + data.json())
+    .then((dataSent) => {
+      console.log(dataSent)
+
       // i need to reload the form OR get a modal
       let onReload = (e) => {
         window.setTimeout(() => {
           window.location.reload()
-        }, 200)
+        }, 2000)
       }
       onReload()
     })
@@ -117,7 +127,6 @@ const validateData = (e, i) => {
   createModal.id = "message"
   getMain.insertAdjacentElement("beforebegin", createModal)
   let getModal = document.getElementById("message")
-
   for (let key in elementsForm) {
     if (key <= 3) {
       console.log(elementsForm[key])
