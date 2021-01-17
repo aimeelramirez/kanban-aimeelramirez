@@ -17,7 +17,9 @@ i.fa-calendar {
 //   flex-direction: row-reverse;
 // }
 
-button {
+#backlog-button,
+#implementation-button,
+#complete-button {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
@@ -39,5 +41,26 @@ button {
   }
   strong {
     display: none;
+  }
+}
+#taskSent {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem;
+
+  &:hover {
+    background-color: $button-hovercolor;
+    color: $white;
+  }
+  &:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f1d8";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: $ultimate-gray;
+  }
+  &:hover:before {
+    color: $white;
   }
 }

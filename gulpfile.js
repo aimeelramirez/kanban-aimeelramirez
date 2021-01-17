@@ -1,19 +1,20 @@
 // Import the required dependencies
 // (these are first installed with NPM)
-const gulp = require('gulp')
+const gulp = require("gulp")
 // Browsersync is our local server, that will auto-reload the page and inject css
-const browserSync = require('browser-sync')
+const browserSync = require("browser-sync")
 // The gulp-sass plugin allows us to compile sass
-const sass = require('gulp-sass')
+const sass = require("gulp-sass")
 
 // Following browsersync's documentation, create the server and set it to a constant.
 const server = browserSync.create()
 
 // Set up a helper reference to the various sources we may need throughout the file.
 const src = {
-  scss: 'scss/**/*.scss',
-  css: 'css',
-  html: '*.html',
+  scss: "scss/**/*.scss",
+  css: "css",
+  html: "*.html",
+  js: "js/*.js",
 }
 
 // Define our CSS processing task
@@ -24,7 +25,7 @@ function css() {
       // Take in the scss source files via gulp.src()
       .src(src.scss)
       // Pipe our source file content through the sass function
-      .pipe(sass().on('error', sass.logError))
+      .pipe(sass().on("error", sass.logError))
       // Pipe the transformed file content into the gulp.dest() method to write the file out.
       .pipe(gulp.dest(src.css))
   )
@@ -41,7 +42,7 @@ function reload(done) {
 function serve(done) {
   server.init({
     server: {
-      baseDir: './',
+      baseDir: "./",
     },
   })
   done()
@@ -49,7 +50,8 @@ function serve(done) {
 
 // Define our watch task (this is using a shorthand arrow function syntax)
 // gulp.watch() will then watch our source files, and on change run the tasks in gulp.series
-const watch = () => gulp.watch([src.scss, src.html], gulp.series(css, reload))
+const watch = () =>
+  gulp.watch([src.scss, src.html, src.js], gulp.series(css, reload))
 
 // Finally, define a higher level task (dev), that runs a series of sub-tasks (css, serve, watch)
 const dev = gulp.series(css, serve, watch)
