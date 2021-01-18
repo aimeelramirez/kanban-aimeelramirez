@@ -276,6 +276,40 @@ i.fa-calendar {
   #taskSent:hover:before {
     color: white; }
 
+#unsure {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #unsure:hover {
+    background-color: red;
+    color: white; }
+  #unsure:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #unsure:hover:before {
+    color: white; }
+
+#absolutely {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #absolutely:hover {
+    background-color: green;
+    color: white; }
+  #absolutely:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f164";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #absolutely:hover:before {
+    color: white; }
+
 header ul > li strong {
   display: none; }
 

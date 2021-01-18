@@ -102,21 +102,23 @@ const getDeleteTask = (dataRead) => {
   //get queryArticles/tasks
   //let currentTask = ""
   //store data
-  const storeData = []
+  console.log("content still loading please wait....")
   let queryArticles = ""
   //getting id for sections
   //to get the store
   queryArticles = document.querySelectorAll("article")
 
   for (let j = 0; j < dataRead.length; j++) {
+    console.log("loading....")
     for (let i = 0; i < queryArticles.length; i++) {
       if (queryArticles[i].className == "") {
-        console.log("articles:", queryArticles[i])
-        console.log("check", dataRead[j])
+        //   console.log("articles:", queryArticles[i])
+        //  console.log("check", dataRead[j])
         //mouseOver
         let logMouseOver = () => {
           queryArticles[i].style.cssText =
             "transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
+          console.log("loading complete... now you can select to delete")
         }
         //mouseOut
         let logMouseOut = () => {
@@ -124,11 +126,14 @@ const getDeleteTask = (dataRead) => {
         }
         //get if article was clicked
         const getClickTask = () => {
-          dataRead[j].map((ele, index) => {
+          //MAP
+          dataRead.map((ele, index) => {
             //get to match the task to the query click
-
+            console.log("ele: " + JSON.stringify(ele))
             // let stringGet = queryArticles[i].querySelector("span").innerText
-            let compareId = queryArticles[i].toString()
+            let compareId = queryArticles[i]
+              .querySelector("span")
+              .innerText.toString()
             console.log(compareId + ":" + JSON.stringify(ele.id))
             let parseNumId = JSON.stringify(ele.id)
 
@@ -140,7 +145,7 @@ const getDeleteTask = (dataRead) => {
               createModal.id = "message"
               getMain.insertAdjacentElement("beforebegin", createModal)
               let getModal = document.getElementById("message")
-              getModal.innerHTML = `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button><button id="absolutely">Yes, for sure!</button></p>`
+              getModal.innerHTML = `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
               let yes = document.getElementById("absolutely")
               let no = document.getElementById("unsure")
               let dataDelete = parseInt(parseNumId)
@@ -161,6 +166,7 @@ const getDeleteTask = (dataRead) => {
             }
           })
         }
+
         //on click on tasks
         queryArticles[i].addEventListener("click", getClickTask)
         //on mouse event
