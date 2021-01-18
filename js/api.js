@@ -38,9 +38,28 @@ const getDataAPI = async () => {
           //empty array
           dbData = []
           // console.log(dataParse)
-          //delete data (optional)
-          getDeleteTask(data)
           console.log(data)
+        })
+        .catch((err) => console.error(err))
+    })
+    .catch((error) => {
+      //get error
+      console.log(error)
+    })
+}
+const getDeleteReadAPI = async () => {
+  await fetch(postUrl, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+  })
+    .then((data) => {
+      let parseData = data.json()
+      console.log(parseData)
+      parseData
+        .then((result) => {
+          console.log(result)
+          //load on page
+          //delete data (optional)
+          getDeleteTask(result)
         })
         .catch((err) => console.error(err))
     })
@@ -308,4 +327,5 @@ document.addEventListener("click", function () {
 })
 
 //delete data (optional)
+getDeleteReadAPI()
 //edit data (optional)
