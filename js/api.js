@@ -8,6 +8,7 @@ let data = ""
 const token = "5b1064585f4ab8706d275f90"
 const endPoint = "api/lists?accessToken="
 const endPointPost = "api/items?accessToken="
+const endPointDel = "api/items/"
 //get buttons on knowing to call
 let getBackLogButton = document.getElementById("backlog-button")
 let getImplementationButton = document.getElementById("implementation-button")
@@ -37,6 +38,9 @@ const getDataAPI = async () => {
           //empty array
           dbData = []
           // console.log(dataParse)
+          //delete data (optional)
+          getDeleteTask(data)
+          console.log(data)
         })
         .catch((err) => console.error(err))
     })
@@ -96,6 +100,46 @@ const postDataAPI = async (data, e) => {
     body: JSON.stringify(data),
   }
   await fetch(postUrl, options)
+    .then((dataSent) => {
+      console.log(dataSent)
+
+      // i need to reload the form OR get a modal
+      let onReload = (e) => {
+        window.setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+      onReload()
+    })
+    .catch((error) => {
+      //get error
+      throw console.error(error)
+    })
+}
+//DELETE DATA to Api
+const deleteDataAPI = async (data) => {
+  console.log("delete")
+  const deleteUrl =
+    "https://knowledgeable-inquisitive-tent.glitch.me/" +
+    endPointDel +
+    data +
+    "?accessToken=" +
+    token
+  //create a modal or pop-up on nav
+  let getMain = document.querySelector("nav")
+  let createModal = document.createElement("article")
+  createModal.id = "message"
+  getMain.insertAdjacentElement("beforebegin", createModal)
+  let getModal = document.getElementById("message")
+  getModal.innerHTML = `<p> "Deleted! "</p></p>` + JSON.stringify(data) + `</p>`
+  let options = {
+    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+  }
+  await fetch(deleteUrl, options)
     .then((dataSent) => {
       console.log(dataSent)
 
