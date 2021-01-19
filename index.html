@@ -4,27 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kanban-AimeeLRamirez</title>
-    <!-- <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
-      crossorigin="anonymous"
-    /> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <script src="main.js" defer></script>
+    <script src="js/index.js" id="index" type="text/javascript" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <h1>Task Manager</h1>
-        <!-- To be shown instead of the icons below -->
-        <!-- <i class="fas fa-bars"></i> -->
-        <!-- Do not use any inline styling. -->
         <ul>
           <li>
             <a href="#"><strong>home</strong></a>
@@ -42,152 +28,81 @@
       </nav>
     </header>
     <main>
-      <!-- <section class="message-info">
-        <article class="message">
-          <p class="info">
-            This is a placer to be a modal popup for possible showing dark mode
-            to light mode.
-          </p>
-        </article>
-        <article class="heads-up">Styles to match placerholder</article>
-      </section> -->
       <section id="backlog">
         <article class="task-title">
           <h2>Backlog</h2>
-          <button><strong>Add Task</strong></button>
+          <button type="submit" id="backlog-button">
+            <strong>Add Task</strong>
+          </button>
         </article>
-        <ul>
-          <li>
-            <!-- just a example upon selection and editing card -->
-            <nav class="article-menu">
-              <ul>
-                <li>
-                  <i class="fas fa-trash"><strong>delete</strong></i>
-                </li>
-                <li>
-                  <i class="fas fa-save"><strong>save</strong></i>
-                </li>
-                <li>
-                  <i class="fas fa-link"><strong>link</strong></i>
-                </li>
-                <li>
-                  <i class="fas fa-copy"><strong>duplicate</strong></i>
-                </li>
-              </ul>
-            </nav>
-            <article>
-              <h3>Article Title 1</h3>
-              <p>
-                This is an example of selected card to change with editing icons
-                and calendar to show.|
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-              <!-- possible calendar idea if not js -->
-              <!-- <p>
-                <input
-                  type="date"
-                  id="date-created"
-                  name="date-created"
-                  value="2021-01-10"
-                />
-              </p> -->
-            </article>
-            <!-- just a example upon selection and editing card -->
-          <!-- </li>
-          <li> -->
-            <article>
-              <h3>Article Title 2</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          <!-- </li>
-          <li> -->
-            <article>
-              <h3>Article Title 3</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          <!-- </li>
-        </ul> -->
+        <article>
+          <h3>Article Title 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque efficitur elit eu est mattis sagittis.
+          </p>
+          <p>
+            <input
+              type="date"
+              id="date-created"
+              name="date-created"
+              value="2021-01-10"
+            />
+          </p>
+        </article>
       </section>
       <section id="implementation">
         <article class="task-title">
           <h2>Implementation</h2>
-          <button><strong>Add Task</strong></button>
+          <button type="submit" id="implementation-button">
+            <strong>Add Task</strong>
+          </button>
         </article>
-        <!-- <ul>
-          <li> -->
-            <article>
-              <h3>Article Title 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          <!-- </li>
-          <li> -->
-            <article>
-              <h3>Article Title 2</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          <!-- </li>
-        </ul> -->
+        <article>
+          <h3>Article Title 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque efficitur elit eu est mattis sagittis.
+          </p>
+          <p>
+            <input
+              type="date"
+              id="date-created"
+              name="date-created"
+              value="2021-01-10"
+            />
+          </p>
+        </article>
       </section>
       <section id="complete">
         <article class="task-title">
           <h2>Complete</h2>
-          <button><strong>Add Task</strong></button>
+          <button type="submit" id="complete-button">
+            <strong>Add Task</strong>
+          </button>
         </article>
-        <!-- <ul>
-          <li> -->
-            <article>
-              <h3>Article Title 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque efficitur elit eu est mattis sagittis.
-              </p>
-              <p>
-                <i class="far fa-calendar"></i>
-                <a href="#"><time datetime="2021-01-08">01/8/2021</time></a>
-              </p>
-            </article>
-          <!-- </li>
-        </ul> -->
+        <article>
+          <h3>Article Title 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque efficitur elit eu est mattis sagittis.
+          </p>
+          <p>
+            <input
+              type="date"
+              id="date-created"
+              name="date-created"
+              value="2021-01-10"
+            />
+          </p>
+        </article>
       </section>
     </main>
     <footer>
       <section>
-        <article>
-          <h2>Task Manager App</h2>
-          <p>Under construction!</p>
-          <p>Task Manager App © 2021</p>
-        </article>
+        <h2>Task Manager App</h2>
+        <p>Under construction!</p>
+        <p>Task Manager App © 2021</p>
       </section>
     </footer>
   </body>

@@ -230,24 +230,85 @@ i.fa-calendar {
   i.fa-calendar:hover {
     color: #4caf50; }
 
-button {
+#backlog-button,
+#implementation-button,
+#complete-button {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
-  button:hover {
+  #backlog-button:hover,
+  #implementation-button:hover,
+  #complete-button:hover {
     background-color: #4caf50;
     color: white; }
-  button:before {
+  #backlog-button:before,
+  #implementation-button:before,
+  #complete-button:before {
     font-family: "Font Awesome 5 Free";
     content: "\f067";
     font-weight: 900;
     font-size: 2.5rem;
     color: #939597; }
-  button:hover:before {
+  #backlog-button:hover:before,
+  #implementation-button:hover:before,
+  #complete-button:hover:before {
     color: white; }
-  button strong {
+  #backlog-button strong,
+  #implementation-button strong,
+  #complete-button strong {
     display: none; }
+
+#taskSent {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #taskSent:hover {
+    background-color: #4caf50;
+    color: white; }
+  #taskSent:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f1d8";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #taskSent:hover:before {
+    color: white; }
+
+#unsure {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #unsure:hover {
+    background-color: red;
+    color: white; }
+  #unsure:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #unsure:hover:before {
+    color: white; }
+
+#absolutely {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #absolutely:hover {
+    background-color: green;
+    color: white; }
+  #absolutely:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f164";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #absolutely:hover:before {
+    color: white; }
 
 header ul > li strong {
   display: none; }
@@ -325,11 +386,12 @@ section h2 {
   display: flex;
   justify-content: center; }
 
-section ul {
+section article {
   list-style: none; }
-  section ul p:nth-last-of-type(1) {
-    display: flex;
-    justify-content: flex-end; }
+
+section#backlog {
+  display: flex;
+  flex-direction: column; }
 
 header {
   width: 100%;
@@ -377,33 +439,72 @@ nav.article-menu {
         color: #fd8b9e;
         transition-duration: 0.4s; }
 
-section .task-title {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  font-size: 3rem; }
-
-section ul {
-  list-style: none;
-  padding: 1rem;
-  margin: 0.5rem;
+section {
   background-color: gainsboro;
-  border-radius: 1rem; }
-  section ul li {
-    padding: 1rem; }
-    section ul li article {
-      cursor: pointer;
-      border-radius: 1rem;
-      background-color: white;
-      max-width: 40rem;
-      box-shadow: 0 8px 6px -6px black; }
-      section ul li article h3 {
-        padding: 1rem; }
-      section ul li article p {
-        border-bottom: 1px solid #c1c1c1; }
-  section ul p:nth-last-of-type(1) {
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem; }
+  section .task-title {
     display: flex;
-    justify-content: flex-end; }
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 3rem; }
+  section article:not(:nth-of-type(1)) {
+    list-style: none;
+    padding: 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+    section article:not(:nth-of-type(1)) h3 {
+      padding: 1rem; }
+    section article:not(:nth-of-type(1)) p {
+      border-bottom: 1px solid #c1c1c1; }
+  section p:nth-last-of-type(1) {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0; }
+    section p:nth-last-of-type(1) #newTask input[type="date"] {
+      position: relative;
+      padding: 10px;
+      font-size: calc(3rem / 2);
+      text-align: right; }
+    section p:nth-last-of-type(1) #newTask input[type="date"]::-webkit-calendar-picker-indicator {
+      color: transparent;
+      background: none;
+      z-index: 1; }
+    section p:nth-last-of-type(1) #newTask input[type="date"]:after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f073";
+      font-size: 2rem;
+      color: #939597;
+      width: 15px;
+      height: 20px;
+      position: absolute;
+      top: 1.1rem;
+      right: 1.5rem; }
+    section p:nth-last-of-type(1) input[type="date"] {
+      position: relative;
+      padding: 10px;
+      font-size: calc(3rem / 2);
+      text-align: right; }
+    section p:nth-last-of-type(1) input[type="date"]::-webkit-calendar-picker-indicator {
+      color: transparent;
+      background: none;
+      z-index: 1; }
+    section p:nth-last-of-type(1) input[type="date"]:after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f073";
+      font-size: 2rem;
+      color: #939597;
+      width: 15px;
+      height: 20px;
+      position: absolute;
+      top: 1.1rem;
+      right: 1.5rem; }
 
 footer {
   margin-top: 1rem;
