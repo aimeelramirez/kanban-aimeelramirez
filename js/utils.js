@@ -17,7 +17,7 @@ const ariaLabelButtons = () => {
   for (let i = 0; i < buttonLabel.length; i++) {
     let getTextButton = buttonLabel[i].querySelector("strong").innerText
     let getListDescription = newLabel[i].id
-    console.log("button: ", getTextButton)
+    // console.log("button: ", getTextButton)
     buttonLabel[i].setAttribute("aria-label", getListDescription)
     buttonLabel[i].setAttribute("aria-describedby", getTextButton)
   }
@@ -25,3 +25,11 @@ const ariaLabelButtons = () => {
 
 ariaLabelHeaders()
 ariaLabelButtons()
+
+//TODO
+//optimize this file and get dark mode and light mode committed.
+//update on items
+//footer fixes since audit removed
+//a11y tags on buttons as well with modal
+//research styles to index modal best.
+//get explaination to build vs start to get style changes.

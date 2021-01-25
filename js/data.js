@@ -24,7 +24,7 @@ const getBackLog = (queryTasks, dataRead) => {
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `
       <form>
             <label for="${sectionId[0].id}-date-created-${i}">${sectionId[0].id}-date-created-${i}</label>
             <input
@@ -35,7 +35,7 @@ const getBackLog = (queryTasks, dataRead) => {
              value="` +
       dataRead.items[i].dueDate +
       `"/></form>
-          </p></article>`
+          </article>`
   }
 }
 
@@ -56,7 +56,7 @@ const getImplementation = (queryTasks, dataRead) => {
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p><form>
+      `<form>
             <label for="${sectionId[1].id}-date-created-${i}">${sectionId[1].id}-date-created-${i}</label>
             <input
               type="date"
@@ -66,7 +66,7 @@ const getImplementation = (queryTasks, dataRead) => {
              value="` +
       dataRead.items[i].dueDate +
       `"/></form>
-          </p></article>`
+          </article>`
   }
 }
 const getComplete = (queryTasks, dataRead) => {
@@ -86,7 +86,7 @@ const getComplete = (queryTasks, dataRead) => {
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p><form>
+      `<form>
       <label for="${sectionId[2].id}-date-created-${i}">${sectionId[2].id}-date-created-${i}</label>
             <input
               type="date"
@@ -96,7 +96,7 @@ const getComplete = (queryTasks, dataRead) => {
              value="` +
       dataRead.items[i].dueDate +
       `"/></form>
-          </p></article>`
+          </article>`
   }
 }
 
