@@ -233,6 +233,20 @@ i.fa-calendar {
   i.fa-calendar:hover {
     color: #4caf50; }
 
+.btn {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0.9rem;
+  background-color: #939597;
+  border: none; }
+  .btn:hover {
+    background-color: #4caf50;
+    color: white; }
+  .btn:hover:before {
+    color: white; }
+
 #backlog-button,
 #implementation-button,
 #complete-button {
@@ -520,3 +534,6 @@ footer {
   margin-top: 1rem;
   box-shadow: 0px -8px 6px -8px black;
   background-color: gainsboro; }
+
+.modal {
+  background-color: transparent; }

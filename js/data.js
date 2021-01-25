@@ -75,7 +75,7 @@ const getComplete = (queryTasks, dataRead) => {
   getLastArticle.remove()
   for (let i = 0; i < dataRead.items.length; i++) {
     utilSort(dataRead)
-    // console.log("check:" + JSON.stringify(dataRead.items))
+    console.log("check:" + JSON.stringify(dataRead.items))
     queryTasks.innerHTML +=
       ` <article><span id='${dataRead.items[i].id}'>` +
       dataRead.items[i].id +

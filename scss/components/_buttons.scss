@@ -9,6 +9,33 @@ i.fa-calendar {
     color: $button-hovercolor;
   }
 }
+.btn {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0.9rem;
+  background-color: $ultimate-gray;
+  border: none;
+
+  &:hover {
+    background-color: $button-hovercolor;
+    color: $white;
+  }
+  // &:before {
+  //   font-family: "Font Awesome 5 Free";
+  //   content: "\f067";
+  //   font-weight: 900;
+  //   font-size: 2.5rem;
+  //   color: $ultimate-gray;
+  // }
+  &:hover:before {
+    color: $white;
+  }
+  // strong {
+  //   display: none;
+  // }
+}
 //TODO to change this to js since color on web kit
 // indicator on image not icon
 // #date-created {

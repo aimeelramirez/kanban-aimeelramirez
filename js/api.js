@@ -76,19 +76,26 @@ const onSuccess = async (dataRead) => {
   if (dataRead != "") {
     //get the titles from api
     let sections = document.querySelectorAll("section")
-    for (let j = 0; j < dataRead.length; j++) {
-      let queryTitles = sections[j].querySelector("article").querySelector("h2")
-      let showTitles = queryTitles.textContent.toUpperCase()
-      if (showTitles == dataRead[j].title.toUpperCase()) {
-        queryTitles.innerHTML = dataRead[j].title
-      }
+    // let queryTitles = []
+
+    for (let j = 0; j < sections.length; j++) {
+      // let queryTitles = sections[j]
+      //.querySelector("article").querySelector("h2")
+
+      //console.log(sections[j])
+      //  let showTitles = queryTitles.textContent.toUpperCase()
+      // if (showTitles == dataRead[j].title.toUpperCase()) {
+      //   queryTitles.innerHTML = dataRead[j].title
+      // }
       //to make it readable on columns await until getting the data
       let queryTasks = sections[j]
+      //console.log("query:" + sections[j].id)
       if (queryTasks.id == "backlog") {
         await getBackLog(queryTasks, dataRead[0])
       } else if (queryTasks.id == "implementation") {
         await getImplementation(queryTasks, dataRead[1])
       } else if (queryTasks.id == "complete") {
+        console.log(queryTasks.id)
         await getComplete(queryTasks, dataRead[2])
       }
     }
