@@ -5,7 +5,9 @@ const gulp = require("gulp")
 const browserSync = require("browser-sync")
 // The gulp-sass plugin allows us to compile sass
 const sass = require("gulp-sass")
+//minify js
 const minify = require("gulp-minify")
+//minify css
 const cleanCSS = require("gulp-clean-css")
 // Following browsersync's documentation, create the server and set it to a constant.
 const server = browserSync.create()
