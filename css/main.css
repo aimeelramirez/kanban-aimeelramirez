@@ -98,8 +98,7 @@ video,
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /* HTML5 - Older browser support
 ====================================================================== */
@@ -114,50 +113,43 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
-}
+  display: block; }
 
 /* BASE 10
 ====================================================================== */
 html {
-  font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
 /* BODY
 ====================================================================== */
 body {
-  line-height: 1;
-}
+  line-height: 1; }
 
 /* LISTS - Clear bullets
 ====================================================================== */
 ol,
 ul,
 li {
-  list-style: none;
-}
+  list-style: none; }
 
 /* QUOTES
 ====================================================================== */
 blockquote,
 q {
-  quotes: none;
-}
+  quotes: none; }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
   content: "";
-  content: none;
-}
+  content: none; }
 
 /* TABLES
 ====================================================================== */
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 /* IMAGES
 ====================================================================== */
@@ -167,18 +159,15 @@ table {
 } */
 nav[aria-label="pagination"] {
   text-align: center;
-  clear: left;
-}
+  clear: left; }
 
 html {
-  font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
 h1 {
   font-size: 4.5rem;
   font-family: "Kaushan Script", cursive;
-  color: black;
-}
+  color: black; }
 
 footer h2,
 .task-title h2 {
@@ -187,74 +176,60 @@ footer h2,
   text-decoration: underline;
   text-transform: uppercase;
   font-size: 2rem;
-  color: black;
-}
+  color: black; }
 
 footer p:nth-of-type(1),
 .task-title p:nth-of-type(1) {
   color: #282828;
-  text-align: center;
-}
+  text-align: center; }
 
 footer p:nth-of-type(2),
 .task-title p:nth-of-type(2) {
   display: flex;
   justify-content: flex-end;
-  font-size: smaller;
-}
+  font-size: smaller; }
 
 article,
 p,
 a {
   font-size: 2rem;
-  font-family: "Darker Grotesque", sans-serif;
-}
+  font-family: "Darker Grotesque", sans-serif; }
 
 strong {
   font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif;
-}
+  font-family: "Darker Grotesque", sans-serif; }
 
 strong {
   font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif;
-}
+  font-family: "Darker Grotesque", sans-serif; }
 
 p {
-  padding: 1rem;
-}
+  padding: 1rem; }
 
 article > h3 {
   font-size: 3rem;
   font-weight: 800;
-  font-family: "Darker Grotesque", sans-serif;
-}
+  font-family: "Darker Grotesque", sans-serif; }
 
 nav > ul > li a {
   color: white;
   font-size: 3.5rem;
-  display: none;
-}
+  display: none; }
 
 nav > ul > li a:first-line {
-  display: none;
-}
+  display: none; }
 
 h3::first-letter {
-  font-size: 4rem;
-}
+  font-size: 4rem; }
 
 i.fa-calendar {
   color: #939597;
-  font-size: 2rem;
-}
-i.fa-calendar:before {
-  padding-right: 0.2rem;
-  margin-bottom: -1rem;
-}
-i.fa-calendar:hover {
-  color: #4caf50;
-}
+  font-size: 2rem; }
+  i.fa-calendar:before {
+    padding-right: 0.2rem;
+    margin-bottom: -1rem; }
+  i.fa-calendar:hover {
+    color: #4caf50; }
 
 #backlog-button,
 #implementation-button,
@@ -262,113 +237,93 @@ i.fa-calendar:hover {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
-  padding: 0.9rem;
-}
-#backlog-button:hover,
-#implementation-button:hover,
-#complete-button:hover {
-  background-color: #4caf50;
-  color: white;
-}
-#backlog-button:before,
-#implementation-button:before,
-#complete-button:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f067";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #939597;
-}
-#backlog-button:hover:before,
-#implementation-button:hover:before,
-#complete-button:hover:before {
-  color: white;
-}
-#backlog-button strong,
-#implementation-button strong,
-#complete-button strong {
-  display: none;
-}
+  padding: 0.9rem; }
+  #backlog-button:hover,
+  #implementation-button:hover,
+  #complete-button:hover {
+    background-color: #4caf50;
+    color: white; }
+  #backlog-button:before,
+  #implementation-button:before,
+  #complete-button:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f067";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #backlog-button:hover:before,
+  #implementation-button:hover:before,
+  #complete-button:hover:before {
+    color: white; }
+  #backlog-button strong,
+  #implementation-button strong,
+  #complete-button strong {
+    display: none; }
 
 #taskSent {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
-  padding: 0.9rem;
-}
-#taskSent:hover {
-  background-color: #4caf50;
-  color: white;
-}
-#taskSent:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f1d8";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #939597;
-}
-#taskSent:hover:before {
-  color: white;
-}
+  padding: 0.9rem; }
+  #taskSent:hover {
+    background-color: #4caf50;
+    color: white; }
+  #taskSent:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f1d8";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #taskSent:hover:before {
+    color: white; }
 
 #unsure {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
-  padding: 0.9rem;
-}
-#unsure:hover {
-  background-color: red;
-  color: white;
-}
-#unsure:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f071";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #939597;
-}
-#unsure:hover:before {
-  color: white;
-}
+  padding: 0.9rem; }
+  #unsure:hover {
+    background-color: red;
+    color: white; }
+  #unsure:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #unsure:hover:before {
+    color: white; }
 
 #absolutely {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
-  padding: 0.9rem;
-}
-#absolutely:hover {
-  background-color: green;
-  color: white;
-}
-#absolutely:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f164";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #939597;
-}
-#absolutely:hover:before {
-  color: white;
-}
+  padding: 0.9rem; }
+  #absolutely:hover {
+    background-color: green;
+    color: white; }
+  #absolutely:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f164";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #absolutely:hover:before {
+    color: white; }
 
 header ul > li strong {
-  display: none;
-}
+  display: none; }
 
 header ul > li:hover strong {
   display: block;
-  text-transform: capitalize;
-}
+  text-transform: capitalize; }
 
 header ul:before {
   font-family: "Font Awesome 5 Free";
   content: "\f0c9";
   font-weight: 900;
   font-size: 2.5rem;
-  color: white;
-}
+  color: white; }
 
 header ul:hover:before {
   font-family: "Font Awesome 5 Free";
@@ -376,8 +331,7 @@ header ul:hover:before {
   font-weight: 900;
   font-size: 2.5rem;
   color: gainsboro;
-  margin: 1rem;
-}
+  margin: 1rem; }
 
 header ul:hover > li:nth-of-type(1):before {
   font-family: "Font Awesome 5 Free";
@@ -385,8 +339,7 @@ header ul:hover > li:nth-of-type(1):before {
   font-weight: 900;
   font-size: 2.5rem;
   color: white;
-  margin: 1rem;
-}
+  margin: 1rem; }
 
 header ul:hover > li:nth-of-type(4):before {
   font-family: "Font Awesome 5 Free";
@@ -394,225 +347,174 @@ header ul:hover > li:nth-of-type(4):before {
   font-weight: 900;
   font-size: 2.5rem;
   color: white;
-  margin: 1rem;
-}
+  margin: 1rem; }
 
 header ul > li:nth-of-type(1):hover:before {
-  color: #fd8b9e;
-}
+  color: #fd8b9e; }
 
 header ul > li:nth-of-type(4):hover:before {
-  color: #f5df4d;
-}
+  color: #f5df4d; }
 
 main {
   margin: 0rem 1rem 0rem 1rem;
-  justify-content: center;
-}
+  justify-content: center; }
 
 main {
-  display: flex;
-}
-@media (min-width: 0px) and (max-width: 299px) {
-  main {
-    font-size: 0.3rem;
-    flex-direction: column;
-  }
-}
-@media (min-width: 300px) and (max-width: 599px) {
-  main {
-    font-size: 0.3rem;
-    flex-direction: column;
-  }
-  main h2 {
-    font-family: "EB Garamond", serif;
-    font-size: 2rem;
-  }
-  main h3 {
-    font-size: 1.5rem;
-  }
-}
-@media (min-width: 600px) and (max-width: 799px) {
-  main {
-    flex-direction: row;
-  }
-  main h2 {
-    font-family: "EB Garamond", serif;
-    font-size: 2.5rem;
-  }
-  main h3 {
-    font-size: 2rem;
-  }
-}
-@media (min-width: 800px) {
-  main {
-    flex-direction: row;
-  }
-}
+  display: flex; }
+  @media (min-width: 0px) and (max-width: 299px) {
+    main {
+      font-size: 0.3rem;
+      flex-direction: column; } }
+  @media (min-width: 300px) and (max-width: 599px) {
+    main {
+      font-size: 0.3rem;
+      flex-direction: column; }
+      main h2 {
+        font-family: "EB Garamond", serif;
+        font-size: 2rem; }
+      main h3 {
+        font-size: 1.5rem; } }
+  @media (min-width: 600px) and (max-width: 799px) {
+    main {
+      flex-direction: row; }
+      main h2 {
+        font-family: "EB Garamond", serif;
+        font-size: 2.5rem; }
+      main h3 {
+        font-size: 2rem; } }
+  @media (min-width: 800px) {
+    main {
+      flex-direction: row; } }
 
 section h2 {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 
 section article {
-  list-style: none;
-}
+  list-style: none; }
 
 section#backlog {
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 header {
   width: 100%;
   background: #26a8f9;
   box-shadow: 0 8px 6px -6px black;
-  padding: 1rem;
-}
-header nav {
-  display: flex;
-  flex-direction: row;
-  padding: 1rem;
-}
-header nav h1 {
-  width: calc(70% - 1em);
-}
-header nav ul {
-  padding: 0rem;
-  width: calc(30%);
-  text-align: right;
-  list-style: none;
-}
+  padding: 1rem; }
+  header nav {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem; }
+    header nav h1 {
+      width: calc(70% - 1em); }
+    header nav ul {
+      padding: 0rem;
+      width: calc(30%);
+      text-align: right;
+      list-style: none; }
 
 nav.article-menu {
   display: flex;
-  justify-content: flex-end;
-}
-nav.article-menu ul {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-  justify-content: flex-end;
-}
-nav.article-menu ul li {
-  margin: 0 auto;
-  margin-right: 0.4rem;
-  border-radius: 1rem 1rem 0rem 0rem;
-  background-color: white;
-  max-width: 40rem;
-  border-top: 1px solid #c1c1c1;
-}
-nav.article-menu ul li:hover strong {
-  cursor: pointer;
-  color: black;
-  font-size: 1rem;
-  text-transform: capitalize;
-}
-nav.article-menu ul li a {
-  display: none;
-}
-nav.article-menu ul li strong {
-  display: none;
-}
-nav.article-menu ul i {
-  color: #868686;
-  font-size: 1.2rem;
-}
-nav.article-menu ul i:hover {
-  color: #fd8b9e;
-  transition-duration: 0.4s;
-}
+  justify-content: flex-end; }
+  nav.article-menu ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: flex-end; }
+    nav.article-menu ul li {
+      margin: 0 auto;
+      margin-right: 0.4rem;
+      border-radius: 1rem 1rem 0rem 0rem;
+      background-color: white;
+      max-width: 40rem;
+      border-top: 1px solid #c1c1c1; }
+      nav.article-menu ul li:hover strong {
+        cursor: pointer;
+        color: black;
+        font-size: 1rem;
+        text-transform: capitalize; }
+    nav.article-menu ul li a {
+      display: none; }
+    nav.article-menu ul li strong {
+      display: none; }
+    nav.article-menu ul i {
+      color: #868686;
+      font-size: 1.2rem; }
+      nav.article-menu ul i:hover {
+        color: #fd8b9e;
+        transition-duration: 0.4s; }
 
 section {
   background-color: gainsboro;
   border-radius: 1rem;
   padding: 1rem;
-  margin: 1rem;
-}
-section .task-title {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  font-size: 3rem;
-}
-section article:not(:nth-of-type(1)) {
-  list-style: none;
-  padding: 1rem;
-  margin: 0.5rem;
-  cursor: pointer;
-  border-radius: 1rem;
-  max-width: 40rem;
-  box-shadow: 0 8px 6px -6px black;
-  background-color: white;
-}
-section article:not(:nth-of-type(1)) h3 {
-  padding: 1rem;
-}
-section article:not(:nth-of-type(1)) p {
-  border-bottom: 1px solid #c1c1c1;
-}
-section p:nth-last-of-type(1) {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0;
-  padding: 0;
-}
-section p:nth-last-of-type(1) #newTask input[type="date"] {
-  position: relative;
-  padding: 10px;
-  font-size: calc(3rem / 2);
-  text-align: right;
-}
-section
-  p:nth-last-of-type(1)
-  #newTask
-  input[type="date"]::-webkit-calendar-picker-indicator {
-  color: transparent;
-  background: none;
-  z-index: 1;
-}
-section p:nth-last-of-type(1) #newTask input[type="date"]:after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f073";
-  font-size: 2rem;
-  color: #939597;
-  width: 15px;
-  height: 20px;
-  position: absolute;
-  top: 1.1rem;
-  right: 1.5rem;
-}
-section p:nth-last-of-type(1) input[type="date"] {
-  position: relative;
-  padding: 10px;
-  font-size: calc(3rem / 2);
-  text-align: right;
-}
-section
-  p:nth-last-of-type(1)
-  input[type="date"]::-webkit-calendar-picker-indicator {
-  color: transparent;
-  background: none;
-  z-index: 1;
-}
-section p:nth-last-of-type(1) input[type="date"]:after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f073";
-  font-size: 2rem;
-  color: #939597;
-  width: 15px;
-  height: 20px;
-  position: absolute;
-  top: 1.1rem;
-  right: 1.5rem;
-}
-section label {
-  color: transparent;
-}
+  margin: 1rem; }
+  section .task-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 3rem; }
+  section article:not(:nth-of-type(1)) {
+    list-style: none;
+    padding: 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+    section article:not(:nth-of-type(1)) h3 {
+      padding: 1rem; }
+    section article:not(:nth-of-type(1)) p {
+      border-bottom: 1px solid #c1c1c1; }
+  section p:nth-last-of-type(1) {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0; }
+    section p:nth-last-of-type(1) #newTask input[type="date"] {
+      position: relative;
+      padding: 10px;
+      font-size: calc(3rem / 2);
+      text-align: right; }
+    section p:nth-last-of-type(1) #newTask input[type="date"]::-webkit-calendar-picker-indicator {
+      color: transparent;
+      background: none;
+      z-index: 1; }
+    section p:nth-last-of-type(1) #newTask input[type="date"]:after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f073";
+      font-size: 2rem;
+      color: #939597;
+      width: 15px;
+      height: 20px;
+      position: absolute;
+      top: 1.1rem;
+      right: 1.5rem; }
+    section p:nth-last-of-type(1) input[type="date"] {
+      position: relative;
+      padding: 10px;
+      font-size: calc(3rem / 2);
+      text-align: right; }
+    section p:nth-last-of-type(1) input[type="date"]::-webkit-calendar-picker-indicator {
+      color: transparent;
+      background: none;
+      z-index: 1; }
+    section p:nth-last-of-type(1) input[type="date"]:after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f073";
+      font-size: 2rem;
+      color: #939597;
+      width: 15px;
+      height: 20px;
+      position: absolute;
+      top: 1.1rem;
+      right: 1.5rem; }
+  section label {
+    color: transparent; }
 
 footer {
   margin-top: 1rem;
   box-shadow: 0px -8px 6px -8px black;
-  background-color: gainsboro;
-}
+  background-color: gainsboro; }

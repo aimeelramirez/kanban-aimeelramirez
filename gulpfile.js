@@ -44,17 +44,17 @@ function minifyJs() {
       .pipe(gulp.dest(src.publicJs))
   )
 }
-// function minifyCss() {
-//   // Folder with files to minify
-//   return (
-//     gulp
-//       .src("css/*.css")
-//       // minify the files css
-//       .pipe(cleanCSS())
-//       //destination
-//       .pipe(gulp.dest(src.publicCss))
-//   )
-// }
+function minifyCss() {
+  // Folder with files to minify
+  return (
+    gulp
+      .src("css/*.css")
+      // minify the files css
+      .pipe(cleanCSS())
+      //destination
+      .pipe(gulp.dest(src.publicCss))
+  )
+}
 // Define a reusable reload task for browsersync to use
 // This task acts as a way to tell the server that changes have been made
 function reload(done) {
