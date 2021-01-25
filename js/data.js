@@ -1,5 +1,5 @@
 // read data
-
+let sectionId = document.querySelectorAll("section")
 const utilSort = (dataRead) => {
   dataRead.items.sort(function (a, b) {
     return a.id - b.id
@@ -25,13 +25,16 @@ const getBackLog = (queryTasks, dataRead) => {
       dataRead.items[i].description +
       `</p>` +
       `<p>
+      <form>
+            <label for="${sectionId[0].id}-date-created-${i}">${sectionId[0].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[0].id}-date-created-${i}"
+              for="${sectionId[0].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
+      `"/></form>
           </p></article>`
   }
 }
@@ -53,14 +56,16 @@ const getImplementation = (queryTasks, dataRead) => {
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `<p><form>
+            <label for="${sectionId[1].id}-date-created-${i}">${sectionId[1].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[1].id}-date-created-${i}"
+             for="${sectionId[1].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
+      `"/></form>
           </p></article>`
   }
 }
@@ -81,14 +86,16 @@ const getComplete = (queryTasks, dataRead) => {
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `<p><form>
+      <label for="${sectionId[2].id}-date-created-${i}">${sectionId[2].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[2].id}-date-created-${i}"
+              for="${sectionId[2].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
+      `"/></form>
           </p></article>`
   }
 }
