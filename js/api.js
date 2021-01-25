@@ -1,6 +1,5 @@
 //api calls
 "use strict"
-console.log("loaded")
 //let dataRead = ""
 let dbData = []
 let data = ""
