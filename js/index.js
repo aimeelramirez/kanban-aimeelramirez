@@ -1,11 +1,11 @@
-const include = (file) => {
+const include = async (file) => {
   let script = document.createElement("script")
   script.src = file
   script.type = "text/javascript"
   script.defer = true
   //   let htmlEnd = document.querySelector("head")
   //   htmlEnd.id = "script-js"
-  getScript(script)
+  await getScript(script)
 }
 const getScript = (script) => {
   let htmlScript = document.getElementById("index")

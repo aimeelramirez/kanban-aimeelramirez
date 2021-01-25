@@ -59,6 +59,10 @@ article > h3 {
 nav > ul > li a {
   color: $white;
   font-size: 3.5rem;
+  display: none;
+}
+nav > ul > li a:first-line {
+  display: none;
 }
 // nav > ul > li a:hover {
 //   color: $black;
