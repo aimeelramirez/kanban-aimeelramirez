@@ -24,6 +24,7 @@ header {
       font-weight: 900;
       font-size: 2.5rem;
       color: $lite-grey;
+      margin: 1rem;
     }
     &:hover > li:nth-of-type(1):before {
       font-family: "Font Awesome 5 Free";
@@ -31,6 +32,7 @@ header {
       font-weight: 900;
       font-size: 2.5rem;
       color: $white;
+      margin: 1rem;
     }
     &:hover > li:nth-of-type(4):before {
       font-family: "Font Awesome 5 Free";
@@ -38,7 +40,9 @@ header {
       font-weight: 900;
       font-size: 2.5rem;
       color: $white;
+      margin: 1rem;
     }
+
     & > li:nth-of-type(1):hover:before {
       color: $pink;
     }

@@ -84,6 +84,9 @@ section {
     margin: 0;
     padding: 0;
   }
+  label {
+    color: transparent;
+  }
 }
 // #date-created {
 //   &[value="2021-01-10"] {

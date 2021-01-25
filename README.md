@@ -53,7 +53,7 @@ Pull from origin branch:
 
 ### Usage
 
-- `npm start`: This command will start up a local web server, open your default browser, and begin watching scss files for changes.
+- `npm start`: This command will start up a local web server, open your default browser, and begin watching scss files for changes. (passphrase = secret)
 - `npm run build`: This command will only compile your scss files.
 
 ## Resources

@@ -5,7 +5,8 @@ const gulp = require("gulp")
 const browserSync = require("browser-sync")
 // The gulp-sass plugin allows us to compile sass
 const sass = require("gulp-sass")
-
+const minify = require("gulp-minify")
+const cleanCSS = require("gulp-clean-css")
 // Following browsersync's documentation, create the server and set it to a constant.
 const server = browserSync.create()
 
@@ -15,6 +16,8 @@ const src = {
   css: "css",
   html: "*.html",
   js: "js/*.js",
+  publicJs: "public/js",
+  publicCss: "public/css/",
 }
 
 // Define our CSS processing task
@@ -31,6 +34,27 @@ function css() {
   )
 }
 
+function minifyJs() {
+  return (
+    gulp
+      .src(src.js)
+      // Folder with files to minify
+      .pipe(minify({ noSource: true }))
+      //destination
+      .pipe(gulp.dest(src.publicJs))
+  )
+}
+// function minifyCss() {
+//   // Folder with files to minify
+//   return (
+//     gulp
+//       .src("css/*.css")
+//       // minify the files css
+//       .pipe(cleanCSS())
+//       //destination
+//       .pipe(gulp.dest(src.publicCss))
+//   )
+// }
 // Define a reusable reload task for browsersync to use
 // This task acts as a way to tell the server that changes have been made
 function reload(done) {
@@ -41,6 +65,11 @@ function reload(done) {
 // Define our serve task to start up the browsersync server
 function serve(done) {
   server.init({
+    https: {
+      key: "certs/server.key",
+      cert: "certs/server.crt",
+      passphrase: "secret",
+    },
     server: {
       baseDir: "./",
     },
@@ -54,6 +83,6 @@ const watch = () =>
   gulp.watch([src.scss, src.html, src.js], gulp.series(css, reload))
 
 // Finally, define a higher level task (dev), that runs a series of sub-tasks (css, serve, watch)
-const dev = gulp.series(css, serve, watch)
+const dev = gulp.series(minifyJs, minifyCss, css, serve, watch)
 // Export the dev task as the default to expose it to the gulp command line interface
 exports.default = dev

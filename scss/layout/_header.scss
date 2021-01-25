@@ -49,7 +49,9 @@ nav.article-menu {
         text-transform: capitalize;
       }
     }
-
+    li a {
+      display: none;
+    }
     li strong {
       display: none;
     }

@@ -4,6 +4,7 @@ console.log("loaded")
 //let dataRead = ""
 let dbData = []
 let data = ""
+let parseData = ""
 //create a readable stream
 const token = "5b1064585f4ab8706d275f90"
 const endPoint = "api/lists?accessToken="
@@ -21,6 +22,12 @@ const postUrl =
 
 //async and await FETCH GET DATA
 const getDataAPI = async () => {
+  await fetch(postUrl, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+  }).then((data) => {
+    parseData = data.json()
+    console.log(parseData)
+  })
   await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   })
@@ -52,16 +59,11 @@ const getDeleteReadAPI = async () => {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   })
     .then((data) => {
-      let parseData = data.json()
+      parseData = data.json()
       console.log(parseData)
       parseData
-        .then((result) => {
-          console.log(result)
-          //load on page
-          //delete data (optional)
-          getDeleteTask(result)
-        })
-        .catch((err) => console.error(err))
+
+      getDeleteTask(parseData)
     })
     .catch((error) => {
       //get error
