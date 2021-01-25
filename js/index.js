@@ -14,3 +14,4 @@ const getScript = (script) => {
 //get files to read more than one
 include("js/api.js")
 include("js/data.js")
+include("js/utils.js")
