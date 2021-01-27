@@ -19,7 +19,7 @@ const getBackLog = (queryTasks, dataRead) => {
       ` <article  aria-labelledby='${sectionId[0].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
-      `<button id="editTask"><strong>Edit</strong></button>` +
+      `<button aria-label="button"class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -52,7 +52,7 @@ const getImplementation = (queryTasks, dataRead) => {
       ` <article  aria-labelledby='${sectionId[1].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
-      `<button id="editTask"><strong>Edit</strong></button>` +
+      `<button aria-label="button" class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -83,7 +83,7 @@ const getComplete = (queryTasks, dataRead) => {
       ` <article aria-labelledby='${sectionId[2].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
-      `<button id="editTask"><strong>Edit</strong></button>` +
+      `<button aria-label="button" class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -174,7 +174,7 @@ const getDeleteTask = (dataRead) => {
         //   "color: green; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
         let getArticleClick = (e) => {
           e.preventDefault()
-          console.log(dataRead[e.path[1].id])
+          console.log("path: " + dataRead[e.path[1].id - 1].title)
           counter += 1
 
           //  let getMain = document.querySelector("nav")
@@ -185,12 +185,12 @@ const getDeleteTask = (dataRead) => {
           if (x.style.display === "none") {
             x.style.display = "flex"
             x.innerHTML = `<article id="editDialog"><h2>Edit Form:📝</h2><button id="exit">Exit</button> <form name="newerTask"><input required="" placeholder="${
-              dataRead[e.path[1].id].title
+              dataRead[e.path[1].id - 1].title
             }"><textarea required="" placeholder="${
-              dataRead[e.path[1].id].description
+              dataRead[e.path[1].id - 1].description
             }"></textarea><input type="date"   value="${
-              dataRead[e.path[1].id].dueDate
-            }" required=""><button id="taskSent"></button> <button id="deleteTask"></button></form><article>`
+              dataRead[e.path[1].id - 1].dueDate
+            }" required=""><button id="taskSent"></button> <button id="deleteTask" type="button"></button></form><article>`
 
             let getButtonDelete = document.getElementById("deleteTask")
             getButtonDelete.addEventListener("click", trashButton)

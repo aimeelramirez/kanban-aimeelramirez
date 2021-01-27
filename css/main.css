@@ -314,24 +314,24 @@ i.fa-calendar {
   #deleteTask:hover:before {
     color: white; }
 
-#editTask {
+.editTask {
   margin-left: 80%;
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
-  #editTask:hover {
+  .editTask:hover {
     background-color: #4caf50;
     color: white; }
-  #editTask:before {
+  .editTask:before {
     font-family: "Font Awesome 5 Free";
     content: "\f044";
     font-weight: 900;
     font-size: 2.5rem;
     color: #939597; }
-  #editTask:hover:before {
+  .editTask:hover:before {
     color: white; }
-  #editTask strong {
+  .editTask strong {
     display: none; }
 
 #taskSent {
