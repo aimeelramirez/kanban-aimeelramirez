@@ -8,7 +8,7 @@ main {
 #modal {
   display: none;
 }
-#message,
+
 #modal-dialog {
   background-color: transparent;
   z-index: 1;
@@ -17,6 +17,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 30rem;
+
   article {
     padding: 50px;
     font-size: 20px;

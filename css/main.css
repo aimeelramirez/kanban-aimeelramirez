@@ -334,20 +334,24 @@ i.fa-calendar {
   .editTask strong {
     display: none; }
 
+#submitEdit,
 #taskSent {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
+  #submitEdit:hover,
   #taskSent:hover {
     background-color: #4caf50;
     color: white; }
+  #submitEdit:before,
   #taskSent:before {
     font-family: "Font Awesome 5 Free";
     content: "\f1d8";
     font-weight: 900;
     font-size: 2.5rem;
     color: #939597; }
+  #submitEdit:hover:before,
   #taskSent:hover:before {
     color: white; }
 
@@ -606,7 +610,6 @@ main {
 #modal {
   display: none; }
 
-#message,
 #modal-dialog {
   background-color: transparent;
   z-index: 1;
@@ -615,17 +618,14 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 30rem; }
-  #message article,
   #modal-dialog article {
     padding: 50px;
     font-size: 20px;
     background-color: pink;
     flex-direction: column; }
-  #message form,
   #modal-dialog form {
     max-width: 50%;
     background-color: pink; }
-  #message input[type="date"],
   #modal-dialog input[type="date"] {
     max-width: 100%;
     font-size: 1.5rem; }

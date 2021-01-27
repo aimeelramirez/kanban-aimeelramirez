@@ -152,6 +152,39 @@ const postDataAPI = async (data, e) => {
       throw console.error(error)
     })
 }
+//update API
+const putDataAPI = async (data, index) => {
+  console.log(data.description)
+  const patchUrl =
+    "https://knowledgeable-inquisitive-tent.glitch.me/" +
+    endPointDel +
+    parseInt(index) +
+    "?accessToken=" +
+    token
+  let options = {
+    method: "PUT", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: data.title,
+      description: data.description,
+      dueDate: data.dueDate,
+      listId: data.listId,
+    }),
+  }
+  await fetch(patchUrl, options)
+    .then((dataSent) => {
+      console.log(dataSent)
+
+      // i need to reload the form OR get a modal
+    })
+    .catch((error) => {
+      //get error
+      throw console.error(error)
+    })
+}
 //DELETE DATA to Api
 const deleteDataAPI = async (data) => {
   console.log("delete")
@@ -202,11 +235,12 @@ const validateData = (e, i) => {
   let valid = false
   let elementsForm = document.forms["newerTask"]
   //create a modal or pop-up on nav
-  let getMain = document.querySelector("nav")
-  let createModal = document.createElement("article")
-  createModal.id = "message"
-  getMain.insertAdjacentElement("beforebegin", createModal)
-  let getModal = document.getElementById("message")
+  let getModalDialog = document.getElementById("modal-dialog")
+  getModalDialog.style.display = "flex"
+  //let createModal = document.createElement("article")
+  // getModalDialog.insertAdjacentElement("afterend", createModal)
+
+  console.log(getModalDialog)
   for (let key in elementsForm) {
     if (key <= 3) {
       console.log(elementsForm[key])
@@ -228,22 +262,42 @@ const validateData = (e, i) => {
       elementsForm[2].value == "" &&
       elementsForm[3].value == ""
     ) {
-      getModal.innerHTML = `<p> Please fill out all form inputs before submitting</p>`
+      setTimeout(() => {
+        getModalDialog.innerHTML = `<article>Please fill out all form inputs before submitting</article>`
+      }, 2000)
+      setTimeout(() => {
+        getModalDialog.innerHTML = ""
+      }, 3000)
       return null
     } else if (elementsForm[1].value == "") {
       let message = "error on: task title"
-      getModal.innerHTML = `<p>` + message + `</p>`
-      console.log(message)
+      setTimeout(() => {
+        getModalDialog.innerHTML = `<article>` + message + `</article>`
+        console.log(message)
+      }, 2000)
+      setTimeout(() => {
+        getModalDialog.innerHTML = ""
+      }, 3000)
       break
     } else if (elementsForm[2].value == "") {
       let message = "error on: task description"
-      getModal.innerHTML = `<p>` + message + `</p>`
-      console.log(message)
+      window.setTimeout(() => {
+        getModalDialog.innerHTML = `<article>` + message + `</article>`
+        console.log(message)
+      }, 2000)
+      setTimeout(() => {
+        getModalDialog.innerHTML = ""
+      }, 3000)
       break
     } else if (elementsForm[3].value == "") {
       let message = "error on: task date"
-      getModal.innerHTML = `<p>` + message + `</p>`
-      console.log(message)
+      setTimeout(() => {
+        getModalDialog.innerHTML = `<article>` + message + `</article>`
+        console.log(message)
+      }, 2000)
+      setTimeout(() => {
+        getModalDialog.innerHTML = ""
+      }, 3000)
       break
     }
   }
