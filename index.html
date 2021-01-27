@@ -12,12 +12,12 @@
       href="images/online-education-concept-screen-with-teacher-books-pencils_113065-538.jpg"
       type="image/x-icon"
     />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
-    />
+    /> -->
 
     <!-- liveserver -->
     <!-- <link rel="canonical" href="http://127.0.0.1:5500/" /> -->
@@ -37,7 +37,7 @@
       rel="stylesheet"
       async
     /> -->
-    <script
+    <!-- <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
@@ -51,7 +51,7 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script
       id="index"
@@ -78,78 +78,16 @@
             <a href="#">Home<strong>home</strong></a>
           </li>
           <li>
-            <a href="https://github.com/dws2/kanban-aimeelramirez"
-              >Contact<strong>contact</strong></a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/dws2/kanban-aimeelramirez"
-              >About<strong>about us</strong></a
-            >
-          </li>
-          <li>
-            <a href="#"><strong>dark mode or light mode</strong></a>
-            <a href="https://github.com/dws2/kanban-aimeelramirez"
-              >Mode<strong>dark mode or light mode</strong></a
-            >
+            <button type="button" id="mode">
+              <strong>dark mode or light mode</strong>
+            </button>
           </li>
         </ul>
       </nav>
-      <!-- Button trigger modal -->
-      <button
-        id="Launch"
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#exampleModal"
-      >
-        <strong>Launch demo modal</strong>
-      </button>
-
-      <!-- Modal -->
-      <section
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <article class="modal-dialog" role="document">
-          <article class="modal-content">
-            <article class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button
-                id="Add"
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <strong aria-hidden="true">Add</strong>
-              </button>
-            </article>
-            <p class="modal-body">Example modal</p>
-            <!-- <article class="modal-footer"> -->
-            <button
-              id="Close"
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              <strong> Close</strong>
-            </button>
-            <button id="Save" type="button" class="btn btn-primary">
-              <strong> Save changes</strong>
-            </button>
-          </article>
-          <!-- </article> -->
-        </article>
-      </section>
     </header>
     <main>
       <section id="backlog">
-        <article class="task-title">
+        <article>
           <h2>Backlog</h2>
           <button type="submit" id="backlog-button">
             <strong>Add Task</strong>
@@ -164,7 +102,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-1"
               name="date-created"
               value="2021-01-10"
             />
@@ -172,7 +110,7 @@
         </article>
       </section>
       <section id="implementation">
-        <article class="task-title">
+        <article>
           <h2>Implementation</h2>
           <button type="submit" id="implementation-button">
             <strong>Add Task</strong>
@@ -187,7 +125,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-2"
               name="date-created"
               value="2021-01-10"
             />
@@ -195,7 +133,7 @@
         </article>
       </section>
       <section id="complete">
-        <article class="task-title">
+        <article>
           <h2>Complete</h2>
           <button type="submit" id="complete-button">
             <strong>Add Task</strong>
@@ -210,7 +148,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-3"
               name="date-created"
               value="2021-01-10"
             />
@@ -218,12 +156,10 @@
         </article>
       </section>
     </main>
-    <!-- <footer>
-      <section>
-        <h2>Task Manager App</h2>
-        <p>Under construction!</p>
-        <p>Task Manager App © 2021</p>
-      </section>
-    </footer> -->
+    <footer>
+      <h2>Task Manager App</h2>
+      <p>Under construction!</p>
+      <p>Task Manager App © 2021</p>
+    </footer>
   </body>
 </html>

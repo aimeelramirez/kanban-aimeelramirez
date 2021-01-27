@@ -13,8 +13,25 @@ h1 {
 //   // color: $illuminating;
 // }
 //Placeholder  upon text to footer
+section article:nth-of-type(1) {
+  text-align: center;
+}
+%article-title {
+  //text-align: center;
+  // &::first-line {
+  //   // display: flex;
+  //   // justify-content: center;
+  //   font-family: "EB Garamond", serif;
+  //   width: 100%;
+  //   text-transform: uppercase;
+  //   text-align: center;
+  //   font-size: 2rem;
+  //   color: $shadow;
+  // }
+}
 %article-title,
-.task-title {
+article:nth-of-type(1) {
+  text-align: center;
   h2 {
     font-family: "EB Garamond", serif;
     width: 100%;

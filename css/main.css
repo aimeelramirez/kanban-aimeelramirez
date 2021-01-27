@@ -171,25 +171,29 @@ h1 {
   font-family: "Kaushan Script", cursive;
   color: black; }
 
-footer h2,
-.task-title h2 {
-  font-family: "EB Garamond", serif;
-  width: 100%;
-  text-decoration: underline;
-  text-transform: uppercase;
-  font-size: 2rem;
-  color: black; }
-
-footer p:nth-of-type(1),
-.task-title p:nth-of-type(1) {
-  color: #282828;
+section article:nth-of-type(1) {
   text-align: center; }
 
-footer p:nth-of-type(2),
-.task-title p:nth-of-type(2) {
-  display: flex;
-  justify-content: flex-end;
-  font-size: smaller; }
+footer,
+article:nth-of-type(1) {
+  text-align: center; }
+  footer h2,
+  article:nth-of-type(1) h2 {
+    font-family: "EB Garamond", serif;
+    width: 100%;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: black; }
+  footer p:nth-of-type(1),
+  article:nth-of-type(1) p:nth-of-type(1) {
+    color: #282828;
+    text-align: center; }
+  footer p:nth-of-type(2),
+  article:nth-of-type(1) p:nth-of-type(2) {
+    display: flex;
+    justify-content: flex-end;
+    font-size: smaller; }
 
 article,
 p,
@@ -276,6 +280,23 @@ i.fa-calendar {
   #complete-button strong {
     display: none; }
 
+#deleteTask {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #deleteTask:hover {
+    background-color: #4caf50;
+    color: white; }
+  #deleteTask:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2ed";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #deleteTask:hover:before {
+    color: white; }
+
 #taskSent {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
@@ -357,7 +378,10 @@ header ul:hover > li:nth-of-type(1):before {
   color: white;
   margin: 1rem; }
 
-header ul:hover > li:nth-of-type(4):before {
+header ul li > button#mode {
+  background-color: transparent; }
+
+header ul:hover > li > button:before {
   font-family: "Font Awesome 5 Free";
   content: "\f0eb";
   font-weight: 900;
@@ -368,7 +392,7 @@ header ul:hover > li:nth-of-type(4):before {
 header ul > li:nth-of-type(1):hover:before {
   color: #fd8b9e; }
 
-header ul > li:nth-of-type(4):hover:before {
+header ul > li > button:hover:before {
   color: #f5df4d; }
 
 main {
@@ -466,7 +490,7 @@ section {
   border-radius: 1rem;
   padding: 1rem;
   margin: 1rem; }
-  section .task-title {
+  section article:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -535,5 +559,16 @@ footer {
   box-shadow: 0px -8px 6px -8px black;
   background-color: gainsboro; }
 
-.modal {
-  background-color: transparent; }
+main {
+  z-index: 0; }
+
+#message {
+  background-color: pink;
+  z-index: 1;
+  position: absolute;
+  max-width: 30rem; }
+  #message form {
+    max-width: 50%; }
+  #message input[type="date"] {
+    max-width: 100%;
+    font-size: 1.5rem; }

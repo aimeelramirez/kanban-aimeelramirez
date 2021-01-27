@@ -34,7 +34,10 @@ header {
       color: $white;
       margin: 1rem;
     }
-    &:hover > li:nth-of-type(4):before {
+    li > button#mode {
+      background-color: transparent;
+    }
+    &:hover > li > button:before {
       font-family: "Font Awesome 5 Free";
       content: "\f0eb";
       font-weight: 900;
@@ -46,7 +49,7 @@ header {
     & > li:nth-of-type(1):hover:before {
       color: $pink;
     }
-    & > li:nth-of-type(4):hover:before {
+    & > li > button:hover:before {
       color: $illuminating;
     }
 

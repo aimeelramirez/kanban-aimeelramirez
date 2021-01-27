@@ -3,7 +3,8 @@
 //let dataRead = ""
 let dbData = []
 let data = ""
-let parseData = ""
+let queryCheck = false
+let itemsList = ""
 //create a readable stream
 const token = "5b1064585f4ab8706d275f90"
 const endPoint = "api/lists?accessToken="
@@ -21,52 +22,58 @@ const postUrl =
 
 //async and await FETCH GET DATA
 const getDataAPI = async () => {
-  await fetch(postUrl, {
+  await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   }).then((data) => {
-    parseData = data.json()
+    let parseData = data.json()
     console.log(parseData)
+    parseData
+      .then((result) => {
+        console.log(result)
+        //load on page
+        onSuccess(result)
+        //get data
+        dbData.push(result)
+        data = dbData[0]
+        //empty array
+        dbData = []
+        // console.log(dataParse)
+        console.log(data)
+      })
+      .catch((err) => console.error(err))
   })
-  await fetch(url, {
+  await fetch(postUrl, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   })
     .then((data) => {
-      let parseData = data.json()
-      console.log(parseData)
-      parseData
-        .then((result) => {
-          console.log(result)
-          //load on page
-          onSuccess(result)
-          //get data
-          dbData.push(result)
-          data = dbData[0]
-          //empty array
-          dbData = []
-          // console.log(dataParse)
-          console.log(data)
-        })
-        .catch((err) => console.error(err))
+      let parseData = ""
+      parseData = data.json()
+      //  parseData = itemsList
+      console.log("get: " + parseData)
+      //delete data (optional)
+      getDeleteReadAPI(parseData)
     })
     .catch((error) => {
       //get error
       console.log(error)
     })
 }
-const getDeleteReadAPI = async () => {
-  await fetch(postUrl, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-  })
-    .then((data) => {
-      parseData = data.json()
-      console.log(parseData)
-      parseData
+// EVENTS //
+//get data
+getDataAPI()
+const getDeleteReadAPI = (parseData) => {
+  console.log("parse: " + parseData)
+  parseData
+    .then((item) => {
+      // console.log("item: " + JSON.stringify(item))
+      console.log(queryCheck)
 
-      getDeleteTask(parseData)
+      if (queryCheck == true) {
+        getDeleteTask(item)
+      }
     })
-    .catch((error) => {
-      //get error
-      console.log(error)
+    .catch((e) => {
+      console.log(e)
     })
 }
 
@@ -77,7 +84,7 @@ const onSuccess = async (dataRead) => {
     //get the titles from api
     let sections = document.querySelectorAll("section")
     // let queryTitles = []
-
+    queryCheck = true
     for (let j = 0; j < sections.length; j++) {
       // let queryTitles = sections[j]
       //.querySelector("article").querySelector("h2")
@@ -89,6 +96,7 @@ const onSuccess = async (dataRead) => {
       // }
       //to make it readable on columns await until getting the data
       let queryTasks = sections[j]
+
       //console.log("query:" + sections[j].id)
       if (queryTasks.id == "backlog") {
         await getBackLog(queryTasks, dataRead[0])
@@ -317,9 +325,11 @@ const createForms = () => {
   //reset id
   getArticleTask.id = ""
 }
-// EVENTS //
-//get data
-getDataAPI()
+let editData = () => {
+  // getArticleTask.id = "new"
+  //reset id
+}
+
 //post data
 ///idk why it wants me to write it this way but it worked after just setting the click on loop
 document.addEventListener("click", function () {
@@ -334,6 +344,4 @@ document.addEventListener("click", function () {
     .addEventListener("click", sendData)
 })
 
-//delete data (optional)
-getDeleteReadAPI()
 //edit data (optional)
