@@ -174,6 +174,7 @@ const getDeleteTask = (dataRead) => {
         //   "color: green; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
         let getArticleClick = (e) => {
           e.preventDefault()
+          console.log(dataRead[e.path[1].id])
           counter += 1
 
           //  let getMain = document.querySelector("nav")
@@ -183,7 +184,13 @@ const getDeleteTask = (dataRead) => {
 
           if (x.style.display === "none") {
             x.style.display = "flex"
-            x.innerHTML = `<article id="editDialog"><h2>Edit Form:📝</h2><button id="exit">Exit</button> <form name="newerTask"><input required="" placeholder="Task title here"><textarea required="" placeholder="Task description here"></textarea><input type="date" required=""><button id="taskSent"></button> <button id="deleteTask"></button></form><article>`
+            x.innerHTML = `<article id="editDialog"><h2>Edit Form:📝</h2><button id="exit">Exit</button> <form name="newerTask"><input required="" placeholder="${
+              dataRead[e.path[1].id].title
+            }"><textarea required="" placeholder="${
+              dataRead[e.path[1].id].description
+            }"></textarea><input type="date"   value="${
+              dataRead[e.path[1].id].dueDate
+            }" required=""><button id="taskSent"></button> <button id="deleteTask"></button></form><article>`
 
             let getButtonDelete = document.getElementById("deleteTask")
             getButtonDelete.addEventListener("click", trashButton)
