@@ -1,14 +1,31 @@
 main {
   z-index: 0;
 }
-#message {
-  background-color: pink;
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+#modal {
+  display: none;
+}
+#message,
+#modal-dialog {
+  background-color: transparent;
   z-index: 1;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 30rem;
-
+  article {
+    padding: 50px;
+    font-size: 20px;
+    background-color: pink;
+    flex-direction: column;
+  }
   form {
     max-width: 50%;
+    background-color: pink;
   }
   input[type="date"] {
     max-width: 100%;

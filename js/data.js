@@ -19,6 +19,7 @@ const getBackLog = (queryTasks, dataRead) => {
       ` <article  aria-labelledby='${sectionId[0].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button id="editTask"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -48,9 +49,10 @@ const getImplementation = (queryTasks, dataRead) => {
   for (let i = 0; i < dataRead.items.length; i++) {
     utilSort(dataRead)
     queryTasks.innerHTML +=
-      ` <article  aria-labelledby='${sectionId[1].id}' id='${dataRead.items[i].id}'><span >` +
+      ` <article  aria-labelledby='${sectionId[1].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button id="editTask"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -81,6 +83,7 @@ const getComplete = (queryTasks, dataRead) => {
       ` <article aria-labelledby='${sectionId[2].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button id="editTask"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
@@ -105,9 +108,11 @@ const getComplete = (queryTasks, dataRead) => {
 
 //delete
 //select article
+
 const getDeleteTask = (dataRead) => {
   console.log("this is to be selected to delete: " + dataRead.length)
   //get queryArticles/tasks
+
   //let currentTask = ""
   //store data
   //console.log("data:" + JSON.parse(dataRead))
@@ -116,6 +121,7 @@ const getDeleteTask = (dataRead) => {
   let getList = []
   let compareId = {}
   let element = ""
+  let counter = 0
   //getting id for sections
   //to get the store
   // for (let j = 0; j < dataRead.length; j++) {
@@ -145,27 +151,48 @@ const getDeleteTask = (dataRead) => {
 
   console.log("loading...." + queryArticles)
   for (let i = 0; i < queryArticles.length; i++) {
-    // console.log("class:" + queryArticles[i])
-    if (queryArticles[i].id != "") {
-      let logMouseOver = () => {
-        queryArticles[i].style.cssText =
-          "color: purple; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
-        console.log("loading complete... now you can select to delete")
-      }
-      //mouseOut
-      let logMouseOut = () => {
-        queryArticles[i].style.cssText = "width:100%; color:black;"
-      }
-      let getClickTask = () => {
-        this.onclick = "disable"
+    if (queryArticles[i].querySelector("span") != null) {
+      let compareId = queryArticles[i].querySelector("span").innerText
+      console.log("span:" + compareId)
+      let idEdit = parseInt(queryArticles[i].id)
+      console.log("id:" + idEdit + ": " + i)
+      if (queryArticles[i].id === compareId) {
+        let logMouseOver = () => {
+          queryArticles[i].style.cssText =
+            "color: purple; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
+          console.log("loading complete... now you can select to delete")
+        }
+
+        //mouseOut
+        let logMouseOut = () => {
+          queryArticles[i].style.cssText = "width:100%; color:black;"
+          // document.getElementById("editTask").remove()
+        }
+        // document.getElementById(queryArticles[i].id).disabled = true
+        // alert("Button has been disabled.")
         // queryArticles[i].style.cssText =
         //   "color: green; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
-        console.log("loading complete... now you can select to delete")
+        let getArticleClick = (e) => {
+          e.preventDefault()
+          counter += 1
 
-        //  let getMain = document.querySelector("nav")
-        let createModal = document.createElement("article")
-        createModal.id = "messageNew"
-        queryArticles[i].insertAdjacentElement("afterbegin", createModal)
+          //  let getMain = document.querySelector("nav")
+          let createModal = document.createElement("article")
+          createModal.id = "message"
+          let x = document.getElementById("modal-dialog")
+
+          if (x.style.display === "none") {
+            x.style.display = "flex"
+            x.innerHTML = `<article id="editDialog"><h2>Edit Form:📝</h2><button id="exit">Exit</button> <form name="newerTask"><input required="" placeholder="Task title here"><textarea required="" placeholder="Task description here"></textarea><input type="date" required=""><button id="taskSent"></button> <button id="deleteTask"></button></form><article>`
+
+            let getButtonDelete = document.getElementById("deleteTask")
+            getButtonDelete.addEventListener("click", trashButton)
+            let getButtonExit = document.getElementById("exit")
+            getButtonExit.addEventListener("click", closeForm)
+          } else {
+            x.style.display = "none"
+          }
+        }
         //let getModal = document.getElementById("message")
 
         // let getNew = document.getElementById("new")
@@ -173,48 +200,62 @@ const getDeleteTask = (dataRead) => {
         //  createArticle.id = "newerArticle"
         // getModal.insertAdjacentElement("afterbegin", createArticle)
 
-        let getNewArticle = document.getElementById("messageNew")
-        let createForm = document.createElement("form")
-        createForm.name = "newerTask"
-        getNewArticle.insertAdjacentElement("afterbegin", createForm)
+        // let getNewArticle = document.getElementById("message")
+        // getNewArticle.style.cssText = `outline: 1px solid red;`
+        // let createForm = document.createElement("form")
+        // createForm.id = "newerTask"
+        // getNewArticle.insertAdjacentElement("afterbegin", createForm)
 
-        let createTitle = document.createElement("input")
-        createTitle.setAttribute("required", "")
-        let idEdit = parseInt(queryArticles[i].id)
+        // let createTitle = document.createElement("input")
+        // createTitle.setAttribute("required", "")
+        // // let idEdit = parseInt(queryArticles[i].id)
 
-        //console.log(JSON.parse(getList[idEdit]) + ": " + idEdit)
-        // let getTitle = JSON.parse(getList[idEdit])
-        // console.log(getList)
-        createTitle.placeholder = dataRead[idEdit - 1].title
-        let createDescription = document.createElement("textarea")
-        createDescription.setAttribute("required", "")
+        // //console.log(JSON.parse(getList[idEdit]) + ": " + idEdit)
+        // // let getTitle = JSON.parse(getList[idEdit])
+        // // console.log(getList)
+        // createTitle.placeholder = "placer"
+        // let createDescription = document.createElement("textarea")
+        // createDescription.setAttribute("required", "")
 
-        createDescription.placeholder = "Task description here"
-        let createDate = document.createElement("input")
-        createDate.type = "date"
-        createDate.setAttribute("required", "")
+        // createDescription.placeholder = "Task description here"
+        // let createDate = document.createElement("input")
+        // createDate.type = "date"
+        // createDate.setAttribute("required", "")
 
-        let createSubmitTask = document.createElement("button")
-        createSubmitTask.id = "taskSent"
+        // let createSubmitTask = document.createElement("button")
+        // createSubmitTask.id = "taskSent"
 
-        let createDeleteTask = document.createElement("button")
-        createDeleteTask.id = "deleteTask"
+        // let createDeleteTask = document.createElement("button")
+        // createDeleteTask.id = "deleteTask"
 
-        createForm.insertAdjacentElement("beforeend", createDeleteTask)
-        createForm.insertAdjacentElement("beforeend", createSubmitTask)
-        createForm.insertAdjacentElement("beforeend", createTitle)
-        createForm.insertAdjacentElement("beforeend", createDescription)
-        createForm.insertAdjacentElement("beforeend", createDate)
-        let getDate = document.querySelectorAll("date")
-        getDate.cssText = "#4caf50"
+        // createForm.insertAdjacentElement("beforeend", createDeleteTask)
+        // createForm.insertAdjacentElement("beforeend", createSubmitTask)
+        // createForm.insertAdjacentElement("beforeend", createTitle)
+        // createForm.insertAdjacentElement("beforeend", createDescription)
+        // createForm.insertAdjacentElement("beforeend", createDate)
+        // let getDate = document.querySelectorAll("date")
+        // getDate.cssText = "#4caf50"
+
+        // if (counter == 1) {
+        //   console.log("clicker")
+        // } else {
+        //   getNewArticle.remove()
+        //   createForm.remove()
+        //   counter = 0
+        // }
+        let closeForm = (e) => {
+          e.preventDefault()
+          let x = document.getElementById("modal-dialog")
+          x.style.display = "none"
+        }
         let trashButton = (e) => {
           e.preventDefault()
-          let getConfirmModal = document.getElementById("newerArticle")
+          let getConfirmModal = document.getElementById("modal-dialog")
           let createModal2 = document.createElement("article")
           createModal2.id = "confirmation"
           getConfirmModal.insertAdjacentElement("beforebegin", createModal2)
           let getConfirm = document.getElementById("confirmation")
-          getConfirm.innerHTML = `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
+          getConfirm.innerHTML += `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
 
           let yes = document.getElementById("absolutely")
           let no = document.getElementById("unsure")
@@ -227,10 +268,10 @@ const getDeleteTask = (dataRead) => {
               console.log("this is clicked", dataDelete)
               return deleteDataAPI(dataDelete)
             } else {
-              getModal.innerHTML = `<p> Okay, cancelled.</p>`
+              getConfirm.innerHTML = `<p> Okay, cancelled.</p>`
               window.setTimeout(() => {
                 getConfirm.remove()
-                getModal.remove()
+                // getModal.remove()
               }, 2000)
               return null
             }
@@ -238,14 +279,23 @@ const getDeleteTask = (dataRead) => {
           no.onclick = maybeDelete
           yes.onclick = maybeDelete
         }
-        let getButtonDelete = document.getElementById("deleteTask")
-        getButtonDelete.addEventListener("click", trashButton)
-      }
 
-      queryArticles[i].onclick = getClickTask
-      queryArticles[i].onmouseover = logMouseOver
-      queryArticles[i].onmouseout = logMouseOut
+        let getIdEdit = queryArticles[i].querySelector("button")
+
+        console.log("edit" + getIdEdit)
+
+        getIdEdit.addEventListener("click", getArticleClick)
+
+        // counter = 0
+
+        // queryArticles[i].onclick = getClickTask
+
+        queryArticles[i].onmouseover = logMouseOver
+        queryArticles[i].onmouseout = logMouseOut
+        //break
+      }
     }
+
     //get if article was clicked
     // const getClickTask = () => {
     //   //MAP

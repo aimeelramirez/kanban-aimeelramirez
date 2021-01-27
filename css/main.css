@@ -280,6 +280,23 @@ i.fa-calendar {
   #complete-button strong {
     display: none; }
 
+#exit {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #exit:hover {
+    background-color: #4caf50;
+    color: white; }
+  #exit:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00d";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #exit:hover:before {
+    color: white; }
+
 #deleteTask {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
@@ -296,6 +313,26 @@ i.fa-calendar {
     color: #939597; }
   #deleteTask:hover:before {
     color: white; }
+
+#editTask {
+  margin-left: 80%;
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #editTask:hover {
+    background-color: #4caf50;
+    color: white; }
+  #editTask:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f044";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  #editTask:hover:before {
+    color: white; }
+  #editTask strong {
+    display: none; }
 
 #taskSent {
   transition-duration: 0.4s;
@@ -562,13 +599,33 @@ footer {
 main {
   z-index: 0; }
 
-#message {
-  background-color: pink;
+.dark-mode {
+  background-color: black;
+  color: white; }
+
+#modal {
+  display: none; }
+
+#message,
+#modal-dialog {
+  background-color: transparent;
   z-index: 1;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 30rem; }
-  #message form {
-    max-width: 50%; }
-  #message input[type="date"] {
+  #message article,
+  #modal-dialog article {
+    padding: 50px;
+    font-size: 20px;
+    background-color: pink;
+    flex-direction: column; }
+  #message form,
+  #modal-dialog form {
+    max-width: 50%;
+    background-color: pink; }
+  #message input[type="date"],
+  #modal-dialog input[type="date"] {
     max-width: 100%;
     font-size: 1.5rem; }

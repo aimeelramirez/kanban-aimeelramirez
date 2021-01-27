@@ -61,6 +61,7 @@ const getDataAPI = async () => {
 // EVENTS //
 //get data
 getDataAPI()
+
 const getDeleteReadAPI = (parseData) => {
   console.log("parse: " + parseData)
   parseData
@@ -342,6 +343,17 @@ document.addEventListener("click", function () {
   document
     .querySelector("main section#complete article button")
     .addEventListener("click", sendData)
+})
+
+//dark mode or light mode
+document.getElementById("mode").addEventListener("click", (e) => {
+  e.preventDefault()
+  var element = document.body
+  if (element.style.backgroundColor != "black") {
+    element.style.backgroundColor = "black"
+  } else {
+    element.style.backgroundColor = "white"
+  }
 })
 
 //edit data (optional)

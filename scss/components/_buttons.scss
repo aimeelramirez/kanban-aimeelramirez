@@ -70,6 +70,27 @@ i.fa-calendar {
     display: none;
   }
 }
+#exit {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem;
+
+  &:hover {
+    background-color: $button-hovercolor;
+    color: $white;
+  }
+  &:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00d";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: $ultimate-gray;
+  }
+  &:hover:before {
+    color: $white;
+  }
+}
 #deleteTask {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
@@ -89,6 +110,36 @@ i.fa-calendar {
   }
   &:hover:before {
     color: $white;
+  }
+}
+// article::first-line {
+//   display: flex;
+//   justify-content: space-between;
+// }
+#editTask {
+  // justify-content: flex-end;
+  margin-left: 80%;
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem;
+
+  &:hover {
+    background-color: $button-hovercolor;
+    color: $white;
+  }
+  &:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f044";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: $ultimate-gray;
+  }
+  &:hover:before {
+    color: $white;
+  }
+  strong {
+    display: none;
   }
 }
 #taskSent {
