@@ -328,7 +328,7 @@ const getDeleteTask = (dataRead) => {
           e.preventDefault()
           let x = document.getElementById("modal-dialog")
           let getConfirm = document.getElementById("confirmation")
-          if (getConfirm != "" || getConfirm != null) {
+          if (getConfirm != null) {
             getConfirm.innerHTML = ""
           }
           x.innerHTML = ""
