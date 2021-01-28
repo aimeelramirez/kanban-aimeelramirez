@@ -1,6 +1,7 @@
 //api calls
 "use strict"
 //let dataRead = ""
+
 let dbData = []
 let data = ""
 let queryCheck = false
@@ -49,8 +50,8 @@ const getDataAPI = async () => {
       let parseData = ""
       parseData = data.json()
       //  parseData = itemsList
-      console.log("get: " + parseData)
       //delete data (optional)
+
       getDeleteReadAPI(parseData)
     })
     .catch((error) => {
@@ -152,6 +153,7 @@ const postDataAPI = async (data, e) => {
       throw console.error(error)
     })
 }
+
 //update API
 const putDataAPI = async (data, index) => {
   console.log(data.description)
@@ -179,6 +181,12 @@ const putDataAPI = async (data, index) => {
       console.log(dataSent)
 
       // i need to reload the form OR get a modal
+      let onReload = (e) => {
+        window.setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+      onReload()
     })
     .catch((error) => {
       //get error
@@ -191,16 +199,15 @@ const deleteDataAPI = async (data) => {
   const deleteUrl =
     "https://knowledgeable-inquisitive-tent.glitch.me/" +
     endPointDel +
-    data +
+    data.id +
     "?accessToken=" +
     token
   //create a modal or pop-up on nav
-  let getMain = document.querySelector("nav")
-  let createModal = document.createElement("article")
-  createModal.id = "message"
-  getMain.insertAdjacentElement("beforebegin", createModal)
-  let getModal = document.getElementById("message")
-  getModal.innerHTML = `<p> "Deleted! "</p></p>` + JSON.stringify(data) + `</p>`
+  let getModalDialog = document.getElementById("modal-dialog")
+  getModalDialog.style.display = "flex"
+  // let getModal = document.getElementById("message")
+  getModalDialog.innerHTML =
+    `<article><p> "Deleted! "</p></p>` + JSON.stringify(data) + `</p></article>`
   let options = {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -303,7 +310,8 @@ const validateData = (e, i) => {
   }
   if (valid == true) {
     //remove the modal
-    getModal.remove()
+    getModalDialog.innerHTML = ""
+
     postDataAPI(newData, e)
   } else {
     //idk might happen since if oddly it passes a true if false
@@ -400,13 +408,24 @@ document.addEventListener("click", function () {
 })
 
 //dark mode or light mode
+let count = 0
 document.getElementById("mode").addEventListener("click", (e) => {
   e.preventDefault()
-  var element = document.body
-  if (element.style.backgroundColor != "black") {
-    element.style.backgroundColor = "black"
-  } else {
+  let element = document.body
+  if (count < 1) {
+    localStorage.removeItem("mode")
     element.style.backgroundColor = "white"
+    localStorage.setItem("mode", element.style.backgroundColor)
+    localStorage.getItem("mode")
+    count += 1
+    console.log("light mode: " + count)
+  } else if (count == 1) {
+    localStorage.removeItem("mode")
+    element.style.backgroundColor = "black"
+    localStorage.setItem("mode", element.style.backgroundColor)
+    localStorage.getItem("mode")
+    count = 0
+    console.log("dark mode: " + count)
   }
 })
 
