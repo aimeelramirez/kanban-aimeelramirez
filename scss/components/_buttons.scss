@@ -9,33 +9,19 @@ i.fa-calendar {
     color: $button-hovercolor;
   }
 }
-.btn {
-  transition-duration: 0.4s;
-  border-radius: 0.5rem;
-  font-size: 2rem;
-  font-weight: 900;
-  padding: 0.9rem;
-  background-color: $ultimate-gray;
-  border: none;
 
-  &:hover {
-    background-color: $button-hovercolor;
-    color: $white;
-  }
-  // &:before {
-  //   font-family: "Font Awesome 5 Free";
-  //   content: "\f067";
-  //   font-weight: 900;
-  //   font-size: 2.5rem;
-  //   color: $ultimate-gray;
-  // }
-  &:hover:before {
-    color: $white;
-  }
-  // strong {
-  //   display: none;
-  // }
-}
+// &:before {
+//   font-family: "Font Awesome 5 Free";
+//   content: "\f067";
+//   font-weight: 900;
+//   font-size: 2.5rem;
+//   color: $ultimate-gray;
+// }
+
+// strong {
+//   display: none;
+// }
+
 //TODO to change this to js since color on web kit
 // indicator on image not icon
 // #date-created {
@@ -79,6 +65,9 @@ i.fa-calendar {
   &:hover {
     background-color: $button-hovercolor;
     color: $white;
+    strong {
+      display: block;
+    }
   }
   &:before {
     font-family: "Font Awesome 5 Free";
@@ -86,9 +75,14 @@ i.fa-calendar {
     font-weight: 900;
     font-size: 2.5rem;
     color: $ultimate-gray;
+    padding: 0.9rem;
+    width: 50%;
   }
   &:hover:before {
     color: $white;
+  }
+  strong {
+    display: none;
   }
 }
 #deleteTask {
@@ -100,6 +94,9 @@ i.fa-calendar {
   &:hover {
     background-color: $button-hovercolor;
     color: $white;
+    strong {
+      display: block;
+    }
   }
   &:before {
     font-family: "Font Awesome 5 Free";
@@ -110,6 +107,9 @@ i.fa-calendar {
   }
   &:hover:before {
     color: $white;
+  }
+  strong {
+    display: none;
   }
 }
 // article::first-line {
@@ -148,10 +148,12 @@ i.fa-calendar {
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem;
-
   &:hover {
     background-color: $button-hovercolor;
     color: $white;
+    strong {
+      display: block;
+    }
   }
   &:before {
     font-family: "Font Awesome 5 Free";
@@ -162,6 +164,9 @@ i.fa-calendar {
   }
   &:hover:before {
     color: $white;
+  }
+  strong {
+    display: none;
   }
 }
 #unsure {
@@ -180,6 +185,8 @@ i.fa-calendar {
     font-weight: 900;
     font-size: 2.5rem;
     color: $ultimate-gray;
+    // margin: 0.3rem;
+    padding: 0.9rem;
   }
   &:hover:before {
     color: $white;
@@ -202,6 +209,7 @@ i.fa-calendar {
     font-weight: 900;
     font-size: 2.5rem;
     color: $ultimate-gray;
+    padding: 0.9rem;
   }
   &:hover:before {
     color: $white;
