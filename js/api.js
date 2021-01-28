@@ -408,13 +408,24 @@ document.addEventListener("click", function () {
 })
 
 //dark mode or light mode
+let count = 0
 document.getElementById("mode").addEventListener("click", (e) => {
   e.preventDefault()
-  var element = document.body
-  if (element.style.backgroundColor != "black") {
-    element.style.backgroundColor = "black"
-  } else {
+  let element = document.body
+  if (count < 1) {
+    localStorage.removeItem("mode")
     element.style.backgroundColor = "white"
+    localStorage.setItem("mode", element.style.backgroundColor)
+    localStorage.getItem("mode")
+    count += 1
+    console.log("light mode: " + count)
+  } else if (count == 1) {
+    localStorage.removeItem("mode")
+    element.style.backgroundColor = "black"
+    localStorage.setItem("mode", element.style.backgroundColor)
+    localStorage.getItem("mode")
+    count = 0
+    console.log("dark mode: " + count)
   }
 })
 
