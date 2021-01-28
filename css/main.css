@@ -237,20 +237,6 @@ i.fa-calendar {
   i.fa-calendar:hover {
     color: #4caf50; }
 
-.btn {
-  transition-duration: 0.4s;
-  border-radius: 0.5rem;
-  font-size: 2rem;
-  font-weight: 900;
-  padding: 0.9rem;
-  background-color: #939597;
-  border: none; }
-  .btn:hover {
-    background-color: #4caf50;
-    color: white; }
-  .btn:hover:before {
-    color: white; }
-
 #backlog-button,
 #implementation-button,
 #complete-button {
@@ -288,14 +274,20 @@ i.fa-calendar {
   #exit:hover {
     background-color: #4caf50;
     color: white; }
+    #exit:hover strong {
+      display: block; }
   #exit:before {
     font-family: "Font Awesome 5 Free";
     content: "\f00d";
     font-weight: 900;
     font-size: 2.5rem;
-    color: #939597; }
+    color: #939597;
+    padding: 0.9rem;
+    width: 50%; }
   #exit:hover:before {
     color: white; }
+  #exit strong {
+    display: none; }
 
 #deleteTask {
   transition-duration: 0.4s;
@@ -305,6 +297,8 @@ i.fa-calendar {
   #deleteTask:hover {
     background-color: #4caf50;
     color: white; }
+    #deleteTask:hover strong {
+      display: block; }
   #deleteTask:before {
     font-family: "Font Awesome 5 Free";
     content: "\f2ed";
@@ -313,6 +307,8 @@ i.fa-calendar {
     color: #939597; }
   #deleteTask:hover:before {
     color: white; }
+  #deleteTask strong {
+    display: none; }
 
 .editTask {
   margin-left: 80%;
@@ -344,6 +340,9 @@ i.fa-calendar {
   #taskSent:hover {
     background-color: #4caf50;
     color: white; }
+    #submitEdit:hover strong,
+    #taskSent:hover strong {
+      display: block; }
   #submitEdit:before,
   #taskSent:before {
     font-family: "Font Awesome 5 Free";
@@ -354,6 +353,9 @@ i.fa-calendar {
   #submitEdit:hover:before,
   #taskSent:hover:before {
     color: white; }
+  #submitEdit strong,
+  #taskSent strong {
+    display: none; }
 
 #unsure {
   transition-duration: 0.4s;
@@ -368,7 +370,8 @@ i.fa-calendar {
     content: "\f071";
     font-weight: 900;
     font-size: 2.5rem;
-    color: #939597; }
+    color: #939597;
+    padding: 0.9rem; }
   #unsure:hover:before {
     color: white; }
 
@@ -385,7 +388,8 @@ i.fa-calendar {
     content: "\f164";
     font-weight: 900;
     font-size: 2.5rem;
-    color: #939597; }
+    color: #939597;
+    padding: 0.9rem; }
   #absolutely:hover:before {
     color: white; }
 

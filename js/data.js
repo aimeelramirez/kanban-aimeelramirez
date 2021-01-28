@@ -1,5 +1,6 @@
 // read data
 let sectionId = document.querySelectorAll("section")
+const dataArray = []
 
 const utilSort = (dataRead) => {
   dataRead.items.sort(function (a, b) {
@@ -113,6 +114,23 @@ const getDeleteTask = (dataRead) => {
   console.log("this is to be selected to delete: " + dataRead.length)
   //get queryArticles/tasks
 
+  for (let key in dataRead) {
+    dataArray.push({
+      id: parseInt(key) + 1,
+      item: dataRead[key],
+    })
+  }
+  console.log(dataArray)
+  // return deleteDataId(dataArray)
+
+  // for (let f = 0; f < dataArray.length; f++) {
+  //   // console.log(dataArray[f].id + ": " + dataArray[f].item.id)
+  //   if (dataArray[f].id != dataArray[f].item.id) {
+  //     let parseData = dataArray[f]
+  //     console.log(parseData + ": " + dataArray[f].item.id)
+  //   }
+  // }
+
   //let currentTask = ""
   //store data
   //console.log("data:" + JSON.parse(dataRead))
@@ -171,122 +189,156 @@ const getDeleteTask = (dataRead) => {
         let getArticleClick = (e) => {
           e.preventDefault()
           getIndex = e.path[1].id
-          console.log("path: " + JSON.stringify(dataRead[e.path[1].id - 1]))
+          console.log(getIndex + ": " + e.path[1])
 
-          let createModal = document.createElement("article")
-          createModal.id = "message"
-          let x = document.getElementById("modal-dialog")
+          // if (getIndex > dataRead.length) {
+          //   getIndex = dataRead.length
+          //   console.log("path set: " + JSON.stringify(dataRead[getIndex - 1]))
+          // } else {
+          //   console.log("path: " + JSON.stringify(dataRead[getIndex - 1]))
+          //   getIndex = e.path[1].id
+          // }
+          for (let k = 0; k < dataArray.length; k++) {
+            //get ids
+            let getId = e.path[1]
+            // console.log(getId)
 
-          if (x.style.display === "none") {
-            x.style.display = "flex"
-            x.innerHTML =
-              `<article id="editDialog"><h2>Edit Form:📝</h2><button id="exit">Exit</button>` +
-              ` <form name="newerTask" id="editFormPut">` +
-              `<input name="newTitle" id="newTitle" required="" placeholder="${
-                dataRead[e.path[1].id - 1].title
-              }"/>` +
-              `<textarea name="newDescription"  id="newDescription" placeholder="${
-                dataRead[e.path[1].id - 1].description
-              }" required="" ></textarea>` +
-              `<input name="newDate" type="date" value="${
-                dataRead[e.path[1].id - 1].dueDate
-              }" required="" id="newDate">` +
-              `<button id="submitEdit" type="button"></button> <button id="deleteTask" type="button"></button></form><article>`
+            let createModal = document.createElement("article")
+            createModal.id = "message"
+            let x = document.getElementById("modal-dialog")
+            if (getId.id == dataArray[k].item.id) {
+              console.log(dataArray[k].item.id)
+              console.log(x.style.display)
+              if (x.style.display == "none") {
+                x.style.display = "flex"
+                x.innerHTML =
+                  `<article id="editDialog"><h2>Edit Form:📝</h2>` +
+                  ` <form name="newerTask" id="editFormPut">` +
+                  `<input name="newTitle" id="newTitle" required="" placeholder="${dataArray[k].item.title}"/>` +
+                  `<textarea name="newDescription"  id="newDescription" placeholder="${dataArray[k].item.description}" required="" ></textarea>` +
+                  `<input name="newDate" type="date" value="${dataArray[k].item.dueDate}" required="" id="newDate">` +
+                  `<span id="wrapper"><button id="submitEdit" type="button"><strong>submit</strong></button> <button id="deleteTask" type="button"><strong>delete</strong></button><button id="exit"  type="button"><strong>Exit</strong></button></span></form></article>`
 
-            let getForm = document.getElementById("editFormPut")
-            console.log(getForm)
+                let getForm = document.getElementById("editFormPut")
+                console.log(getForm)
 
-            let getFormElements = getForm.elements
-            let dataReading = dataRead[e.path[1].id - 1]
-            console.log("elements:" + getFormElements["newTitle"].value)
-            getFormElements[0].value = dataReading.title
-            getFormElements[1].value = dataReading.description
-            getFormElements[2].value = dataReading.dueDate
-            let stringID = JSON.stringify(dataRead[e.path[1].id - 1].listId)
-            idUpdate = parseInt(stringID)
-            console.log(idUpdate)
-            let parseData = {
-              title: getFormElements[0].value,
-              description: getFormElements[1].value,
-              dueDate: getFormElements[2].value,
-              listId: idUpdate,
-            }
-            console.log(parseData)
-            let getSubmitEdit = document.getElementById("submitEdit")
-            getSubmitEdit.addEventListener("click", () => {
-              let getFormElements = getForm.elements
-              console.log(getFormElements)
-              console.log("elements 0:" + getFormElements["newTitle"].value)
-              console.log(
-                "elements 1:" + getFormElements["newDescription"].value,
-              )
+                let getFormElements = getForm.elements
+                let dataReading = dataRead[getIndex - 1]
+                console.log("elements:" + getFormElements["newTitle"].value)
+                getFormElements[0].value = dataArray[k].item.title
+                getFormElements[1].value = dataArray[k].item.description
+                getFormElements[2].value = dataArray[k].item.dueDate
+                let stringID = JSON.stringify(dataArray[k].item.listId)
+                idUpdate = parseInt(stringID)
+                console.log(idUpdate)
+                let parseData = {
+                  title: getFormElements[0].value,
+                  description: getFormElements[1].value,
+                  dueDate: getFormElements[2].value,
+                  listId: idUpdate,
+                }
+                console.log(parseData)
+                let getSpanEdit = document.querySelector("span")
+                let getSubmitEdit = getSpanEdit.querySelector("#submitEdit")
+                getSubmitEdit.addEventListener("click", () => {
+                  let getFormElements = getForm.elements
+                  console.log(getFormElements)
+                  console.log("elements 0:" + getFormElements["newTitle"].value)
+                  console.log(
+                    "elements 1:" + getFormElements["newDescription"].value,
+                  )
 
-              getFormElements[0].value = getFormElements["newTitle"].value
-              getFormElements[1].value = getFormElements["newDescription"].value
-              getFormElements[2].value = getFormElements["newDate"].value
-              // let stringID = JSON.stringify(dataRead[e.path[1].id - 1].listId)
-              // idUpdate = parseInt(stringID)
-              // console.log(idUpdate)
-              let parseDataAgain = {
-                title: getFormElements[0].value,
-                description: getFormElements[1].value,
-                dueDate: getFormElements[2].value,
-                listId: idUpdate,
+                  getFormElements[0].value = getFormElements["newTitle"].value
+                  getFormElements[1].value =
+                    getFormElements["newDescription"].value
+                  getFormElements[2].value = getFormElements["newDate"].value
+                  // let stringID = JSON.stringify(dataRead[e.path[1].id - 1].listId)
+                  // idUpdate = parseInt(stringID)
+                  // console.log(idUpdate)
+                  let parseDataAgain = {
+                    title: getFormElements[0].value,
+                    description: getFormElements[1].value,
+                    dueDate: getFormElements[2].value,
+                    listId: idUpdate,
+                  }
+                  console.log(parseDataAgain)
+                  return putDataAPI(parseDataAgain, getIndex)
+                })
+                let getButtonDelete = getSpanEdit.querySelector("#deleteTask")
+                getButtonDelete.addEventListener("click", trashButton)
+                let getButtonExit = getSpanEdit.querySelector("#exit")
+                getButtonExit.addEventListener("click", closeForm)
+              } else {
+                x.style.display = "none"
               }
-              console.log(parseDataAgain)
-              return putDataAPI(parseDataAgain, getIndex)
-            })
-            let getButtonDelete = document.getElementById("deleteTask")
-            getButtonDelete.addEventListener("click", trashButton)
-            let getButtonExit = document.getElementById("exit")
-            getButtonExit.addEventListener("click", closeForm)
-          } else {
-            x.style.display = "none"
+            }
           }
         }
-        let closeForm = (e) => {
-          e.preventDefault()
-          let x = document.getElementById("modal-dialog")
-          x.style.display = "none"
-        }
+
         let trashButton = (e) => {
           e.preventDefault()
+
           let getConfirmModal = document.getElementById("modal-dialog")
           let createModal2 = document.createElement("article")
           createModal2.id = "confirmation"
           getConfirmModal.insertAdjacentElement("beforebegin", createModal2)
           let getConfirm = document.getElementById("confirmation")
-          getConfirm.innerHTML += `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
+          //  console.log(e.path[2][0])
+          let getForm = document.getElementById("editFormPut")
+          console.log(getForm)
+          let dataFind = e.path
+          for (let g = 0; g < dataArray.length; g++) {
+            //console.log(dataFind)
 
-          let yes = document.getElementById("absolutely")
-          let no = document.getElementById("unsure")
-          console.log(queryArticles[i].id)
-          let dataDelete = queryArticles[i].id
-          let maybeDelete = (e) => {
-            e.preventDefault()
-            if (e.target.id == "absolutely") {
-              //check event
-              console.log("this is clicked", dataDelete)
-              return deleteDataAPI(dataDelete)
-            } else {
-              getConfirm.innerHTML = `<p> Okay, cancelled.</p>`
-              window.setTimeout(() => {
-                getConfirm.remove()
-                // getModal.remove()
-              }, 2000)
-              return null
+            if (getForm[0].value == dataArray[g].item.title) {
+              // console.log(e.path[2][0] + ": " + dataArray[g].item.title)
+
+              getConfirm.innerHTML =
+                `<h2>Are you sure you want to delete?</h2><p>Title:${getForm[0].value}<br/>\n` +
+                `Description:` +
+                getForm[1].value +
+                ` </p><button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
+
+              let yes = document.getElementById("absolutely")
+              let no = document.getElementById("unsure")
+              // console.log(queryArticles[i].id + "? delete id: " + dataArray[g].id)
+              //    let dataDelete =
+              let maybeDelete = (e) => {
+                e.preventDefault()
+                if (e.target.id == "absolutely") {
+                  //check event
+                  console.log("this is clicked", dataArray[g])
+                  getConfirm.innerHTML = ""
+                  return deleteDataAPI(dataArray[g].item)
+                } else {
+                  getConfirm.innerHTML = `<p> Okay, cancelled.</p>`
+                  window.setTimeout(() => {
+                    getConfirm.innerHTML = ""
+                    // getModal.remove()
+                  }, 2000)
+                  return null
+                }
+              }
+              no.onclick = maybeDelete
+              yes.onclick = maybeDelete
             }
           }
-          no.onclick = maybeDelete
-          yes.onclick = maybeDelete
         }
-
-        let getIdEdit = queryArticles[i].querySelector("button")
+        let closeForm = (e) => {
+          e.preventDefault()
+          let x = document.getElementById("modal-dialog")
+          let getConfirm = document.getElementById("confirmation")
+          if (getConfirm != "" || getConfirm != null) {
+            getConfirm.innerHTML = ""
+          }
+          x.innerHTML = ""
+        }
+        let getIdEdit = document.querySelectorAll("button")
 
         console.log("edit" + getIdEdit)
-
-        getIdEdit.addEventListener("click", getArticleClick)
-
+        for (let b = 0; b < getIdEdit.length; b++) {
+          getIdEdit[b].addEventListener("click", getArticleClick)
+        }
         // counter = 0
 
         // queryArticles[i].onclick = getClickTask
