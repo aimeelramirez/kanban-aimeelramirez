@@ -212,12 +212,12 @@ const getDeleteTask = (dataRead) => {
               if (x.style.display == "none") {
                 x.style.display = "flex"
                 x.innerHTML =
-                  `<article id="editDialog"><h2>Edit Form:📝</h2>` +
+                  `<article id="editDialog"><p><button id="exit" type="button"><strong>Exit</strong></button></p><h2>Edit Form:📝</h2>` +
                   ` <form name="newerTask" id="editFormPut">` +
                   `<input name="newTitle" id="newTitle" required="" placeholder="${dataArray[k].item.title}"/>` +
                   `<textarea name="newDescription"  id="newDescription" placeholder="${dataArray[k].item.description}" required="" ></textarea>` +
                   `<input name="newDate" type="date" value="${dataArray[k].item.dueDate}" required="" id="newDate">` +
-                  `<span id="wrapper"><button id="submitEdit" type="button"><strong>submit</strong></button> <button id="deleteTask" type="button"><strong>delete</strong></button><button id="exit"  type="button"><strong>Exit</strong></button></span></form></article>`
+                  `<span id="wrapper"><button id="submitEdit" type="button"><strong>submit</strong></button> <button id="deleteTask" type="button"><strong>delete</strong></button></span></form></article>`
 
                 let getForm = document.getElementById("editFormPut")
                 console.log(getForm)
@@ -266,7 +266,7 @@ const getDeleteTask = (dataRead) => {
                 })
                 let getButtonDelete = getSpanEdit.querySelector("#deleteTask")
                 getButtonDelete.addEventListener("click", trashButton)
-                let getButtonExit = getSpanEdit.querySelector("#exit")
+                let getButtonExit = document.getElementById("exit")
                 getButtonExit.addEventListener("click", closeForm)
               } else {
                 x.style.display = "none"

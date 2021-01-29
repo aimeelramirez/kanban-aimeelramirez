@@ -1,5 +1,41 @@
+@charset "UTF-8";
 @import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap");
+.spinner {
+  height: 100vh;
+  opacity: 1;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem; }
+  .spinner:before {
+    position: center;
+    animation: 2s linear infinite spinGesture;
+    left: 50%;
+    opacity: inherit;
+    position: absolute;
+    top: 50%; }
+
+.spinner:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f110";
+  font-weight: 900;
+  font-size: 10rem; }
+
+@keyframes spinGesture {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    color: #939597; }
+  25% {
+    color: #26a8f9; }
+  50% {
+    color: #f5df4d; }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    color: #939597; } }
+
 /* SCSS RESET
 ==================================================================================================== 
 ====================================================================================================
@@ -202,12 +238,10 @@ a {
   font-family: "Darker Grotesque", sans-serif; }
 
 strong {
-  font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif; }
+  display: none; }
 
 strong {
-  font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif; }
+  display: none; }
 
 p {
   padding: 1rem; }
@@ -216,14 +250,6 @@ article > h3 {
   font-size: 3rem;
   font-weight: 800;
   font-family: "Darker Grotesque", sans-serif; }
-
-nav > ul > li a {
-  color: white;
-  font-size: 3.5rem;
-  display: none; }
-
-nav > ul > li a:first-line {
-  display: none; }
 
 h3::first-letter {
   font-size: 4rem; }
@@ -239,55 +265,56 @@ i.fa-calendar {
 
 #backlog-button,
 #implementation-button,
-#complete-button {
+#complete-button, article p #exit,
+article p #exit-api {
+  display: flex;
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
   #backlog-button:hover,
   #implementation-button:hover,
-  #complete-button:hover {
-    background-color: #4caf50;
-    color: white; }
-  #backlog-button:before,
-  #implementation-button:before,
-  #complete-button:before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f067";
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: #939597; }
+  #complete-button:hover, article p #exit:hover,
+  article p #exit-api:hover {
+    background-color: #4caf50; }
   #backlog-button:hover:before,
   #implementation-button:hover:before,
-  #complete-button:hover:before {
+  #complete-button:hover:before, article p #exit:hover:before,
+  article p #exit-api:hover:before {
     color: white; }
-  #backlog-button strong,
-  #implementation-button strong,
-  #complete-button strong {
+  #backlog-button strong, #implementation-button strong, #complete-button strong, article p #exit strong, article p #exit-api strong {
     display: none; }
 
-#exit {
-  transition-duration: 0.4s;
-  border-radius: 0.5rem;
-  font-size: 2rem;
-  padding: 0.9rem; }
-  #exit:hover {
-    background-color: #4caf50;
-    color: white; }
-    #exit:hover strong {
-      display: block; }
-  #exit:before {
+#backlog-button:before,
+#implementation-button:before,
+#complete-button:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f067";
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #939597; }
+
+#backlog-button:hover,
+#implementation-button:hover,
+#complete-button:hover {
+  background-color: #4caf50;
+  color: white; }
+  #backlog-button:hover strong,
+  #implementation-button:hover strong,
+  #complete-button:hover strong {
+    display: block; }
+
+article p #exit,
+article p #exit-api {
+  border: 1px solid #4caf50;
+  justify-content: flex-end; }
+  article p #exit:before,
+  article p #exit-api:before {
     font-family: "Font Awesome 5 Free";
     content: "\f00d";
     font-weight: 900;
-    font-size: 2.5rem;
-    color: #939597;
-    padding: 0.9rem;
-    width: 50%; }
-  #exit:hover:before {
-    color: white; }
-  #exit strong {
-    display: none; }
+    font-size: 2rem;
+    color: #939597; }
 
 #deleteTask {
   transition-duration: 0.4s;
@@ -393,52 +420,34 @@ i.fa-calendar {
   #absolutely:hover:before {
     color: white; }
 
-header ul > li strong {
-  display: none; }
+nav {
+  display: flex;
+  justify-content: flex-end; }
 
-header ul > li:hover strong {
-  display: block;
-  text-transform: capitalize; }
-
-header ul:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0c9";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: white; }
-
-header ul:hover:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f00d";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: gainsboro;
-  margin: 1rem; }
-
-header ul:hover > li:nth-of-type(1):before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f015";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: white;
-  margin: 1rem; }
-
-header ul li > button#mode {
+#mode {
   background-color: transparent; }
 
-header ul:hover > li > button:before {
+.icon-moon:hover:before {
+  color: #f5df4d; }
+
+.icon-moon:before {
   font-family: "Font Awesome 5 Free";
-  content: "\f0eb";
   font-weight: 900;
   font-size: 2.5rem;
   color: white;
-  margin: 1rem; }
+  margin: 1rem;
+  content: ""; }
 
-header ul > li:nth-of-type(1):hover:before {
-  color: #fd8b9e; }
-
-header ul > li > button:hover:before {
+.icon-sun:hover:before {
   color: #f5df4d; }
+
+.icon-sun:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: white;
+  margin: 1rem;
+  content: ""; }
 
 main {
   margin: 0rem 1rem 0rem 1rem;
@@ -492,7 +501,7 @@ header {
     flex-direction: row;
     padding: 1rem; }
     header nav h1 {
-      width: calc(70% - 1em); }
+      width: 100%; }
     header nav ul {
       padding: 0rem;
       width: calc(30%);
@@ -625,8 +634,12 @@ main {
   #modal-dialog article {
     padding: 50px;
     font-size: 20px;
-    background-color: pink;
-    flex-direction: column; }
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
   #modal-dialog form {
     max-width: 50%;
     background-color: pink; }

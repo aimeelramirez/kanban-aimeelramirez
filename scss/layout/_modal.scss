@@ -21,9 +21,15 @@ main {
   article {
     padding: 50px;
     font-size: 20px;
-    background-color: pink;
+    text-transform: capitalize;
+    // background-color: pink;
     flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: makelongshadow($grey-cards);
+    background-color: $white;
   }
+
   form {
     max-width: 50%;
     background-color: pink;

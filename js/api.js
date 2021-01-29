@@ -21,7 +21,8 @@ const url =
 const postUrl =
   "https://knowledgeable-inquisitive-tent.glitch.me/" + endPointPost + token
 
-//async and await FETCH GET DATA
+let getIcon = document.getElementById("mode")
+getIcon.className = "icon-sun" //async and await FETCH GET DATA
 const getDataAPI = async () => {
   await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -119,15 +120,17 @@ const onSuccess = async (dataRead) => {
 const postDataAPI = async (data, e) => {
   console.log("post")
   //create a modal or pop-up on nav
-  let getMain = document.querySelector("nav")
-  let createModal = document.createElement("article")
-  createModal.id = "message"
-  getMain.insertAdjacentElement("beforebegin", createModal)
-  let getModal = document.getElementById("message")
+  let getModal = document.getElementById("modal-dialog")
+  // let createModal = document.createElement("article")
+  // createModal.id = "message"
+  // getMain.insertAdjacentElement("beforebegin", createModal)
+  // let getModal = document.getElementById("message")
   getModal.innerHTML =
-    `<p> "Sent, please wait until being added! "</p></p>` +
-    JSON.stringify(data) +
-    `</p>`
+    // `<article><p> Sent, please wait until being added!</p><p>` +
+    // JSON.stringify(data) +
+    // `</p>
+    //  </article>
+    `<p class="spinner"><strong>spinner</strong></p>`
   let options = {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -269,43 +272,64 @@ const validateData = (e, i) => {
       elementsForm[2].value == "" &&
       elementsForm[3].value == ""
     ) {
-      setTimeout(() => {
-        getModalDialog.innerHTML = `<article>Please fill out all form inputs before submitting</article>`
-      }, 2000)
-      setTimeout(() => {
-        getModalDialog.innerHTML = ""
-      }, 3000)
-      return null
+      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+
+      // setTimeout(() => {
+      getModalDialog.innerHTML = `<article><p><button id="exit"  type="button"><strong>Exit</strong></button></p>Please fill out all form inputs before submitting</article>`
+      // }, 2000)
+      // setTimeout(() => {
+      //   getModalDialog.innerHTML = ""
+      // }, 3000)
+      getExitModal()
     } else if (elementsForm[1].value == "") {
+      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+
       let message = "error on: task title"
-      setTimeout(() => {
-        getModalDialog.innerHTML = `<article>` + message + `</article>`
-        console.log(message)
-      }, 2000)
-      setTimeout(() => {
-        getModalDialog.innerHTML = ""
-      }, 3000)
-      break
+      // setTimeout(() => {
+      getModalDialog.innerHTML =
+        `<article><p><button id="exit"  type="button"><strong>Exit</strong></button></p>` +
+        message +
+        `</article>`
+      getExitModal()
+
+      // }, 2000)
+      // // setTimeout(() => {
+      // //   getModalDialog.innerHTML = ""
+      // // }, 3000)
+      // break
     } else if (elementsForm[2].value == "") {
+      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+
       let message = "error on: task description"
-      window.setTimeout(() => {
-        getModalDialog.innerHTML = `<article>` + message + `</article>`
-        console.log(message)
-      }, 2000)
-      setTimeout(() => {
-        getModalDialog.innerHTML = ""
-      }, 3000)
-      break
+      // window.setTimeout(() => {
+      getModalDialog.innerHTML =
+        `<article><p><button id="exit" type="button"><strong>Exit</strong></button></p>` +
+        message +
+        `</article>`
+      getExitModal()
+      // console.log(message)
+      // }, 2000)
+      // setTimeout(() => {
+      //   getModalDialog.innerHTML = ""
+      // }, 3000)
+      // break
     } else if (elementsForm[3].value == "") {
+      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+
       let message = "error on: task date"
-      setTimeout(() => {
-        getModalDialog.innerHTML = `<article>` + message + `</article>`
-        console.log(message)
-      }, 2000)
-      setTimeout(() => {
-        getModalDialog.innerHTML = ""
-      }, 3000)
-      break
+      // setTimeout(() => {
+      getModalDialog.innerHTML =
+        `<article> <p><button id="exit"  type="button"><strong>Exit</strong></button></p>` +
+        message +
+        `</article>`
+      getExitModal()
+
+      //   console.log(message)
+      // }, 2000)
+      // setTimeout(() => {
+      //   getModalDialog.innerHTML = ""
+      // }, 3000)
+      // break
     }
   }
   if (valid == true) {
@@ -317,6 +341,20 @@ const validateData = (e, i) => {
     //idk might happen since if oddly it passes a true if false
     console.log("catch this error.")
   }
+}
+const getExitModal = () => {
+  let getButtonExit = document.getElementById("exit")
+  let closeForm = (e) => {
+    e.preventDefault()
+    let x = document.getElementById("modal-dialog")
+    let getConfirm = document.getElementById("confirmation")
+    if (getConfirm != null) {
+      getConfirm.innerHTML = ""
+    }
+    x.innerHTML = ""
+  }
+
+  getButtonExit.addEventListener("click", closeForm)
 }
 //GET COLUMNS
 const sendData = (e) => {
@@ -388,10 +426,10 @@ const createForms = () => {
   //reset id
   getArticleTask.id = ""
 }
-let editData = () => {
-  // getArticleTask.id = "new"
-  //reset id
-}
+// let editData = () => {
+//   // getArticleTask.id = "new"
+//   //reset id
+// }
 
 //post data
 ///idk why it wants me to write it this way but it worked after just setting the click on loop
@@ -412,6 +450,8 @@ let count = 0
 document.getElementById("mode").addEventListener("click", (e) => {
   e.preventDefault()
   let element = document.body
+  let getIcon = document.getElementById("mode")
+
   if (count < 1) {
     localStorage.removeItem("mode")
     element.style.backgroundColor = "white"
@@ -419,6 +459,7 @@ document.getElementById("mode").addEventListener("click", (e) => {
     localStorage.getItem("mode")
     count += 1
     console.log("light mode: " + count)
+    getIcon.className = "icon-sun"
   } else if (count == 1) {
     localStorage.removeItem("mode")
     element.style.backgroundColor = "black"
@@ -426,7 +467,7 @@ document.getElementById("mode").addEventListener("click", (e) => {
     localStorage.getItem("mode")
     count = 0
     console.log("dark mode: " + count)
+    getIcon.className = "icon-moon"
   }
 })
-
 //edit data (optional)

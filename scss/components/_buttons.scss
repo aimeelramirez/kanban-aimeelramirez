@@ -30,18 +30,27 @@ i.fa-calendar {
 //   flex-direction: row-reverse;
 // }
 
-#backlog-button,
-#implementation-button,
-#complete-button {
+%toolbelt {
+  display: flex;
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem;
-
   &:hover {
     background-color: $button-hovercolor;
+  }
+  &:hover:before {
     color: $white;
   }
+  strong {
+    display: none;
+  }
+}
+
+#backlog-button,
+#implementation-button,
+#complete-button {
+  @extend %toolbelt;
   &:before {
     font-family: "Font Awesome 5 Free";
     content: "\f067";
@@ -49,19 +58,6 @@ i.fa-calendar {
     font-size: 2.5rem;
     color: $ultimate-gray;
   }
-  &:hover:before {
-    color: $white;
-  }
-  strong {
-    display: none;
-  }
-}
-#exit {
-  transition-duration: 0.4s;
-  border-radius: 0.5rem;
-  font-size: 2rem;
-  padding: 0.9rem;
-
   &:hover {
     background-color: $button-hovercolor;
     color: $white;
@@ -69,22 +65,37 @@ i.fa-calendar {
       display: block;
     }
   }
-  &:before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f00d";
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: $ultimate-gray;
-    padding: 0.9rem;
-    width: 50%;
-  }
-  &:hover:before {
-    color: $white;
-  }
-  strong {
-    display: none;
+}
+article {
+  p {
+    #exit,
+    #exit-api {
+      @extend %toolbelt;
+      border: 1px solid $button-hovercolor;
+      // width: 6rem;
+      &:before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f00d";
+        font-weight: 900;
+        font-size: 2rem;
+        color: $ultimate-gray;
+        // padding: 0.9rem;
+      }
+
+      justify-content: flex-end;
+    }
   }
 }
+// $icons: ("eye": "\f112", "start": "\f12e", "stop": "\f12f");
+
+// @each $name, $glyph in $icons {
+//   .icon-#{$name}:before {
+//     display: inline-block;
+//     font-family: "Icon Font";
+//     content: $glyph;
+//   }
+// }
+
 #deleteTask {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
