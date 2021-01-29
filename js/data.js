@@ -120,7 +120,7 @@ const getDeleteTask = (dataRead) => {
       item: dataRead[key],
     })
   }
-  console.log(dataArray)
+  // console.log(dataArray)
   // return deleteDataId(dataArray)
 
   // for (let f = 0; f < dataArray.length; f++) {
@@ -155,15 +155,15 @@ const getDeleteTask = (dataRead) => {
   //     description: dataRead[key].description,
   //   })
   // }
-  dataRead.forEach((ele, index) => {
-    //get to match the task to the query click
-    //console.log("ele: " + JSON.stringify(ele))
-    element = ele
-    console.log(element)
+  // dataRead.forEach((ele, index) => {
+  //   //get to match the task to the query click
+  //   //console.log("ele: " + JSON.stringify(ele))
+  //   element = ele
+  //   console.log(element)
 
-    //queryArticles[index] = document.querySelector("article")
-    // console.log("class:" + JSON.parse(queryArticles[index].innerHTML))
-  })
+  //   //queryArticles[index] = document.querySelector("article")
+  //   // console.log("class:" + JSON.parse(queryArticles[index].innerHTML))
+  // })
 
   // le
 
@@ -189,7 +189,7 @@ const getDeleteTask = (dataRead) => {
         let getArticleClick = (e) => {
           e.preventDefault()
           getIndex = e.path[1].id
-          console.log(getIndex + ": " + e.path[1])
+          // console.log(getIndex + ": " + e.path[1])
 
           // if (getIndex > dataRead.length) {
           //   getIndex = dataRead.length
@@ -207,8 +207,8 @@ const getDeleteTask = (dataRead) => {
             createModal.id = "message"
             let x = document.getElementById("modal-dialog")
             if (getId.id == dataArray[k].item.id) {
-              console.log(dataArray[k].item.id)
-              console.log(x.style.display)
+              // console.log(dataArray[k].item.id)
+              // console.log(x.style.display)
               if (x.style.display == "none") {
                 x.style.display = "flex"
                 x.innerHTML =
@@ -220,33 +220,33 @@ const getDeleteTask = (dataRead) => {
                   `<span id="wrapper"><button id="submitEdit" type="button"><strong>submit</strong></button> <button id="deleteTask" type="button"><strong>delete</strong></button></span></form></article>`
 
                 let getForm = document.getElementById("editFormPut")
-                console.log(getForm)
+                // console.log(getForm)
 
                 let getFormElements = getForm.elements
                 let dataReading = dataRead[getIndex - 1]
-                console.log("elements:" + getFormElements["newTitle"].value)
+                // console.log("elements:" + getFormElements["newTitle"].value)
                 getFormElements[0].value = dataArray[k].item.title
                 getFormElements[1].value = dataArray[k].item.description
                 getFormElements[2].value = dataArray[k].item.dueDate
                 let stringID = JSON.stringify(dataArray[k].item.listId)
                 idUpdate = parseInt(stringID)
-                console.log(idUpdate)
+                // console.log(idUpdate)
                 let parseData = {
                   title: getFormElements[0].value,
                   description: getFormElements[1].value,
                   dueDate: getFormElements[2].value,
                   listId: idUpdate,
                 }
-                console.log(parseData)
+                // console.log(parseData)
                 let getSpanEdit = document.querySelector("span")
                 let getSubmitEdit = getSpanEdit.querySelector("#submitEdit")
                 getSubmitEdit.addEventListener("click", () => {
                   let getFormElements = getForm.elements
-                  console.log(getFormElements)
-                  console.log("elements 0:" + getFormElements["newTitle"].value)
-                  console.log(
-                    "elements 1:" + getFormElements["newDescription"].value,
-                  )
+                  // console.log(getFormElements)
+                  // console.log("elements 0:" + getFormElements["newTitle"].value)
+                  // console.log(
+                  //   "elements 1:" + getFormElements["newDescription"].value,
+                  // )
 
                   getFormElements[0].value = getFormElements["newTitle"].value
                   getFormElements[1].value =
@@ -261,7 +261,7 @@ const getDeleteTask = (dataRead) => {
                     dueDate: getFormElements[2].value,
                     listId: idUpdate,
                   }
-                  console.log(parseDataAgain)
+                  // console.log(parseDataAgain)
                   return putDataAPI(parseDataAgain, getIndex)
                 })
                 let getButtonDelete = getSpanEdit.querySelector("#deleteTask")
@@ -285,7 +285,7 @@ const getDeleteTask = (dataRead) => {
           let getConfirm = document.getElementById("confirmation")
           //  console.log(e.path[2][0])
           let getForm = document.getElementById("editFormPut")
-          console.log(getForm)
+          //console.log(getForm)
           let dataFind = e.path
           for (let g = 0; g < dataArray.length; g++) {
             //console.log(dataFind)
@@ -307,7 +307,7 @@ const getDeleteTask = (dataRead) => {
                 e.preventDefault()
                 if (e.target.id == "absolutely") {
                   //check event
-                  console.log("this is clicked", dataArray[g])
+                  // console.log("this is clicked", dataArray[g])
                   getConfirm.innerHTML = ""
                   return deleteDataAPI(dataArray[g].item)
                 } else {

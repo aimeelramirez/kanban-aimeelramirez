@@ -22,7 +22,7 @@ const postUrl =
   "https://knowledgeable-inquisitive-tent.glitch.me/" + endPointPost + token
 
 let getIcon = document.getElementById("mode")
-getIcon.className = "icon-sun" //async and await FETCH GET DATA
+getIcon.className = "icon-moon" //async and await FETCH GET DATA
 const getDataAPI = async () => {
   await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -447,27 +447,60 @@ document.addEventListener("click", function () {
 
 //dark mode or light mode
 let count = 0
-document.getElementById("mode").addEventListener("click", (e) => {
+
+let getIconMode = document.getElementById("mode")
+
+getIcon.style.color = "white"
+localStorage.setItem("mode-icon", getIconMode.style.color)
+
+getIconMode.addEventListener("click", (e) => {
   e.preventDefault()
   let element = document.body
-  let getIcon = document.getElementById("mode")
+  let elementNav = document.querySelector("header")
+  console.log(element)
+  getIconMode = document.getElementById("mode")
+  let elementH1 = document.querySelector("h1")
+  elementH1.style.color = "black"
+  localStorage.setItem("mode-icon", getIconMode.style.color)
 
   if (count < 1) {
-    localStorage.removeItem("mode")
-    element.style.backgroundColor = "white"
-    localStorage.setItem("mode", element.style.backgroundColor)
-    localStorage.getItem("mode")
-    count += 1
-    console.log("light mode: " + count)
-    getIcon.className = "icon-sun"
-  } else if (count == 1) {
-    localStorage.removeItem("mode")
+    localStorage.removeItem("mode-icon")
+    //element.style.backgroundColor = "black"
+
+    elementNav.style.backgroundColor = "grey"
+    elementNav.style.color = "black"
+    elementH1.style.color = "white"
+    localStorage.setItem("mode-h1", elementH1.style.color)
     element.style.backgroundColor = "black"
     localStorage.setItem("mode", element.style.backgroundColor)
-    localStorage.getItem("mode")
-    count = 0
+    localStorage.setItem("mode-header", elementNav.style.cssText)
+
+    count += 1
+
     console.log("dark mode: " + count)
-    getIcon.className = "icon-moon"
+    getIconMode.className = "icon-sun"
+  } else if (count == 1) {
+    // localStorage.getItem("mode")
+    // localStorage.getItem("mode-header")
+    // localStorage.removeItem("mode-header")
+    // localStorage.removeItem("mode")
+
+    // elementNav.style.backgroundColor = "#26A8F9"
+    // element.style.backgroundColor = "white"
+    element.style.cssText = ``
+    elementNav.style.cssText = ``
+    elementH1.style.cssText = ``
+    // elementNav.style.backgroundColor = "grey"
+    //localStorage.setItem("mode", element.style.backgroundColor)
+    // localStorage.setItem("mode-header", elementNav.style.backgroundColor)
+
+    //localStorage.getItem("mode")
+    //localStorage.getItem("mode-header")
+    localStorage.clear()
+    count = 0
+
+    console.log("light mode: " + count)
+    getIconMode.className = "icon-moon"
   }
 })
 //edit data (optional)
