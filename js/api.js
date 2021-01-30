@@ -425,6 +425,7 @@ const createForms = () => {
   createForm.insertAdjacentElement("beforeend", createDate)
   //reset id
   getArticleTask.id = ""
+  getArticleTask.className = "articleDarkMode"
 }
 // let editData = () => {
 //   // getArticleTask.id = "new"
@@ -459,6 +460,9 @@ getIconMode.addEventListener("click", (e) => {
   let elementNav = document.querySelector("header")
   console.log(element)
   getIconMode = document.getElementById("mode")
+  let elementSection = document.querySelectorAll("section")
+  let elementArticle = document.querySelectorAll("article")
+
   let elementH1 = document.querySelector("h1")
   elementH1.style.color = "black"
   localStorage.setItem("mode-icon", getIconMode.style.color)
@@ -466,12 +470,24 @@ getIconMode.addEventListener("click", (e) => {
   if (count < 1) {
     localStorage.removeItem("mode-icon")
     //element.style.backgroundColor = "black"
-
     elementNav.style.backgroundColor = "grey"
+    element.style.backgroundColor = "black"
     elementNav.style.color = "black"
     elementH1.style.color = "white"
+
+    for (let i = 1; i < elementSection.length; i++) {
+      elementSection[i].style.backgroundColor = "#1e2326"
+      let elementH2 = elementSection[i].querySelectorAll("h2")
+      elementH2.forEach((item) => {
+        item.style.color = "white"
+      })
+      localStorage.setItem(
+        "mode-section",
+        elementSection[i].style.backgroundColor,
+      )
+    }
+
     localStorage.setItem("mode-h1", elementH1.style.color)
-    element.style.backgroundColor = "black"
     localStorage.setItem("mode", element.style.backgroundColor)
     localStorage.setItem("mode-header", elementNav.style.cssText)
 
@@ -490,6 +506,20 @@ getIconMode.addEventListener("click", (e) => {
     element.style.cssText = ``
     elementNav.style.cssText = ``
     elementH1.style.cssText = ``
+
+    for (let i = 1; i < elementSection.length; i++) {
+      elementSection[i].style.cssText = ""
+      let elementH2 = elementSection[i].querySelectorAll("h2")
+      elementH2.forEach((item) => {
+        item.style.color = ""
+      })
+    }
+    elementArticle.forEach((item, key) => {
+      if (item.id != "") {
+        item.style.backgroundColor = ""
+      }
+    })
+
     // elementNav.style.backgroundColor = "grey"
     //localStorage.setItem("mode", element.style.backgroundColor)
     // localStorage.setItem("mode-header", elementNav.style.backgroundColor)

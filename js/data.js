@@ -177,15 +177,15 @@ const getDeleteTask = (dataRead) => {
       let idEdit = parseInt(queryArticles[i].id)
       //  console.log("id:" + idEdit + ": " + i)
       if (queryArticles[i].id === compareId) {
-        let logMouseOver = () => {
-          queryArticles[i].style.cssText =
-            "color: purple; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
-          // console.log("loading complete... now you can select to delete")
-        }
+        // let logMouseOver = () => {
+        //   queryArticles[i].style.cssText =
+        //     "color: purple; transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
+        //   // console.log("loading complete... now you can select to delete")
+        // }
         //mouseOut
-        let logMouseOut = () => {
-          queryArticles[i].style.cssText = "width:100%; color:black;"
-        }
+        // let logMouseOut = () => {
+        //   queryArticles[i].style.cssText = "width:100%; color:black;"
+        // }
         let getArticleClick = (e) => {
           e.preventDefault()
           getIndex = e.path[1].id
@@ -343,8 +343,8 @@ const getDeleteTask = (dataRead) => {
 
         // queryArticles[i].onclick = getClickTask
 
-        queryArticles[i].onmouseover = logMouseOver
-        queryArticles[i].onmouseout = logMouseOut
+        // queryArticles[i].onmouseover = logMouseOver
+        // queryArticles[i].onmouseout = logMouseOut
         //break
       }
     }

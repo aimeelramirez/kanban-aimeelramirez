@@ -614,10 +614,6 @@ footer {
 main {
   z-index: 0; }
 
-.dark-mode {
-  background-color: black;
-  color: white; }
-
 #modal {
   display: none; }
 
