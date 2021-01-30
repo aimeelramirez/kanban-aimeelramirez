@@ -448,7 +448,6 @@ document.addEventListener("click", function () {
 
 //dark mode or light mode
 let count = 0
-
 let getIconMode = document.getElementById("mode")
 
 getIcon.style.color = "white"
