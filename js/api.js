@@ -6,6 +6,7 @@ let dbData = []
 let data = ""
 let queryCheck = false
 let itemsList = ""
+let parseData = ""
 //create a readable stream
 const token = "5b1064585f4ab8706d275f90"
 const endPoint = "api/lists?accessToken="
@@ -23,11 +24,21 @@ const postUrl =
 
 let getIcon = document.getElementById("mode")
 getIcon.className = "icon-moon" //async and await FETCH GET DATA
+
+document.onreadystatechange = () => {
+  if (document.readyState !== "complete") {
+    document.querySelector("body").style.visibility = "hidden"
+    document.querySelector("#spinner").style.visibility = "visible"
+  } else {
+    document.querySelector("#spinner").style.display = "none"
+    document.querySelector("body").style.visibility = "visible"
+  }
+}
 const getDataAPI = async () => {
   await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   }).then((data) => {
-    let parseData = data.json()
+    parseData = data.json()
     console.log(parseData)
     parseData
       .then((result) => {
@@ -42,8 +53,11 @@ const getDataAPI = async () => {
         // console.log(dataParse)
         console.log(data)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        console.error(err)
+      })
   })
+
   await fetch(postUrl, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   })
@@ -130,7 +144,7 @@ const postDataAPI = async (data, e) => {
     // JSON.stringify(data) +
     // `</p>
     //  </article>
-    `<p class="spinner"><strong>spinner</strong></p>`
+    `<p id="spinner"><strong>spinner</strong></p>`
   let options = {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -209,8 +223,14 @@ const deleteDataAPI = async (data) => {
   let getModalDialog = document.getElementById("modal-dialog")
   getModalDialog.style.display = "flex"
   // let getModal = document.getElementById("message")
+  let getReadData = JSON.stringify(data)
+  console.log(getReadData)
   getModalDialog.innerHTML =
-    `<article><p> "Deleted! "</p></p>` + JSON.stringify(data) + `</p></article>`
+    `<article id="deletedModal"><h2> Deleted! </h2><br/><p> Title:` +
+    data.title +
+    `</p><p> Description: ` +
+    data.description +
+    `</p></article>`
   let options = {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -221,7 +241,6 @@ const deleteDataAPI = async (data) => {
   await fetch(deleteUrl, options)
     .then((dataSent) => {
       console.log(dataSent)
-
       // i need to reload the form OR get a modal
       let onReload = (e) => {
         window.setTimeout(() => {
@@ -243,36 +262,42 @@ const validateData = (e, i) => {
   let newData = ""
   //boolean to check to send post
   let valid = false
-  let elementsForm = document.forms["newerTask"]
+  // let elementsForm = document.forms["newerTask"]
+  let getArticleDarkMode = document.getElementsByClassName("articleDarkMode")
+  let elementsForm = getArticleDarkMode[0].childNodes[0].elements
+
+  console.log(elementsForm)
+
   //create a modal or pop-up on nav
   let getModalDialog = document.getElementById("modal-dialog")
   getModalDialog.style.display = "flex"
   //let createModal = document.createElement("article")
   // getModalDialog.insertAdjacentElement("afterend", createModal)
 
-  console.log(getModalDialog)
+  console.log(elementsForm)
   for (let key in elementsForm) {
+    //  console.log(key)
+
     if (key <= 3) {
-      console.log(elementsForm[key])
       if (
+        elementsForm[0].value != "" &&
         elementsForm[1].value != "" &&
-        elementsForm[2].value != "" &&
-        elementsForm[3].value != ""
+        elementsForm[2].value != ""
       ) {
         newData = {
-          title: elementsForm[1].value,
-          description: elementsForm[2].value,
-          dueDate: elementsForm[3].value,
+          title: elementsForm[0].value,
+          description: elementsForm[1].value,
+          dueDate: elementsForm[2].value,
           listId: i,
         }
         valid = true
       }
     } else if (
+      elementsForm[0].value == "" &&
       elementsForm[1].value == "" &&
-      elementsForm[2].value == "" &&
-      elementsForm[3].value == ""
+      elementsForm[2].value == ""
     ) {
-      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+      getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
 
       // setTimeout(() => {
       getModalDialog.innerHTML = `<article><p><button id="exit"  type="button"><strong>Exit</strong></button></p>Please fill out all form inputs before submitting</article>`
@@ -281,8 +306,8 @@ const validateData = (e, i) => {
       //   getModalDialog.innerHTML = ""
       // }, 3000)
       getExitModal()
-    } else if (elementsForm[1].value == "") {
-      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+    } else if (elementsForm[0].value == "") {
+      getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
 
       let message = "error on: task title"
       // setTimeout(() => {
@@ -297,8 +322,8 @@ const validateData = (e, i) => {
       // //   getModalDialog.innerHTML = ""
       // // }, 3000)
       // break
-    } else if (elementsForm[2].value == "") {
-      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+    } else if (elementsForm[1].value == "") {
+      getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
 
       let message = "error on: task description"
       // window.setTimeout(() => {
@@ -313,8 +338,8 @@ const validateData = (e, i) => {
       //   getModalDialog.innerHTML = ""
       // }, 3000)
       // break
-    } else if (elementsForm[3].value == "") {
-      getModalDialog.innerHTML = `<p class="spinner"><strong>spinner</strong></p>`
+    } else if (elementsForm[2].value == "") {
+      getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
 
       let message = "error on: task date"
       // setTimeout(() => {
@@ -353,7 +378,6 @@ const getExitModal = () => {
     }
     x.innerHTML = ""
   }
-
   getButtonExit.addEventListener("click", closeForm)
 }
 //GET COLUMNS
@@ -392,8 +416,9 @@ const sendData = (e) => {
 //CREATE form modal
 //create a new task note
 const createTaskCard = (name) => {
-  console.log(name)
+  // console.log(name)
   let getArticleTask = document.getElementById(name).querySelector("article")
+  // console.log("article : " + getArticleTask)
   let articleTask = document.createElement("article")
   articleTask.id = "new"
   getArticleTask.insertAdjacentElement("afterend", articleTask)
@@ -419,7 +444,7 @@ const createForms = () => {
   let createSubmitTask = document.createElement("button")
   createSubmitTask.id = "taskSent"
 
-  createForm.insertAdjacentElement("beforeend", createSubmitTask)
+  createForm.insertAdjacentElement("afterend", createSubmitTask)
   createForm.insertAdjacentElement("beforeend", createTitle)
   createForm.insertAdjacentElement("beforeend", createDescription)
   createForm.insertAdjacentElement("beforeend", createDate)

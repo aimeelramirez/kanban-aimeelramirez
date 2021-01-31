@@ -206,6 +206,7 @@ const getDeleteTask = (dataRead) => {
             let createModal = document.createElement("article")
             createModal.id = "message"
             let x = document.getElementById("modal-dialog")
+            // x.className = "dialogOverlay"
             if (getId.id == dataArray[k].item.id) {
               // console.log(dataArray[k].item.id)
               // console.log(x.style.display)

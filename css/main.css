@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap");
-.spinner {
+#spinner {
   height: 100vh;
   opacity: 1;
   z-index: 1;
@@ -10,7 +10,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 50rem; }
-  .spinner:before {
+  #spinner:before {
     position: center;
     animation: 2s linear infinite spinGesture;
     left: 50%;
@@ -18,7 +18,7 @@
     position: absolute;
     top: 50%; }
 
-.spinner:before {
+#spinner:before {
   font-family: "Font Awesome 5 Free";
   content: "\f110";
   font-weight: 900;
@@ -306,8 +306,7 @@ article p #exit-api {
 
 article p #exit,
 article p #exit-api {
-  border: 1px solid #4caf50;
-  justify-content: flex-end; }
+  border: 1px solid #4caf50; }
   article p #exit:before,
   article p #exit-api:before {
     font-family: "Font Awesome 5 Free";
@@ -456,7 +455,9 @@ main {
   @media (min-width: 0px) and (max-width: 299px) {
     main {
       font-size: 0.3rem;
-      flex-direction: column; } }
+      flex-direction: column; }
+      main input {
+        flex-wrap: flex-end; } }
   @media (min-width: 300px) and (max-width: 599px) {
     main {
       font-size: 0.3rem;
@@ -465,7 +466,10 @@ main {
         font-family: "EB Garamond", serif;
         font-size: 2rem; }
       main h3 {
-        font-size: 1.5rem; } }
+        font-size: 1.5rem; }
+      main input {
+        flex-wrap: flex-end;
+        font-size: small; } }
   @media (min-width: 600px) and (max-width: 799px) {
     main {
       flex-direction: row; }
@@ -473,10 +477,15 @@ main {
         font-family: "EB Garamond", serif;
         font-size: 2.5rem; }
       main h3 {
-        font-size: 2rem; } }
+        font-size: 2rem; }
+      main input {
+        flex-wrap: flex-end;
+        font-size: small; } }
   @media (min-width: 800px) {
     main {
-      flex-direction: row; } }
+      flex-direction: row; }
+      main input {
+        flex-wrap: flex-end; } }
 
 section h2 {
   display: flex;
@@ -490,13 +499,12 @@ section#backlog {
   flex-direction: column; }
 
 header {
-  width: 100%;
+  margin-bottom: 1.25rem;
   background: #26a8f9;
   box-shadow: 0 8px 6px -6px black;
   padding: 1rem; }
   header nav {
     display: flex;
-    flex-direction: row;
     padding: 1rem; }
     header nav h1 {
       width: 100%; }
@@ -516,7 +524,6 @@ nav.article-menu {
     justify-content: flex-end; }
     nav.article-menu ul li {
       margin: 0 auto;
-      margin-right: 0.4rem;
       border-radius: 1rem 1rem 0rem 0rem;
       background-color: white;
       max-width: 40rem;
@@ -540,8 +547,8 @@ nav.article-menu {
 section {
   background-color: gainsboro;
   border-radius: 1rem;
-  padding: 1rem;
-  margin: 1rem; }
+  padding: 0.25rem;
+  margin: 0.25rem; }
   section article:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
@@ -559,12 +566,16 @@ section {
     section article:not(:nth-of-type(1)) h3 {
       padding: 1rem; }
     section article:not(:nth-of-type(1)) p {
+      text-align: left;
       border-bottom: 1px solid #c1c1c1; }
-  section p:nth-last-of-type(1) {
+  section article form {
     display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0; }
+    padding: 0;
+    margin: 0rem 0rem 0rem 5rem; }
+    section article form input {
+      flex-wrap: flex-end; }
+  section p:nth-last-of-type(1) {
+    display: flex; }
     section p:nth-last-of-type(1) #newTask input[type="date"] {
       position: relative;
       padding: 10px;
@@ -584,6 +595,8 @@ section {
       position: absolute;
       top: 1.1rem;
       right: 1.5rem; }
+    section p:nth-last-of-type(1) input {
+      background-color: white; }
     section p:nth-last-of-type(1) input[type="date"] {
       position: relative;
       padding: 10px;
@@ -602,7 +615,7 @@ section {
       height: 20px;
       position: absolute;
       top: 1.1rem;
-      right: 1.5rem; }
+      right: 2.5rem; }
   section label {
     color: transparent; }
 
@@ -614,10 +627,36 @@ footer {
 main {
   z-index: 0; }
 
+#editDialog {
+  display: flex;
+  flex-direction: column; }
+  #editDialog p:nth-of-type(1) {
+    justify-content: flex-end; }
+  #editDialog #wrapper {
+    width: 100%; }
+
+#editFormPut {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem; }
+  #editFormPut input {
+    border-bottom: 1px solid #282828;
+    margin: 0.25rem;
+    height: 100%; }
+  #editFormPut textarea {
+    margin: 0.25rem;
+    padding: 1rem;
+    height: 100%;
+    max-height: max-content;
+    border-bottom: 1px solid #282828; }
+  #editFormPut p {
+    white-space: break-spaces;
+    outline: 1px solid red; }
+
 #modal {
   display: none; }
 
-#modal-dialog {
+#deletedModal {
   background-color: transparent;
   z-index: 1;
   position: absolute;
@@ -625,7 +664,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 30rem; }
-  #modal-dialog article {
+  #deletedModal article {
     padding: 50px;
     font-size: 20px;
     text-transform: capitalize;
@@ -634,9 +673,31 @@ main {
     max-width: 40rem;
     box-shadow: 0 8px 6px -6px black;
     background-color: white; }
-  #modal-dialog form {
-    max-width: 50%;
-    background-color: pink; }
-  #modal-dialog input[type="date"] {
-    max-width: 100%;
-    font-size: 1.5rem; }
+    #deletedModal article p {
+      text-align: center; }
+
+#modal-dialog {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem; }
+  #modal-dialog article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+
+.articleDarkMode {
+  display: flex; }
+  .articleDarkMode form {
+    flex-direction: column; }
+    .articleDarkMode form > button {
+      outline: 1px solid red;
+      width: 25%;
+      justify-content: flex-end; }

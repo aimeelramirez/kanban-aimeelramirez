@@ -9,6 +9,10 @@ main {
     // justify-content: space-around;
     flex-direction: column;
     // outline: 1px dashed blue;
+    input {
+      // outline: 1px solid pink;
+      flex-wrap: flex-end;
+    }
   }
   @include atMediaWidth(small) {
     font-size: 0.3rem;
@@ -21,6 +25,11 @@ main {
     h3 {
       font-size: 1.5rem;
     }
+    input {
+      // outline: 1px solid purple;
+      flex-wrap: flex-end;
+      font-size: small;
+    }
   }
   @include atMediaWidth(medium) {
     // outline: 1px solid green;
@@ -32,9 +41,18 @@ main {
     h3 {
       font-size: 2rem;
     }
+    input {
+      // outline: 1px solid pink;
+      flex-wrap: flex-end;
+      font-size: small;
+    }
   }
   @include atMediaWidth(large) {
     // outline: 1px solid purple;
     flex-direction: row;
+    input {
+      // outline: 1px solid pink;
+      flex-wrap: flex-end;
+    }
   }
 }

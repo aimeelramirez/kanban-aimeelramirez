@@ -1,13 +1,15 @@
 //Navigation menu banner
 header {
-  width: 100%;
+  // width: 100%;
+  // max-width: 100rem;
+  margin-bottom: 1.25rem;
   background: $lite-blue;
   box-shadow: makelongshadow($shadow);
   padding: 1rem;
 
   nav {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     // margin: auto 0;
     padding: 1rem;
     h1 {
@@ -36,7 +38,7 @@ nav.article-menu {
     // text-align: right;
     li {
       margin: 0 auto;
-      margin-right: 0.4rem;
+      //   margin-right: 0.4rem;
       border-radius: 1rem 1rem 0rem 0rem;
       background-color: $white;
       max-width: 40rem;
