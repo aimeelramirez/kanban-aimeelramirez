@@ -240,22 +240,33 @@ const validateData = (e, i) => {
   //create a modal or pop-up on nav
   let getModalDialog = document.getElementById("modal-dialog")
   getModalDialog.style.display = "flex"
+  let dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/
+  let getCheck = elementsForm[2].value.match(dateReg)
   // console.log(elementsForm)
   for (let key in elementsForm) {
     if (key <= 3) {
-      if (
-        elementsForm[0].value != "" &&
-        elementsForm[1].value != "" &&
-        elementsForm[2].value != ""
-      ) {
-        newData = {
-          title: elementsForm[0].value,
-          description: elementsForm[1].value,
-          dueDate: elementsForm[2].value,
-          listId: i,
-        }
-        valid = true
+      if (elementsForm[2].value != "" && !getCheck) {
+        getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
+        let message = "error on: task date"
+        getModalDialog.innerHTML =
+          `<article> <p><button id="exit"  type="button"><strong>Exit</strong></button></p>` +
+          message +
+          `</article>`
+        getExitModal()
       }
+    } else if (
+      elementsForm[0].value != "" &&
+      elementsForm[1].value != "" &&
+      elementsForm[2].value != "" &&
+      getCheck
+    ) {
+      newData = {
+        title: elementsForm[0].value,
+        description: elementsForm[1].value,
+        dueDate: elementsForm[2].value,
+        listId: i,
+      }
+      valid = true
     } else if (
       elementsForm[0].value == "" &&
       elementsForm[1].value == "" &&
@@ -371,6 +382,7 @@ const createForms = () => {
   createDescription.placeholder = "Task description here"
   let createDate = document.createElement("input")
   createDate.type = "date"
+  createDate.placeholder = "2021-01-31"
   createDate.setAttribute("required", "")
 
   let createSubmitTask = document.createElement("button")

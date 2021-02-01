@@ -27,7 +27,7 @@ section {
     }
     p {
       text-align: left;
-      border-bottom: 1px solid makeborder($grey-cards);
+      border-bottom: 1px solid $grey;
     }
   }
   article {
@@ -36,8 +36,10 @@ section {
       padding: 0;
       margin: 0rem 0rem 0rem 5rem;
       input {
-        // outline: 1px solid green;
         flex-wrap: flex-end;
+        padding: 0rem;
+        margin: 0rem;
+        border-bottom: 1px solid $dark-grey;
       }
     }
   }
@@ -70,6 +72,7 @@ section {
     }
     input {
       background-color: $white;
+      border: 1px solid black;
     }
     input[type="date"] {
       position: relative;

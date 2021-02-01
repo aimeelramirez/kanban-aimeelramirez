@@ -123,7 +123,7 @@ const getDeleteTask = (dataRead) => {
   let compareId = {}
   let idUpdate = 0
   let getIndex = 0
-
+  let getId = 0
   queryArticles = document.querySelectorAll("article")
   for (let i = 0; i < queryArticles.length; i++) {
     if (queryArticles[i].querySelector("span") != null) {
@@ -131,14 +131,19 @@ const getDeleteTask = (dataRead) => {
       if (queryArticles[i].id === compareId) {
         let getArticleClick = (e) => {
           e.preventDefault()
-          getIndex = e.path[1].id
+          // console.log(e.target.id)
+          const words = e.target.id.split("editTask-")
+          console.log(words[1])
+
+          getIndex = parseInt(words[1])
           for (let k = 0; k < dataArray.length; k++) {
             //get ids
-            let getId = e.path[1]
+            //  let getId = e.path[1]
+            getId = parseInt(words[1])
             let createModal = document.createElement("article")
             createModal.id = "message"
             let x = document.getElementById("modal-dialog")
-            if (getId.id == dataArray[k].item.id) {
+            if (getId == dataArray[k].item.id) {
               if (x.style.display == "none") {
                 x.style.display = "flex"
                 x.innerHTML =

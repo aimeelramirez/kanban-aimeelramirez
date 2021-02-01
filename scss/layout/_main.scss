@@ -9,6 +9,9 @@ main {
     flex-direction: column;
     input {
       flex-wrap: flex-end;
+      border-bottom: 1px solid $dark-grey;
+
+      // border: 1px solid red;
     }
   }
   @include atMediaWidth(small) {
