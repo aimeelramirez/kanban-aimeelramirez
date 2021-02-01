@@ -1,6 +1,5 @@
 //api calls
 "use strict"
-//let dataRead = ""
 
 let dbData = []
 let data = ""
@@ -23,8 +22,8 @@ const postUrl =
   "https://knowledgeable-inquisitive-tent.glitch.me/" + endPointPost + token
 
 let getIcon = document.getElementById("mode")
-getIcon.className = "icon-moon" //async and await FETCH GET DATA
-
+getIcon.className = "icon-moon"
+//onload spinner
 document.onreadystatechange = () => {
   if (document.readyState !== "complete") {
     document.querySelector("body").style.visibility = "hidden"
@@ -34,15 +33,16 @@ document.onreadystatechange = () => {
     document.querySelector("body").style.visibility = "visible"
   }
 }
+//async and await FETCH GET DATA
 const getDataAPI = async () => {
   await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   }).then((data) => {
     parseData = data.json()
-    console.log(parseData)
+    // console.log(parseData)
     parseData
       .then((result) => {
-        console.log(result)
+        //console.log(result)
         //load on page
         onSuccess(result)
         //get data
@@ -50,8 +50,7 @@ const getDataAPI = async () => {
         data = dbData[0]
         //empty array
         dbData = []
-        // console.log(dataParse)
-        console.log(data)
+        // console.log(data)
       })
       .catch((err) => {
         console.error(err)
@@ -64,9 +63,6 @@ const getDataAPI = async () => {
     .then((data) => {
       let parseData = ""
       parseData = data.json()
-      //  parseData = itemsList
-      //delete data (optional)
-
       getDeleteReadAPI(parseData)
     })
     .catch((error) => {
@@ -79,12 +75,9 @@ const getDataAPI = async () => {
 getDataAPI()
 
 const getDeleteReadAPI = (parseData) => {
-  console.log("parse: " + parseData)
+  //console.log("parse: " + parseData)
   parseData
     .then((item) => {
-      // console.log("item: " + JSON.stringify(item))
-      console.log(queryCheck)
-
       if (queryCheck == true) {
         getDeleteTask(item)
       }
@@ -100,27 +93,16 @@ const onSuccess = async (dataRead) => {
   if (dataRead != "") {
     //get the titles from api
     let sections = document.querySelectorAll("section")
-    // let queryTitles = []
     queryCheck = true
     for (let j = 0; j < sections.length; j++) {
-      // let queryTitles = sections[j]
-      //.querySelector("article").querySelector("h2")
-
-      //console.log(sections[j])
-      //  let showTitles = queryTitles.textContent.toUpperCase()
-      // if (showTitles == dataRead[j].title.toUpperCase()) {
-      //   queryTitles.innerHTML = dataRead[j].title
-      // }
       //to make it readable on columns await until getting the data
       let queryTasks = sections[j]
-
-      //console.log("query:" + sections[j].id)
       if (queryTasks.id == "backlog") {
         await getBackLog(queryTasks, dataRead[0])
       } else if (queryTasks.id == "implementation") {
         await getImplementation(queryTasks, dataRead[1])
       } else if (queryTasks.id == "complete") {
-        console.log(queryTasks.id)
+        // console.log(queryTasks.id)
         await getComplete(queryTasks, dataRead[2])
       }
     }
@@ -132,19 +114,10 @@ const onSuccess = async (dataRead) => {
 
 //POST DATA to Api
 const postDataAPI = async (data, e) => {
-  console.log("post")
+  console.log("posting")
   //create a modal or pop-up on nav
   let getModal = document.getElementById("modal-dialog")
-  // let createModal = document.createElement("article")
-  // createModal.id = "message"
-  // getMain.insertAdjacentElement("beforebegin", createModal)
-  // let getModal = document.getElementById("message")
-  getModal.innerHTML =
-    // `<article><p> Sent, please wait until being added!</p><p>` +
-    // JSON.stringify(data) +
-    // `</p>
-    //  </article>
-    `<p id="spinner"><strong>spinner</strong></p>`
+  getModal.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
   let options = {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -155,8 +128,7 @@ const postDataAPI = async (data, e) => {
   }
   await fetch(postUrl, options)
     .then((dataSent) => {
-      console.log(dataSent)
-
+      // console.log(dataSent)
       // i need to reload the form OR get a modal
       let onReload = (e) => {
         window.setTimeout(() => {
@@ -173,7 +145,7 @@ const postDataAPI = async (data, e) => {
 
 //update API
 const putDataAPI = async (data, index) => {
-  console.log(data.description)
+  // console.log(data.description)
   const patchUrl =
     "https://knowledgeable-inquisitive-tent.glitch.me/" +
     endPointDel +
@@ -195,8 +167,7 @@ const putDataAPI = async (data, index) => {
   }
   await fetch(patchUrl, options)
     .then((dataSent) => {
-      console.log(dataSent)
-
+      //console.log(dataSent)
       // i need to reload the form OR get a modal
       let onReload = (e) => {
         window.setTimeout(() => {
@@ -212,7 +183,7 @@ const putDataAPI = async (data, index) => {
 }
 //DELETE DATA to Api
 const deleteDataAPI = async (data) => {
-  console.log("delete")
+  console.log("deleting")
   const deleteUrl =
     "https://knowledgeable-inquisitive-tent.glitch.me/" +
     endPointDel +
@@ -222,15 +193,16 @@ const deleteDataAPI = async (data) => {
   //create a modal or pop-up on nav
   let getModalDialog = document.getElementById("modal-dialog")
   getModalDialog.style.display = "flex"
-  // let getModal = document.getElementById("message")
-  let getReadData = JSON.stringify(data)
-  console.log(getReadData)
+  // let getReadData = JSON.stringify(data)
+  // console.log(getReadData)
+  getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
   getModalDialog.innerHTML =
-    `<article id="deletedModal"><h2> Deleted! </h2><br/><p> Title:` +
+    `<article id="deletedModal"><h2> success on deleted! </h2><br/><h3> Title:</h3><p>` +
     data.title +
-    `</p><p> Description: ` +
+    `<h3> Description:</h3>` +
     data.description +
     `</p></article>`
+
   let options = {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     headers: {
@@ -240,7 +212,7 @@ const deleteDataAPI = async (data) => {
   }
   await fetch(deleteUrl, options)
     .then((dataSent) => {
-      console.log(dataSent)
+      // console.log(dataSent)
       // i need to reload the form OR get a modal
       let onReload = (e) => {
         window.setTimeout(() => {
@@ -262,22 +234,14 @@ const validateData = (e, i) => {
   let newData = ""
   //boolean to check to send post
   let valid = false
-  // let elementsForm = document.forms["newerTask"]
   let getArticleDarkMode = document.getElementsByClassName("articleDarkMode")
   let elementsForm = getArticleDarkMode[0].childNodes[0].elements
-
-  console.log(elementsForm)
-
+  // console.log(elementsForm)
   //create a modal or pop-up on nav
   let getModalDialog = document.getElementById("modal-dialog")
   getModalDialog.style.display = "flex"
-  //let createModal = document.createElement("article")
-  // getModalDialog.insertAdjacentElement("afterend", createModal)
-
-  console.log(elementsForm)
+  // console.log(elementsForm)
   for (let key in elementsForm) {
-    //  console.log(key)
-
     if (key <= 3) {
       if (
         elementsForm[0].value != "" &&
@@ -298,69 +262,37 @@ const validateData = (e, i) => {
       elementsForm[2].value == ""
     ) {
       getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
-
-      // setTimeout(() => {
       getModalDialog.innerHTML = `<article><p><button id="exit"  type="button"><strong>Exit</strong></button></p>Please fill out all form inputs before submitting</article>`
-      // }, 2000)
-      // setTimeout(() => {
-      //   getModalDialog.innerHTML = ""
-      // }, 3000)
       getExitModal()
     } else if (elementsForm[0].value == "") {
       getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
-
       let message = "error on: task title"
-      // setTimeout(() => {
       getModalDialog.innerHTML =
         `<article><p><button id="exit"  type="button"><strong>Exit</strong></button></p>` +
         message +
         `</article>`
       getExitModal()
-
-      // }, 2000)
-      // // setTimeout(() => {
-      // //   getModalDialog.innerHTML = ""
-      // // }, 3000)
-      // break
     } else if (elementsForm[1].value == "") {
       getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
-
       let message = "error on: task description"
-      // window.setTimeout(() => {
       getModalDialog.innerHTML =
         `<article><p><button id="exit" type="button"><strong>Exit</strong></button></p>` +
         message +
         `</article>`
       getExitModal()
-      // console.log(message)
-      // }, 2000)
-      // setTimeout(() => {
-      //   getModalDialog.innerHTML = ""
-      // }, 3000)
-      // break
     } else if (elementsForm[2].value == "") {
       getModalDialog.innerHTML = `<p id="spinner"><strong>spinner</strong></p>`
-
       let message = "error on: task date"
-      // setTimeout(() => {
       getModalDialog.innerHTML =
         `<article> <p><button id="exit"  type="button"><strong>Exit</strong></button></p>` +
         message +
         `</article>`
       getExitModal()
-
-      //   console.log(message)
-      // }, 2000)
-      // setTimeout(() => {
-      //   getModalDialog.innerHTML = ""
-      // }, 3000)
-      // break
     }
   }
   if (valid == true) {
     //remove the modal
     getModalDialog.innerHTML = ""
-
     postDataAPI(newData, e)
   } else {
     //idk might happen since if oddly it passes a true if false
@@ -385,7 +317,7 @@ const sendData = (e) => {
   e.preventDefault()
   //get submit button variations
   if (e.target.id === getBackLogButton.id) {
-    console.log("clicked 1: " + e.target.id)
+    // console.log("clicked 1: " + e.target.id)
     // getBackLogButton.disabled = true
     createTaskCard("backlog")
     let getTaskSent = document.getElementById("taskSent")
@@ -394,7 +326,7 @@ const sendData = (e) => {
       validateData(e, 1)
     })
   } else if (e.target.id === getImplementationButton.id) {
-    console.log("clicked 2: " + e.target.id)
+    //console.log("clicked 2: " + e.target.id)
     createTaskCard("implementation")
     let getTaskSent = document.getElementById("taskSent")
     // getTaskSent.addEventListener("click", validateData)
@@ -403,7 +335,7 @@ const sendData = (e) => {
       validateData(e, 2)
     })
   } else if (e.target.id === getCompleteButton.id) {
-    console.log("clicked 3: " + e.target.id)
+    //console.log("clicked 3: " + e.target.id)
     createTaskCard("complete")
     let getTaskSent = document.getElementById("taskSent")
     getTaskSent.addEventListener("click", (e) => {
@@ -452,13 +384,9 @@ const createForms = () => {
   getArticleTask.id = ""
   getArticleTask.className = "articleDarkMode"
 }
-// let editData = () => {
-//   // getArticleTask.id = "new"
-//   //reset id
-// }
 
 //post data
-///idk why it wants me to write it this way but it worked after just setting the click on loop
+//idk why it wants me to write it this way but it worked after just setting the click on loop
 document.addEventListener("click", function () {
   document
     .querySelector("main section#implementation article button")
@@ -474,7 +402,7 @@ document.addEventListener("click", function () {
 //dark mode or light mode
 let count = 0
 let getIconMode = document.getElementById("mode")
-
+//set it before
 getIcon.style.color = "white"
 localStorage.setItem("mode-icon", getIconMode.style.color)
 
@@ -482,18 +410,14 @@ getIconMode.addEventListener("click", (e) => {
   e.preventDefault()
   let element = document.body
   let elementNav = document.querySelector("header")
-  console.log(element)
+  //console.log(element)
   getIconMode = document.getElementById("mode")
   let elementSection = document.querySelectorAll("section")
   let elementArticle = document.querySelectorAll("article")
-
   let elementH1 = document.querySelector("h1")
   elementH1.style.color = "black"
-  localStorage.setItem("mode-icon", getIconMode.style.color)
-
   if (count < 1) {
     localStorage.removeItem("mode-icon")
-    //element.style.backgroundColor = "black"
     elementNav.style.backgroundColor = "grey"
     element.style.backgroundColor = "black"
     elementNav.style.color = "black"
@@ -510,23 +434,15 @@ getIconMode.addEventListener("click", (e) => {
         elementSection[i].style.backgroundColor,
       )
     }
-
+    localStorage.setItem("mode-icon", getIconMode.style.color)
     localStorage.setItem("mode-h1", elementH1.style.color)
     localStorage.setItem("mode", element.style.backgroundColor)
     localStorage.setItem("mode-header", elementNav.style.cssText)
-
     count += 1
-
-    console.log("dark mode: " + count)
+    // console.log("dark mode: " + count)
     getIconMode.className = "icon-sun"
   } else if (count == 1) {
-    // localStorage.getItem("mode")
-    // localStorage.getItem("mode-header")
-    // localStorage.removeItem("mode-header")
-    // localStorage.removeItem("mode")
-
-    // elementNav.style.backgroundColor = "#26A8F9"
-    // element.style.backgroundColor = "white"
+    //reset styles
     element.style.cssText = ``
     elementNav.style.cssText = ``
     elementH1.style.cssText = ``
@@ -543,17 +459,11 @@ getIconMode.addEventListener("click", (e) => {
         item.style.backgroundColor = ""
       }
     })
-
-    // elementNav.style.backgroundColor = "grey"
-    //localStorage.setItem("mode", element.style.backgroundColor)
-    // localStorage.setItem("mode-header", elementNav.style.backgroundColor)
-
-    //localStorage.getItem("mode")
-    //localStorage.getItem("mode-header")
+    //remove localStorage
     localStorage.clear()
     count = 0
 
-    console.log("light mode: " + count)
+    // console.log("light mode: " + count)
     getIconMode.className = "icon-moon"
   }
 })

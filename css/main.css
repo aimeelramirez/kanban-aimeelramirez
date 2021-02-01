@@ -675,15 +675,37 @@ main {
     background-color: white; }
     #deletedModal article p {
       text-align: center; }
+    #deletedModal article h3 {
+      font-size: smaller; }
 
 #modal-dialog {
   z-index: 1;
+  background-color: transparent;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-55%, -55%);
   max-width: 30rem; }
   #modal-dialog article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+
+#confirmation {
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem; }
+  #confirmation article {
     padding: 2rem;
     font-size: 20px;
     text-transform: capitalize;

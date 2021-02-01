@@ -1,10 +1,6 @@
 main {
   z-index: 0;
 }
-// .dark-mode {
-//   background-color: black;
-//   color: white;
-// }
 #editDialog {
   display: flex;
   flex-direction: column;
@@ -21,12 +17,9 @@ main {
   flex-direction: column;
   padding: 1rem;
   input {
-    // outline: 1px solid red;
     border-bottom: 1px solid $dark-grey;
     margin: 0.25rem;
     height: 100%;
-
-    // padding: 1rem;
   }
   textarea {
     margin: 0.25rem;
@@ -57,7 +50,6 @@ main {
     padding: 50px;
     font-size: 20px;
     text-transform: capitalize;
-    // background-color: pink;
     flex-direction: column;
     border-radius: 1rem;
     max-width: 40rem;
@@ -66,12 +58,16 @@ main {
     p {
       text-align: center;
     }
+
+    h3 {
+      font-size: smaller;
+    }
   }
 }
 
 #modal-dialog {
   z-index: 1;
-  // position: absolute;
+  background-color: transparent;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -82,21 +78,33 @@ main {
     padding: 2rem;
     font-size: 20px;
     text-transform: capitalize;
-    // background-color: pink;
     flex-direction: column;
     border-radius: 1rem;
     max-width: 40rem;
     box-shadow: makelongshadow($grey-cards);
     background-color: $white;
   }
+}
+#confirmation {
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem;
 
-  // input[type="date"] {
-  //   max-width: 100%;
-  //   font-size: 1.5rem;
-  // }
-  // top: 50%;
-  // left: 50%;
-  //transform: translate(-50%, -50%);
+  article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: makelongshadow($grey-cards);
+    background-color: $white;
+  }
 }
 
 .articleDarkMode {
