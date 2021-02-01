@@ -6,18 +6,14 @@ main {
   display: flex;
   @include atMediaWidth(none) {
     font-size: 0.3rem;
-    // justify-content: space-around;
     flex-direction: column;
-    // outline: 1px dashed blue;
     input {
-      // outline: 1px solid pink;
       flex-wrap: flex-end;
     }
   }
   @include atMediaWidth(small) {
     font-size: 0.3rem;
     flex-direction: column;
-    // outline: 1px dashed red;
     h2 {
       font-family: "EB Garamond", serif;
       font-size: 2rem;
@@ -26,13 +22,11 @@ main {
       font-size: 1.5rem;
     }
     input {
-      // outline: 1px solid purple;
       flex-wrap: flex-end;
       font-size: small;
     }
   }
   @include atMediaWidth(medium) {
-    // outline: 1px solid green;
     flex-direction: row;
     h2 {
       font-family: "EB Garamond", serif;
@@ -42,16 +36,13 @@ main {
       font-size: 2rem;
     }
     input {
-      // outline: 1px solid pink;
       flex-wrap: flex-end;
       font-size: small;
     }
   }
   @include atMediaWidth(large) {
-    // outline: 1px solid purple;
     flex-direction: row;
     input {
-      // outline: 1px solid pink;
       flex-wrap: flex-end;
     }
   }
