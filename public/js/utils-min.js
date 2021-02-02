@@ -1,0 +1,1 @@
+let newLabel=document.querySelectorAll("section");const ariaLabelButtons=()=>{let e=document.querySelectorAll("button");for(let t=0;t<e.length;t++){let l=e[t].querySelector("strong").innerText,r=e[t].id;e[t].setAttribute("aria-label",r),e[t].setAttribute("aria-describedby",l)}};ariaLabelButtons();

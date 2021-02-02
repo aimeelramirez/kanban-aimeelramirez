@@ -1,0 +1,1 @@
+const include=async e=>{let t=document.createElement("script");t.src=e,t.type="text/javascript",t.defer=!0,await getScript(t)},getScript=e=>{document.getElementById("index").insertAdjacentElement("afterend",e)};include("js/api.js"),include("js/data.js"),include("js/utils.js");

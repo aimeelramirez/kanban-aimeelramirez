@@ -1,0 +1,120 @@
+main {
+  z-index: 0;
+}
+#editDialog {
+  display: flex;
+  flex-direction: column;
+  p:nth-of-type(1) {
+    justify-content: flex-end;
+  }
+
+  #wrapper {
+    width: 100%;
+  }
+}
+#editFormPut {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  input {
+    border-bottom: 1px solid $grey;
+    margin: 0.25rem;
+    height: 100%;
+  }
+  textarea {
+    margin: 0.25rem;
+    padding: 1rem;
+    height: 100%;
+    max-height: max-content;
+
+    border-bottom: 1px solid $dark-grey;
+  }
+  p {
+    white-space: break-spaces;
+    outline: 1px solid red;
+  }
+}
+#modal {
+  display: none;
+}
+#deletedModal {
+  background-color: transparent;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem;
+
+  article {
+    padding: 50px;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: makelongshadow($grey-cards);
+    background-color: $white;
+    p {
+      text-align: center;
+    }
+
+    h3 {
+      font-size: smaller;
+    }
+  }
+}
+
+#modal-dialog {
+  z-index: 1;
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem;
+
+  article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: makelongshadow($grey-cards);
+    background-color: $white;
+  }
+}
+#confirmation {
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem;
+
+  article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: makelongshadow($grey-cards);
+    background-color: $white;
+  }
+}
+
+.articleDarkMode {
+  display: flex;
+  form {
+    flex-direction: column;
+    & > button {
+      outline: 1px solid red;
+      width: 25%;
+      justify-content: flex-end;
+    }
+  }
+}

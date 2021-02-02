@@ -1,6 +1,41 @@
-@import url("https://use.fontawesome.com/releases/v5.15.1/css/all.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@charset "UTF-8";
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap");
+#spinner {
+  height: 100vh;
+  opacity: 1;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem; }
+  #spinner:before {
+    position: center;
+    animation: 2s linear infinite spinGesture;
+    left: 50%;
+    opacity: inherit;
+    position: absolute;
+    top: 50%; }
+
+#spinner:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f110";
+  font-weight: 900;
+  font-size: 10rem; }
+
+@keyframes spinGesture {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    color: #939597; }
+  25% {
+    color: #26a8f9; }
+  50% {
+    color: #f5df4d; }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    color: #939597; } }
+
 /* SCSS RESET
 ==================================================================================================== 
 ====================================================================================================
@@ -168,29 +203,33 @@ html {
   font-size: 62.5%; }
 
 h1 {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-family: "Kaushan Script", cursive;
-  color: white; }
-
-footer h2,
-.task-title h2 {
-  font-family: "EB Garamond", serif;
-  width: 100%;
-  text-decoration: underline;
-  text-transform: uppercase;
-  font-size: 2rem;
   color: black; }
 
-footer p:nth-of-type(1),
-.task-title p:nth-of-type(1) {
-  color: #282828;
+section article:nth-of-type(1) {
   text-align: center; }
 
-footer p:nth-of-type(2),
-.task-title p:nth-of-type(2) {
-  display: flex;
-  justify-content: flex-end;
-  font-size: smaller; }
+footer,
+article:nth-of-type(1) {
+  text-align: center; }
+  footer h2,
+  article:nth-of-type(1) h2 {
+    font-family: "EB Garamond", serif;
+    width: 100%;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: black; }
+  footer p:nth-of-type(1),
+  article:nth-of-type(1) p:nth-of-type(1) {
+    color: #282828;
+    text-align: center; }
+  footer p:nth-of-type(2),
+  article:nth-of-type(1) p:nth-of-type(2) {
+    display: flex;
+    justify-content: flex-end;
+    font-size: smaller; }
 
 article,
 p,
@@ -199,12 +238,7 @@ a {
   font-family: "Darker Grotesque", sans-serif; }
 
 strong {
-  font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif; }
-
-strong {
-  font-size: 1.5rem;
-  font-family: "Darker Grotesque", sans-serif; }
+  display: none; }
 
 p {
   padding: 1rem; }
@@ -213,10 +247,6 @@ article > h3 {
   font-size: 3rem;
   font-weight: 800;
   font-family: "Darker Grotesque", sans-serif; }
-
-nav > ul > li a {
-  color: white;
-  font-size: 3.5rem; }
 
 h3::first-letter {
   font-size: 4rem; }
@@ -232,49 +262,123 @@ i.fa-calendar {
 
 #backlog-button,
 #implementation-button,
-#complete-button {
+#complete-button, article p #exit,
+article p #exit-api {
+  display: flex;
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
   #backlog-button:hover,
   #implementation-button:hover,
-  #complete-button:hover {
+  #complete-button:hover, article p #exit:hover,
+  article p #exit-api:hover {
+    background-color: #4caf50; }
+  #backlog-button:hover:before,
+  #implementation-button:hover:before,
+  #complete-button:hover:before, article p #exit:hover:before,
+  article p #exit-api:hover:before {
+    color: white; }
+  #backlog-button strong, #implementation-button strong, #complete-button strong, article p #exit strong, article p #exit-api strong {
+    display: none; }
+
+#backlog-button:before,
+#implementation-button:before,
+#complete-button:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f067";
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #939597; }
+
+#backlog-button:hover,
+#implementation-button:hover,
+#complete-button:hover {
+  background-color: #4caf50;
+  color: white; }
+  #backlog-button:hover strong,
+  #implementation-button:hover strong,
+  #complete-button:hover strong {
+    display: block; }
+
+article p #exit,
+article p #exit-api {
+  border: 1px solid #4caf50; }
+  article p #exit:before,
+  article p #exit-api:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00d";
+    font-weight: 900;
+    font-size: 2rem;
+    color: #939597; }
+
+#deleteTask {
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  #deleteTask:hover {
     background-color: #4caf50;
     color: white; }
-  #backlog-button:before,
-  #implementation-button:before,
-  #complete-button:before {
+    #deleteTask:hover strong {
+      display: block; }
+  #deleteTask:before {
     font-family: "Font Awesome 5 Free";
-    content: "\f067";
+    content: "\f2ed";
     font-weight: 900;
     font-size: 2.5rem;
     color: #939597; }
-  #backlog-button:hover:before,
-  #implementation-button:hover:before,
-  #complete-button:hover:before {
+  #deleteTask:hover:before {
     color: white; }
-  #backlog-button strong,
-  #implementation-button strong,
-  #complete-button strong {
+  #deleteTask strong {
     display: none; }
 
+.editTask {
+  margin-left: 80%;
+  transition-duration: 0.4s;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 0.9rem; }
+  .editTask:hover {
+    background-color: #4caf50;
+    color: white; }
+  .editTask:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f044";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #939597; }
+  .editTask:hover:before {
+    color: white; }
+  .editTask strong {
+    display: none; }
+
+#submitEdit,
 #taskSent {
   transition-duration: 0.4s;
   border-radius: 0.5rem;
   font-size: 2rem;
   padding: 0.9rem; }
+  #submitEdit:hover,
   #taskSent:hover {
     background-color: #4caf50;
     color: white; }
+    #submitEdit:hover strong,
+    #taskSent:hover strong {
+      display: block; }
+  #submitEdit:before,
   #taskSent:before {
     font-family: "Font Awesome 5 Free";
     content: "\f1d8";
     font-weight: 900;
     font-size: 2.5rem;
     color: #939597; }
+  #submitEdit:hover:before,
   #taskSent:hover:before {
     color: white; }
+  #submitEdit strong,
+  #taskSent strong {
+    display: none; }
 
 #unsure {
   transition-duration: 0.4s;
@@ -289,7 +393,8 @@ i.fa-calendar {
     content: "\f071";
     font-weight: 900;
     font-size: 2.5rem;
-    color: #939597; }
+    color: #939597;
+    padding: 0.9rem; }
   #unsure:hover:before {
     color: white; }
 
@@ -306,50 +411,37 @@ i.fa-calendar {
     content: "\f164";
     font-weight: 900;
     font-size: 2.5rem;
-    color: #939597; }
+    color: #939597;
+    padding: 0.9rem; }
   #absolutely:hover:before {
     color: white; }
 
-header ul > li strong {
-  display: none; }
+nav {
+  display: flex;
+  justify-content: flex-end; }
 
-header ul > li:hover strong {
-  display: block;
-  text-transform: capitalize; }
+#mode {
+  background-color: transparent; }
 
-header ul:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0c9";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: white; }
-
-header ul:hover:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f00d";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: gainsboro; }
-
-header ul:hover > li:nth-of-type(1):before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f015";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: white; }
-
-header ul:hover > li:nth-of-type(4):before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0eb";
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: white; }
-
-header ul > li:nth-of-type(1):hover:before {
-  color: #fd8b9e; }
-
-header ul > li:nth-of-type(4):hover:before {
+.icon-moon:hover:before {
   color: #f5df4d; }
+
+.icon-moon:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin: 1rem;
+  content: ""; }
+
+.icon-sun:hover:before {
+  color: #f5df4d; }
+
+.icon-sun:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin: 1rem;
+  content: ""; }
 
 main {
   margin: 0rem 1rem 0rem 1rem;
@@ -360,7 +452,10 @@ main {
   @media (min-width: 0px) and (max-width: 299px) {
     main {
       font-size: 0.3rem;
-      flex-direction: column; } }
+      flex-direction: column; }
+      main input {
+        flex-wrap: flex-end;
+        border-bottom: 1px solid #282828; } }
   @media (min-width: 300px) and (max-width: 599px) {
     main {
       font-size: 0.3rem;
@@ -369,7 +464,10 @@ main {
         font-family: "EB Garamond", serif;
         font-size: 2rem; }
       main h3 {
-        font-size: 1.5rem; } }
+        font-size: 1.5rem; }
+      main input {
+        flex-wrap: flex-end;
+        font-size: small; } }
   @media (min-width: 600px) and (max-width: 799px) {
     main {
       flex-direction: row; }
@@ -377,10 +475,15 @@ main {
         font-family: "EB Garamond", serif;
         font-size: 2.5rem; }
       main h3 {
-        font-size: 2rem; } }
+        font-size: 2rem; }
+      main input {
+        flex-wrap: flex-end;
+        font-size: small; } }
   @media (min-width: 800px) {
     main {
-      flex-direction: row; } }
+      flex-direction: row; }
+      main input {
+        flex-wrap: flex-end; } }
 
 section h2 {
   display: flex;
@@ -394,16 +497,15 @@ section#backlog {
   flex-direction: column; }
 
 header {
-  width: 100%;
+  margin-bottom: 1.25rem;
   background: #26a8f9;
   box-shadow: 0 8px 6px -6px black;
   padding: 1rem; }
   header nav {
     display: flex;
-    flex-direction: row;
     padding: 1rem; }
     header nav h1 {
-      width: calc(70% - 1em); }
+      width: 100%; }
     header nav ul {
       padding: 0rem;
       width: calc(30%);
@@ -420,7 +522,6 @@ nav.article-menu {
     justify-content: flex-end; }
     nav.article-menu ul li {
       margin: 0 auto;
-      margin-right: 0.4rem;
       border-radius: 1rem 1rem 0rem 0rem;
       background-color: white;
       max-width: 40rem;
@@ -430,6 +531,8 @@ nav.article-menu {
         color: black;
         font-size: 1rem;
         text-transform: capitalize; }
+    nav.article-menu ul li a {
+      display: none; }
     nav.article-menu ul li strong {
       display: none; }
     nav.article-menu ul i {
@@ -442,9 +545,9 @@ nav.article-menu {
 section {
   background-color: gainsboro;
   border-radius: 1rem;
-  padding: 1rem;
-  margin: 1rem; }
-  section .task-title {
+  padding: 0.25rem;
+  margin: 0.25rem; }
+  section article:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -461,12 +564,19 @@ section {
     section article:not(:nth-of-type(1)) h3 {
       padding: 1rem; }
     section article:not(:nth-of-type(1)) p {
-      border-bottom: 1px solid #c1c1c1; }
-  section p:nth-last-of-type(1) {
+      text-align: left;
+      border-bottom: 1px solid #868686; }
+  section article form {
     display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0; }
+    padding: 0;
+    margin: 0rem 0rem 0rem 5rem; }
+    section article form input {
+      flex-wrap: flex-end;
+      padding: 0rem;
+      margin: 0rem;
+      border-bottom: 1px solid #282828; }
+  section p:nth-last-of-type(1) {
+    display: flex; }
     section p:nth-last-of-type(1) #newTask input[type="date"] {
       position: relative;
       padding: 10px;
@@ -486,6 +596,9 @@ section {
       position: absolute;
       top: 1.1rem;
       right: 1.5rem; }
+    section p:nth-last-of-type(1) input {
+      background-color: white;
+      border: 1px solid black; }
     section p:nth-last-of-type(1) input[type="date"] {
       position: relative;
       padding: 10px;
@@ -504,9 +617,111 @@ section {
       height: 20px;
       position: absolute;
       top: 1.1rem;
-      right: 1.5rem; }
+      right: 2.5rem; }
+  section label {
+    color: transparent; }
 
 footer {
   margin-top: 1rem;
   box-shadow: 0px -8px 6px -8px black;
   background-color: gainsboro; }
+
+main {
+  z-index: 0; }
+
+#editDialog {
+  display: flex;
+  flex-direction: column; }
+  #editDialog p:nth-of-type(1) {
+    justify-content: flex-end; }
+  #editDialog #wrapper {
+    width: 100%; }
+
+#editFormPut {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem; }
+  #editFormPut input {
+    border-bottom: 1px solid #868686;
+    margin: 0.25rem;
+    height: 100%; }
+  #editFormPut textarea {
+    margin: 0.25rem;
+    padding: 1rem;
+    height: 100%;
+    max-height: max-content;
+    border-bottom: 1px solid #282828; }
+  #editFormPut p {
+    white-space: break-spaces;
+    outline: 1px solid red; }
+
+#modal {
+  display: none; }
+
+#deletedModal {
+  background-color: transparent;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem; }
+  #deletedModal article {
+    padding: 50px;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+    #deletedModal article p {
+      text-align: center; }
+    #deletedModal article h3 {
+      font-size: smaller; }
+
+#modal-dialog {
+  z-index: 1;
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem; }
+  #modal-dialog article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+
+#confirmation {
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+  max-width: 30rem; }
+  #confirmation article {
+    padding: 2rem;
+    font-size: 20px;
+    text-transform: capitalize;
+    flex-direction: column;
+    border-radius: 1rem;
+    max-width: 40rem;
+    box-shadow: 0 8px 6px -6px black;
+    background-color: white; }
+
+.articleDarkMode {
+  display: flex; }
+  .articleDarkMode form {
+    flex-direction: column; }
+    .articleDarkMode form > button {
+      outline: 1px solid red;
+      width: 25%;
+      justify-content: flex-end; }

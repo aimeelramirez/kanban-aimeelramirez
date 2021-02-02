@@ -53,8 +53,19 @@ Pull from origin branch:
 
 ### Usage
 
-- `npm start`: This command will start up a local web server, open your default browser, and begin watching scss files for changes.
+- `npm start`: This command will start up a local web server, open your default browser, and begin watching scss files for changes. (passphrase = secret)
 - `npm run build`: This command will only compile your scss files.
+
+## Additional Packages
+
+- https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
+  - npm install --save @fortawesome/fontawesome-free
+- https://www.npmjs.com/package/gulp-minify
+  - npm i gulp-minify
+  - npm install --save-dev gulp-minify
+- https://www.npmjs.com/package/gulp-clean-css
+  - npm i gulp-clean-css
+  - npm install gulp-clean-css --save-dev
 
 ## Resources
 

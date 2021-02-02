@@ -3,33 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Kanban-AimeeLRamirez" />
+    <meta name="theme-color" content="#317EFB" />
+    <meta name="description" content="A Task Manager App." />
     <title>Kanban-AimeeLRamirez</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <script src="js/index.js" id="index" type="text/javascript" defer></script>
+    <link
+      rel="apple-touch-icon"
+      href="images/online-education-concept-screen-with-teacher-books-pencils_113065-538.jpg"
+      type="image/x-icon"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    /> -->
+
+    <!-- liveserver -->
+    <!-- <link rel="canonical" href="http://127.0.0.1:5500/" /> -->
+    <!-- http -->
+    <!-- <link rel="canonical" href="http://localhost:3000" /> -->
+    <!-- https -->
+    <link rel="canonical" href="https://localhost:3000" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+      async
+    /> -->
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300&family=EB+Garamond&family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+      async
+    /> -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script> -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <script
+      id="index"
+      src="public/js/index-min.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <noscript>
+      <!--JavaScript is required to run this project -->
+    </noscript>
+    <style>
+      * {
+        margin: 0.001rem;
+        font-display: optional;
+      }
+    </style>
   </head>
   <body>
+    <p id="spinner"><strong>spinner</strong></p>
     <header>
       <nav>
         <h1>Task Manager</h1>
-        <ul>
-          <li>
-            <a href="#"><strong>home</strong></a>
-          </li>
-          <li>
-            <a href="#"><strong>contact</strong></a>
-          </li>
-          <li>
-            <a href="#"><strong>about us</strong></a>
-          </li>
-          <li>
-            <a href="#"><strong>mode</strong></a>
-          </li>
-        </ul>
+        <button type="button" id="mode">
+          <strong>dark mode or light mode</strong>
+        </button>
       </nav>
+      <section id="modal-dialog">
+        <article id="modal"></article>
+      </section>
     </header>
     <main>
       <section id="backlog">
-        <article class="task-title">
+        <article>
           <h2>Backlog</h2>
           <button type="submit" id="backlog-button">
             <strong>Add Task</strong>
@@ -44,7 +99,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-1"
               name="date-created"
               value="2021-01-10"
             />
@@ -52,7 +107,7 @@
         </article>
       </section>
       <section id="implementation">
-        <article class="task-title">
+        <article>
           <h2>Implementation</h2>
           <button type="submit" id="implementation-button">
             <strong>Add Task</strong>
@@ -67,7 +122,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-2"
               name="date-created"
               value="2021-01-10"
             />
@@ -75,7 +130,7 @@
         </article>
       </section>
       <section id="complete">
-        <article class="task-title">
+        <article>
           <h2>Complete</h2>
           <button type="submit" id="complete-button">
             <strong>Add Task</strong>
@@ -90,7 +145,7 @@
           <p>
             <input
               type="date"
-              id="date-created"
+              id="date-created-3"
               name="date-created"
               value="2021-01-10"
             />
@@ -99,11 +154,9 @@
       </section>
     </main>
     <footer>
-      <section>
-        <h2>Task Manager App</h2>
-        <p>Under construction!</p>
-        <p>Task Manager App © 2021</p>
-      </section>
+      <h2>Task Manager App</h2>
+      <p>Under construction!</p>
+      <p>Task Manager App © 2021</p>
     </footer>
   </body>
 </html>

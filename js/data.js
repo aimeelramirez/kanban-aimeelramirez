@@ -1,4 +1,6 @@
 // read data
+let sectionId = document.querySelectorAll("section")
+const dataArray = []
 
 const utilSort = (dataRead) => {
   dataRead.items.sort(function (a, b) {
@@ -15,24 +17,28 @@ const getBackLog = (queryTasks, dataRead) => {
     //TODO sort the ids
     utilSort(dataRead)
     queryTasks.innerHTML +=
-      ` <article><span id='${dataRead.items[i].id}'>` +
+      ` <article  aria-labelledby='${sectionId[0].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button aria-label="button"class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `
+      <form>
+            <label for="${sectionId[0].id}-date-created-${i}">${sectionId[0].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[0].id}-date-created-${i}"
+              for="${sectionId[0].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
-          </p></article>`
+      `"/></form>
+          </article>`
   }
 }
 
@@ -44,24 +50,27 @@ const getImplementation = (queryTasks, dataRead) => {
   for (let i = 0; i < dataRead.items.length; i++) {
     utilSort(dataRead)
     queryTasks.innerHTML +=
-      ` <article><span id='${dataRead.items[i].id}'>` +
+      ` <article  aria-labelledby='${sectionId[1].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button aria-label="button" class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `<form>
+            <label for="${sectionId[1].id}-date-created-${i}">${sectionId[1].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[1].id}-date-created-${i}"
+             for="${sectionId[1].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
-          </p></article>`
+      `"/></form>
+          </article>`
   }
 }
 const getComplete = (queryTasks, dataRead) => {
@@ -70,26 +79,29 @@ const getComplete = (queryTasks, dataRead) => {
   getLastArticle.remove()
   for (let i = 0; i < dataRead.items.length; i++) {
     utilSort(dataRead)
-    // console.log("check:" + JSON.stringify(dataRead.items))
+    //console.log("check:" + JSON.stringify(dataRead.items))
     queryTasks.innerHTML +=
-      ` <article><span id='${dataRead.items[i].id}'>` +
+      ` <article aria-labelledby='${sectionId[2].id}' id='${dataRead.items[i].id}'><span>` +
       dataRead.items[i].id +
       `</span>` +
+      `<button aria-label="button" class="editTask" id="editTask-${dataRead.items[i].id}" type="button"><strong>Edit</strong></button>` +
       `<h3>` +
       dataRead.items[i].title +
       `</h3>` +
       `<p>` +
       dataRead.items[i].description +
       `</p>` +
-      `<p>
+      `<form>
+      <label for="${sectionId[2].id}-date-created-${i}">${sectionId[2].id}-date-created-${i}</label>
             <input
               type="date"
-              id="date-created"
+              id="${sectionId[2].id}-date-created-${i}"
+              for="${sectionId[2].id}-date-created-${i}"
               name="date-created"
              value="` +
       dataRead.items[i].dueDate +
-      `"/>
-          </p></article>`
+      `"/></form>
+          </article>`
   }
 }
 
@@ -97,82 +109,159 @@ const getComplete = (queryTasks, dataRead) => {
 
 //delete
 //select article
+
 const getDeleteTask = (dataRead) => {
-  console.log("this is to be selected to delete: " + dataRead.length)
+  // console.log("this is to be selected to delete: " + dataRead.length)
   //get queryArticles/tasks
-  //let currentTask = ""
-  //store data
-  console.log("content still loading please wait....")
-  let queryArticles = ""
-  //getting id for sections
-  //to get the store
+  for (let key in dataRead) {
+    dataArray.push({
+      id: parseInt(key) + 1,
+      item: dataRead[key],
+    })
+  }
+  let queryArticles = []
+  let compareId = {}
+  let idUpdate = 0
+  let getIndex = 0
+  let getId = 0
   queryArticles = document.querySelectorAll("article")
+  for (let i = 0; i < queryArticles.length; i++) {
+    if (queryArticles[i].querySelector("span") != null) {
+      let compareId = queryArticles[i].querySelector("span").innerText
+      if (queryArticles[i].id === compareId) {
+        let getArticleClick = (e) => {
+          e.preventDefault()
+          // console.log(e.target.id)
+          const words = e.target.id.split("editTask-")
+          console.log(words[1])
 
-  for (let j = 0; j < dataRead.length; j++) {
-    console.log("loading....")
-    for (let i = 0; i < queryArticles.length; i++) {
-      if (queryArticles[i].className == "") {
-        //   console.log("articles:", queryArticles[i])
-        //  console.log("check", dataRead[j])
-        //mouseOver
-        let logMouseOver = () => {
-          queryArticles[i].style.cssText =
-            "transform: scale(1.075);  box-shadow: 0 10px 6px -6px black; transition-duration: 0.4s; border-radius: 0.5rem;"
-          console.log("loading complete... now you can select to delete")
-        }
-        //mouseOut
-        let logMouseOut = () => {
-          queryArticles[i].style.cssText = "width:100%;"
-        }
-        //get if article was clicked
-        const getClickTask = () => {
-          //MAP
-          dataRead.map((ele, index) => {
-            //get to match the task to the query click
-            console.log("ele: " + JSON.stringify(ele))
-            // let stringGet = queryArticles[i].querySelector("span").innerText
-            let compareId = queryArticles[i]
-              .querySelector("span")
-              .innerText.toString()
-            console.log(compareId + ":" + JSON.stringify(ele.id))
-            let parseNumId = JSON.stringify(ele.id)
+          getIndex = parseInt(words[1])
+          for (let k = 0; k < dataArray.length; k++) {
+            //get ids
+            //  let getId = e.path[1]
+            getId = parseInt(words[1])
+            let createModal = document.createElement("article")
+            createModal.id = "message"
+            let x = document.getElementById("modal-dialog")
+            if (getId == dataArray[k].item.id) {
+              if (x.style.display == "none") {
+                x.style.display = "flex"
+                x.innerHTML =
+                  `<article id="editDialog"><p><button id="exit" type="button"><strong>Exit</strong></button></p><h2>Edit Form:📝</h2>` +
+                  ` <form name="newerTask" id="editFormPut">` +
+                  `<input name="newTitle" id="newTitle" required="" placeholder="${dataArray[k].item.title}"/>` +
+                  `<textarea name="newDescription"  id="newDescription" placeholder="${dataArray[k].item.description}" required="" ></textarea>` +
+                  `<input name="newDate" type="date" value="${dataArray[k].item.dueDate}" required="" id="newDate">` +
+                  `<span id="wrapper"><button id="submitEdit" type="button"><strong>submit</strong></button> <button id="deleteTask" type="button"><strong>delete</strong></button></span></form></article>`
 
-            if (parseInt(compareId) == parseInt(parseNumId)) {
-              //set the i to current task to get in arrow
-              //currentTask= i
-              let getMain = document.querySelector("nav")
-              let createModal = document.createElement("article")
-              createModal.id = "message"
-              getMain.insertAdjacentElement("beforebegin", createModal)
-              let getModal = document.getElementById("message")
-              getModal.innerHTML = `<p> Are you sure you want to delete? <button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
+                let getForm = document.getElementById("editFormPut")
+                // console.log(getForm)
+
+                let getFormElements = getForm.elements
+                let dataReading = dataRead[getIndex - 1]
+                // console.log("elements:" + getFormElements["newTitle"].value)
+                getFormElements[0].value = dataArray[k].item.title
+                getFormElements[1].value = dataArray[k].item.description
+                getFormElements[2].value = dataArray[k].item.dueDate
+                let stringID = JSON.stringify(dataArray[k].item.listId)
+                idUpdate = parseInt(stringID)
+                // console.log(idUpdate)
+                let parseData = {
+                  title: getFormElements[0].value,
+                  description: getFormElements[1].value,
+                  dueDate: getFormElements[2].value,
+                  listId: idUpdate,
+                }
+                // console.log(parseData)
+                let getSpanEdit = document.querySelector("span")
+                let getSubmitEdit = getSpanEdit.querySelector("#submitEdit")
+                getSubmitEdit.addEventListener("click", () => {
+                  let getFormElements = getForm.elements
+                  getFormElements[0].value = getFormElements["newTitle"].value
+                  getFormElements[1].value =
+                    getFormElements["newDescription"].value
+                  getFormElements[2].value = getFormElements["newDate"].value
+
+                  let parseDataAgain = {
+                    title: getFormElements[0].value,
+                    description: getFormElements[1].value,
+                    dueDate: getFormElements[2].value,
+                    listId: idUpdate,
+                  }
+                  // console.log(parseDataAgain)
+                  return putDataAPI(parseDataAgain, getIndex)
+                })
+                let getButtonDelete = getSpanEdit.querySelector("#deleteTask")
+                getButtonDelete.addEventListener("click", trashButton)
+                let getButtonExit = document.getElementById("exit")
+                getButtonExit.addEventListener("click", closeForm)
+              } else {
+                x.style.display = "none"
+              }
+            }
+          }
+        }
+
+        let trashButton = (e) => {
+          e.preventDefault()
+
+          let getConfirmModal = document.getElementById("modal-dialog")
+          let createModal2 = document.createElement("article")
+          createModal2.id = "confirmation"
+          getConfirmModal.insertAdjacentElement("beforebegin", createModal2)
+          let getConfirm = document.getElementById("confirmation")
+          //  console.log(e.path[2][0])
+          let getForm = document.getElementById("editFormPut")
+          //console.log(getForm)
+          for (let g = 0; g < dataArray.length; g++) {
+            if (getForm[0].value == dataArray[g].item.title) {
+              getConfirm.style.cssText = `background-color: white;  border-radius: 1rem; border: 1px solid black; box-shadow: 0 8px 6px -6px black;`
+              getConfirm.innerHTML =
+                `<h2>Are you sure you want to delete?</h2><p>Title:${getForm[0].value}<br/>\n` +
+                `Description:` +
+                getForm[1].value +
+                ` </p><button id="unsure">Oops, nope!</button>\n<button id="absolutely">Yes, for sure!</button></p>`
+
               let yes = document.getElementById("absolutely")
               let no = document.getElementById("unsure")
-              let dataDelete = parseInt(parseNumId)
 
               let maybeDelete = (e) => {
                 e.preventDefault()
                 if (e.target.id == "absolutely") {
                   //check event
-                  console.log("this is clicked", dataDelete)
-                  return deleteDataAPI(dataDelete)
+                  getConfirm.innerHTML = ""
+                  getConfirm.style.cssText = ""
+                  return deleteDataAPI(dataArray[g].item)
                 } else {
-                  getModal.innerHTML = `<p> Okay, cancelled.</p>`
+                  getConfirm.innerHTML = `<p> Okay, cancelled.</p>`
+                  window.setTimeout(() => {
+                    getConfirm.innerHTML = ""
+                    getConfirm.style.cssText = ""
+                  }, 2000)
                   return null
                 }
               }
-              no.addEventListener("click", maybeDelete)
-              yes.addEventListener("click", maybeDelete)
+              no.onclick = maybeDelete
+              yes.onclick = maybeDelete
             }
-          })
+          }
         }
-
-        //on click on tasks
-        queryArticles[i].addEventListener("click", getClickTask)
-        //on mouse event
-        queryArticles[i].onmouseover = logMouseOver
-        queryArticles[i].onmouseout = logMouseOut
+        let closeForm = (e) => {
+          e.preventDefault()
+          let x = document.getElementById("modal-dialog")
+          let getConfirm = document.getElementById("confirmation")
+          if (getConfirm != null) {
+            getConfirm.innerHTML = ""
+          }
+          x.innerHTML = ""
+        }
+        let getIdEdit = document.querySelectorAll("button")
+        //  console.log("edit" + getIdEdit)
+        for (let b = 0; b < getIdEdit.length; b++) {
+          getIdEdit[b].addEventListener("click", getArticleClick)
+        }
       }
     }
   }
 }
+// }
