@@ -16,10 +16,10 @@ const deploy = require('gulp-gh-pages');
 
 // Set up a helper reference to the various sources we may need throughout the file.
 const src = {
-  scss: "scss/**/*.scss",
-  css: "css",
-  html: "*.html",
-  js: "js/*.js",
+  scss: "kanban-aimeelramirez/scss/**/*.scss",
+  css: "kanban-aimeelramirez/*.css",
+  html: "kanban-aimeelramirez/*.html",
+  js: "kanban-aimeelramirez/js/*.js",
   publicJs: "public/js",
   publicCss: "public/css/",
 }
@@ -68,9 +68,9 @@ function reload(done) {
 //deploy
 
 gulp.task('deploy', function () {
-  return gulp.src("./prod/**/*")
+  return gulp.src("./")
     .pipe(deploy({
-      remoteUrl: "https://github.com/aimeelramirez/aimeelramirez.github.io.git",
+      remoteUrl: "https://github.com/aimeelramirez/kanban-aimeelramirez.git",
       branch: "master"
     }))
 });
