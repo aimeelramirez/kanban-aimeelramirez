@@ -11,6 +11,8 @@ const minify = require("gulp-minify")
 const cleanCSS = require("gulp-clean-css")
 // Following browsersync's documentation, create the server and set it to a constant.
 const server = browserSync.create()
+// The gulp-ghpages to deploy to github
+const deploy = require('gulp-gh-pages');
 
 // Set up a helper reference to the various sources we may need throughout the file.
 const src = {
@@ -63,7 +65,15 @@ function reload(done) {
   server.reload()
   done()
 }
+//deploy
 
+gulp.task('deploy', function () {
+  return gulp.src("./prod/**/*")
+    .pipe(deploy({
+      remoteUrl: "https://github.com/aimeelramirez/aimeelramirez.github.io.git",
+      branch: "master"
+    }))
+});
 // Define our serve task to start up the browsersync server
 function serve(done) {
   server.init({
